@@ -38,7 +38,7 @@ const Introduction = () => {
   return (
     <div id={"introduction"}>
       <h1 className={`${s.names} handwriting`}>Robin & Sara</h1>
-      <img className={`flex`} src={roses} alt="" />
+      <img className={`flex ${s.roses}`} src={roses} alt="" />
       <p>{timeLeft}</p>
     </div>
   )
