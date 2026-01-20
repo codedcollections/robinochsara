@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
+import s from "./introduction.module.css"
+import roses from "./../../images/roses.jpg"
 
 const Introduction = () => {
   const calculateTimeLeft = () => {
-    const thebigday = new Date("2026-01-17T00:00:00")
+    const thebigday = new Date("2026-01-22T00:00:00")
     const now = new Date()
     const difference = thebigday - now
 
@@ -10,12 +12,17 @@ const Introduction = () => {
       return "🎉"
     }
 
-    const minutes = Math.floor(difference / (1000 * 60))
-    const days = Math.floor(minutes / (60 * 24))
-    const hours = Math.floor((minutes % (60 * 24)) / 60)
-    const remainingMinutes = minutes % 60
+    const totalSeconds = Math.floor(difference / 1000)
 
-    return `${days} dagar, ${hours} timmar och ${remainingMinutes} minuter kvar ❤️`
+    const days = Math.floor(totalSeconds / (60 * 60 * 24))
+    const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60))
+    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60)
+    const seconds = totalSeconds % 60
+    if (days === 1) {
+      return `${days} dag : ${hours} h : ${minutes} min : ${seconds} s`
+    } else {
+      return `${days} dagar : ${hours} h : ${minutes} min : ${seconds} s`
+    }
   }
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
@@ -23,15 +30,16 @@ const Introduction = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft(calculateTimeLeft())
-    }, 60000)
+    }, 1000)
 
     return () => clearInterval(interval)
   }, [])
 
   return (
     <div id={"introduction"}>
-      <h2>Robin och Sara</h2>
-      <h2>{timeLeft}</h2>
+      <h1 className={`${s.names} handwriting`}>Robin & Sara</h1>
+      <img className={`flex`} src={roses} alt="" />
+      <p>{timeLeft}</p>
     </div>
   )
 }
