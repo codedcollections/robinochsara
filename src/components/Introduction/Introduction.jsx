@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import s from "./introduction.module.css"
+import s from "./Introduction.module.css"
 import roses from "./../../images/roses.jpg"
 
 const Introduction = () => {
