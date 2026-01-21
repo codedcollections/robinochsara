@@ -4,4 +4,6 @@ nav ul {
 }
 nav{
     margin:3rem 0;
+    justify-content: center;
+    align-items: center;
 }
