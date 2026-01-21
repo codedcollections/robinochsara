@@ -36,10 +36,10 @@ const Introduction = () => {
   }, [])
 
   return (
-    <div id={"introduction"}>
+    <div id={s["introduction"]} className={`flex flex-down`}>
       <h1 className={`${s.names} handwriting`}>Robin & Sara</h1>
       <img className={`flex ${s.roses}`} src={roses} alt="" />
-      <p>{timeLeft}</p>
+      <p id={s["countdown"]}>{timeLeft}</p>
     </div>
   )
 }
