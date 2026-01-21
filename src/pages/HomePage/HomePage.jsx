@@ -6,7 +6,6 @@ const HomePage = () => {
   return (
     <div>
       <Introduction />
-      <InvitationForm />
       <p id="navigationtester" className={s.added}>
         end of website
       </p>
