@@ -1,6 +1,6 @@
 
-nav ul {
-    gap:3rem;
+nav ul li:not(:last-child) {
+    margin-right: 3rem;
 }
 nav{
     margin:3rem 0;

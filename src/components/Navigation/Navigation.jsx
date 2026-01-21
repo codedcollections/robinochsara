@@ -32,9 +32,11 @@ const Navigation = () => {
       <nav className={`flex`}>
         {windowDimensions.width > 900 ? (
           <ul className={`flex`}>
-            <HashLink smooth to="/#navigationtester">
-              När
-            </HashLink>
+            <li>
+              <HashLink smooth to="/#navigationtester">
+                När
+              </HashLink>
+            </li>
             <li>OSA</li>
             <li>Praktisk information</li>
           </ul>
