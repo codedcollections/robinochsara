@@ -28,27 +28,29 @@ const Navigation = () => {
     }
   }, [menuSelect])
   return (
-    <nav className={`flex flex-down`}>
-      {windowDimensions.width > 900 ? (
-        <ul className={`flex`}>
-          <HashLink smooth to="/#navigationtester">
-            När
-          </HashLink>
-          <li>OSA</li>
-          <li>Praktisk information</li>
-        </ul>
-      ) : (
-        <select
-          value={menuSelect}
-          name="hamburger"
-          id="hamburger"
-          onChange={(e) => setMenuSelect(e.target.value)}
-        >
-          <option value="">meny</option>
-          <option value="OSA">osa</option>
-        </select>
-      )}
-    </nav>
+    <div id={s["navigation"]} className={`flex flex-down`}>
+      <nav className={`flex`}>
+        {windowDimensions.width > 900 ? (
+          <ul className={`flex`}>
+            <HashLink smooth to="/#navigationtester">
+              När
+            </HashLink>
+            <li>OSA</li>
+            <li>Praktisk information</li>
+          </ul>
+        ) : (
+          <select
+            value={menuSelect}
+            name="hamburger"
+            id="hamburger"
+            onChange={(e) => setMenuSelect(e.target.value)}
+          >
+            <option value="">meny</option>
+            <option value="OSA">osa</option>
+          </select>
+        )}
+      </nav>
+    </div>
   )
 }
 export default Navigation
