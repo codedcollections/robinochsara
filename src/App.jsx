@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation/Navigation"
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/robinochsara/">
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
