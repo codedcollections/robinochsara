@@ -4,8 +4,9 @@ import InvitationForm from "../../components/InvitationForm/InvitationForm"
 
 const HomePage = () => {
   return (
-    <div>
+    <div className={`${s["wrapper"]} flex`}>
       <Introduction />
+      <InvitationForm />
       <p id="navigationtester" className={s.added}>
         end of website
       </p>

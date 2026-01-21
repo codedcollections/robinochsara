@@ -8,9 +8,6 @@ const Navigation = () => {
     height: window.innerHeight,
   })
   const [menuSelect, setMenuSelect] = useState("")
-  let navigate = useNavigate()
-
-  /*   console.log(windowDimensions.width) */
 
   useEffect(() => {
     const screenSizeChange = () => {

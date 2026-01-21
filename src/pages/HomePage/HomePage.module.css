@@ -2,3 +2,10 @@
     color:red;
     margin-top:200rem;
 }
+.wrapper{
+    max-width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
