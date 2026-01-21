@@ -28,7 +28,7 @@ const Navigation = () => {
     }
   }, [menuSelect])
   return (
-    <nav className={`flex`}>
+    <nav className={`flex flex-down`}>
       {windowDimensions.width > 900 ? (
         <ul className={`flex`}>
           <HashLink smooth to="/#navigationtester">
