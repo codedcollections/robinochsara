@@ -1,6 +1,6 @@
 
 nav ul {
-    justify-content: space-evenly;
+    gap:3rem;
 }
 nav{
     margin:3rem 0;
