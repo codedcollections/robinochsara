@@ -54,7 +54,13 @@ h1,h2,h3,h4,h5,h6{
   color:#45594B;
 }
 h1{
-  font-size: 10rem;
+  font-size: 4rem;
+}
+h2{
+  font-size: 2rem;
+}
+h3{
+  font-size: 1.7rem;
 }
 
 p,a,li{
@@ -63,6 +69,7 @@ p,a,li{
   font-style: normal;
   color:#45594B;
   font-size: 1rem;
+  line-height: 1.6rem;
 }
 
 .handwriting{
@@ -84,4 +91,9 @@ img{
 
 a:hover{
   color:orange;
+}
+
+.construction{
+  border:0.1rem solid rgb(255, 227, 254);
+  border-radius: 0.2rem;
 }

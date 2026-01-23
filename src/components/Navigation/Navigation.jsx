@@ -34,19 +34,19 @@ const Navigation = () => {
           <ul className={`flex`}>
             <li>
               <HashLink smooth to="/#navigationtester">
-                När
+                End of website
               </HashLink>
             </li>
           </ul>
         ) : (
           <select
-            value={menuSelect}
+            value={menuSelect || ""}
             name="hamburger"
             id="hamburger"
             onChange={(e) => setMenuSelect(e.target.value)}
           >
-            <option value="">meny</option>
-            <option value="OSA">osa</option>
+            <option value="">Hitta på sidan</option>
+            <option value="OSA">End of website</option>
           </select>
         )}
       </nav>

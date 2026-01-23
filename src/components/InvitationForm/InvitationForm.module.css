@@ -1,14 +1,9 @@
 #invitation{
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     min-width: 100%;
     border-top: 0.7rem double #96885f;
     border-bottom: 0.7rem double #96885f;
     border-radius: 1rem;
     padding: 3rem 0;
     color:#45594B;
-}
-#invitation h2 {
-    font-size:5rem;
+    margin-bottom: 15rem;
 }
