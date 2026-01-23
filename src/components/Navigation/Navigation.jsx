@@ -37,8 +37,6 @@ const Navigation = () => {
                 När
               </HashLink>
             </li>
-            <li>OSA</li>
-            <li>Praktisk information</li>
           </ul>
         ) : (
           <select
