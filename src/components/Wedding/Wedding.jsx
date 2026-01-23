@@ -1,6 +1,6 @@
 const Wedding = () => {
   return (
-    <div id={s["invitation"]}>
+    <div id={s["wedding"]}>
       <h2>Vigsel</h2>
     </div>
   )
