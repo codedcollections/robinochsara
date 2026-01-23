@@ -1,3 +1,4 @@
+import s from "./Wedding.module.css"
 const Wedding = () => {
   return (
     <div id={s["wedding"]}>
