@@ -5,7 +5,7 @@ const Dinner = () => {
   return (
     <div>
       <div id={s["dinner"]} className={`flex flex-down`}>
-        <h2>Middag</h2>
+        <h2>Middag vid Sundby Gård</h2>
 
         <PlaceDetails
           title={"Sundby gård"}
@@ -14,16 +14,10 @@ const Dinner = () => {
             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127.67847005353346!2d18.021793251426015!3d59.201713330771184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f7a7a8514047b%3A0xb8c9412b5bcc2b81!2sSundby%20g%C3%A5rd!5e0!3m2!1ssv!2sse!4v1767550849941!5m2!1ssv!2sse"
           }
         />
+        <h3>Adress: Sundby Gårdsväg 5, 141 91 Huddinge</h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum debitis
-          eveniet alias ex accusantium ullam sunt itaque, obcaecati, velit,
-          consectetur maiores voluptate deserunt sequi consequatur quasi
-          consequuntur officia eius a magnam delectus dolorum atque culpa
-          reprehenderit! Facilis, accusamus expedita explicabo quod voluptatum
-          saepe inventore est. Dolorum similique maiores quaerat provident,
-          voluptatibus voluptatum voluptas harum temporibus aliquid distinctio,
-          itaque fugiat enim nisi suscipit. Magni perspiciatis error a aut, in
-          molestiae tempora!
+          Ca 6 km från kyrkan, beläget precis vid vattnet, hittar ni Sundby
+          gård. Efter bröllopsparet ankomst kommer middag äga rum här.
         </p>
         <p>
           {/*Sundby gård:

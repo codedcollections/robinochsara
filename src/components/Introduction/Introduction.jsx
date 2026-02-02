@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import s from "./Introduction.module.css"
-import roses from "./../../images/roses.jpg"
+import wedding from "./../../images/wedding.png"
 
 const Introduction = () => {
   const calculateTimeLeft = () => {
-    const thebigday = new Date("2026-01-22T00:00:00")
+    const thebigday = new Date("2026-08-22T00:00:00")
     const now = new Date()
     const difference = thebigday - now
 
@@ -38,7 +38,7 @@ const Introduction = () => {
   return (
     <div id={s["introduction"]} className={`flex flex-down`}>
       <h1 className={`${s.names} handwriting`}>Robin & Sara</h1>
-      <img className={`flex ${s.roses}`} src={roses} alt="" />
+      <img className={`flex ${s.weddingimg}`} src={wedding} alt="" />
       <p id={s["countdown"]}>{timeLeft}</p>
     </div>
   )

@@ -3,6 +3,7 @@ import Introduction from "../../components/Introduction/Introduction"
 import InvitationForm from "../../components/InvitationForm/InvitationForm"
 import Wedding from "../../components/Wedding/Wedding"
 import Dinner from "../../components/Dinner/Dinner"
+import Practicalities from "../../components/Practicalities/Practicalities"
 const HomePage = () => {
   return (
     <div className={`${s["wrapper"]} flex`}>
@@ -10,6 +11,7 @@ const HomePage = () => {
       <InvitationForm />
       <Wedding />
       <Dinner />
+      <Practicalities />
       <p id="navigationtester" className={s.added}>
         end of website
       </p>

@@ -6,8 +6,9 @@
 #countdown{
     font-size: 3rem;
 }
-.roses{
-    margin-bottom:3rem;
+.weddingimg{
+    margin-bottom:0.5rem;
+    filter:grayscale(25%);
 }
 #countdown{
     margin-bottom:3rem;
