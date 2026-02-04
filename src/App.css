@@ -86,6 +86,9 @@ p,a,li{
   justify-content: center;
   align-items: center;
 }
+.flex-align-self-start{
+  align-self:flex-start;
+}
 img{
   max-width:100%;
 }

@@ -1,9 +1,8 @@
 import s from "./PlaceDetails.module.css"
 
-const PlaceDetails = ({ title, imageObj, iframeSRC }) => {
+const PlaceDetails = ({ imageObj, iframeSRC }) => {
   return (
     <>
-      <h3>{title}</h3>
       <img src={imageObj} alt="no image" className={`construction`} />
       <iframe
         src={iframeSRC}

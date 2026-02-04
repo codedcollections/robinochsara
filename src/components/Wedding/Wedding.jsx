@@ -7,14 +7,15 @@ const Wedding = () => {
       <h2>Vigsel i Huddinge kyrka</h2>
 
       <PlaceDetails
-        title={"Huddinge kyrka"}
         imageObj={tempImg}
         iframeSRC={
           "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2040.5606270063104!2d17.982641377267104!3d59.24007211816207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f70cbbb0e6edd%3A0xeb21500e881ab1b4!2sHuddinge%20kyrka!5e0!3m2!1ssv!2sse!4v1767545240227!5m2!1ssv!2sse"
         }
       />
-      <h3>Adress: Kommunalvägen 21, 141 23 Huddinge</h3>
-      <p>
+      <h3 className={`flex-align-self-start`}>
+        Adress: Kommunalvägen 21, 141 23 Huddinge
+      </h3>
+      <p className={`flex-align-self-start`}>
         Vigsel äger rum på kullen ovanför Huddinge centrum. Parkeringsplatser
         finnns precis intill kyrkan.
       </p>
