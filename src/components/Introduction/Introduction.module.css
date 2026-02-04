@@ -4,7 +4,7 @@
 }
 
 #countdown{
-    font-size: 3rem;
+    font-size: 2.4rem;
 }
 .weddingimg{
     margin-bottom:0.5rem;
@@ -12,4 +12,11 @@
 }
 #countdown{
     margin-bottom:3rem;
+}
+.and{
+    font-size:2.6rem;
+
+}
+#introduction h2{
+    margin-bottom:0.2rem;
 }

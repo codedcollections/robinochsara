@@ -12,9 +12,9 @@ const HomePage = () => {
       <Wedding />
       <Dinner />
       <Practicalities />
-      <p id="navigationtester" className={s.added}>
-        end of website
-      </p>
+      <div id="navigationtester" className={s.added}>
+        <p>2026</p>
+      </div>
     </div>
   )
 }

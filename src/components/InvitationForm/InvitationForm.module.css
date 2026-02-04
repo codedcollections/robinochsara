@@ -1,9 +1,24 @@
-#invitation{
-    min-width: 100%;
+/*#invitation{
+     min-width: 100%;
     border-top: 0.7rem double #96885f;
     border-bottom: 0.7rem double #96885f;
     border-radius: 1rem;
     padding: 3rem 0;
     color:#45594B;
     margin-bottom: 15rem;
+} */
+
+#invitation{
+    min-width: 100%;
+    background: #FFFBF8;
+background: linear-gradient(180deg,rgba(255, 251, 248, 1) 0%, rgba(255, 240, 240, 1) 100%);
+/*     border-top: 0.6rem solid #ffffff;
+    border-bottom: 0.6rem solid #ffffff; */
+    border-radius: 0.2rem;
+    padding-top:5rem;
+    box-shadow: 0rem 0rem 1rem 0.1rem rgb(227, 219, 210);
+    margin-bottom:5rem;
+}
+#invitation h2{
+    margin-bottom:2rem;
 }

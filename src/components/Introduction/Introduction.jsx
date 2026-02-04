@@ -37,7 +37,12 @@ const Introduction = () => {
 
   return (
     <div id={s["introduction"]} className={`flex flex-down`}>
-      <h1 className={`${s.names} handwriting`}>Robin & Sara</h1>
+      <h1>
+        <span className={`handwriting`}>Robin</span>{" "}
+        <span className={`${s.and}`}>& </span>
+        <span className={`handwriting`}>Sara</span>
+      </h1>
+      <h2>22/8 - 2026</h2>
       <img className={`flex ${s.weddingimg}`} src={wedding} alt="" />
       <p id={s["countdown"]}>{timeLeft}</p>
     </div>
