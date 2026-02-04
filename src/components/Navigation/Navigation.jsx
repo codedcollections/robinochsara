@@ -33,7 +33,7 @@ const Navigation = () => {
     }
   }, [menuSelect])
   return (
-    <div id={s["navigation"]} className={`flex flex-down`}>
+    <div id={s["navigation"]} className={`flex flex-down sticky`}>
       <nav className={`flex`}>
         {windowDimensions.width > 900 ? (
           <ul className={`flex`}>
