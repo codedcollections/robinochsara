@@ -5,6 +5,7 @@ import Wedding from "../../components/Wedding/Wedding"
 import Dinner from "../../components/Dinner/Dinner"
 import Practicalities from "../../components/Practicalities/Practicalities"
 import Gifts from "../../components/Gifts/Gifts"
+import catImg from "./../../images/cat.png"
 const HomePage = () => {
   return (
     <div className={`${s["wrapper"]} flex`}>
@@ -15,6 +16,7 @@ const HomePage = () => {
       <Gifts />
       <InvitationForm />
       <div id="navigationtester" className={s.added}>
+        <img src={catImg} alt="cat" />
         <p>2026</p>
       </div>
     </div>

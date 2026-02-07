@@ -1,6 +1,14 @@
+#navigationtester{
+    display:flex;
+}
 .added{
-    color:red;
+    display:flex;
     margin-top:1rem;
+    padding-bottom:0.2rem;
+}
+.added img{
+    max-width: 2rem;
+    margin-right:1rem;
 }
 .wrapper{
     max-width: 90%;
