@@ -9,24 +9,26 @@ const Introduction = () => {
     const difference = thebigday - now
 
     if (difference <= 0) {
-      return "🎉"
+      return {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        isDone: true,
+      }
     }
 
     const totalSeconds = Math.floor(difference / 1000)
 
-    const days = Math.floor(totalSeconds / (60 * 60 * 24))
-    const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60))
-    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60)
-    const seconds = totalSeconds % 60
-    if (days === 1) {
-      return `${days} dag : ${hours} h : ${minutes} min : ${seconds} s`
-    } else {
-      return `${days} dagar : ${hours} h : ${minutes} min : ${seconds} s`
+    return {
+      days: Math.floor(totalSeconds / (60 * 60 * 24)),
+      hours: Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60)),
+      minutes: Math.floor((totalSeconds % (60 * 60)) / 60),
+      seconds: totalSeconds % 60,
+      isDone: false,
     }
   }
-
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
-
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft(calculateTimeLeft())
@@ -34,7 +36,7 @@ const Introduction = () => {
 
     return () => clearInterval(interval)
   }, [])
-
+  const { days, hours, minutes, seconds, isDone } = timeLeft
   return (
     <div id={s["introduction"]} className={`flex flex-down`}>
       <h1>
@@ -42,9 +44,30 @@ const Introduction = () => {
         <span className={`${s.and}`}>& </span>
         <span className={`handwriting`}>Sara</span>
       </h1>
-      <h2>22/8 - 2026</h2>
+      <h2>22.08.2026</h2>
       <img className={`flex ${s.weddingimg}`} src={wedding} alt="" />
-      <p id={s["countdown"]}>{timeLeft}</p>
+      {/* <p id={s["countdown"]}>{timeLeft}</p> */}
+      <div className={s.timegrid}>
+        <div className={s.daydiv}>
+          <h3>{days}</h3>
+          <p className={s.timestamp}>dagar</p>
+        </div>
+        <p>:</p>
+        <div className={s.hourdiv}>
+          <h3>{hours}</h3>
+          <p className={s.timestamp}>timmar</p>
+        </div>
+        <p>:</p>
+        <div className={s.minutediv}>
+          <h3>{minutes}</h3>
+          <p className={s.timestamp}>minuter</p>
+        </div>
+        <p>:</p>
+        <div className={s.seconddiv}>
+          <h3>{seconds}</h3>
+          <p className={s.timestamp}>sekunder</p>
+        </div>
+      </div>
     </div>
   )
 }

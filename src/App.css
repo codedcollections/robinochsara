@@ -98,8 +98,9 @@ a:hover{
 }
 
 .construction{
-  border:0.1rem solid rgb(255, 227, 254);
-  border-radius: 0.2rem;
+  border:0.1rem solid rgb(255, 243, 243);
+  background-color: rgb(255, 241, 233);
+  border-radius: 0.6rem;
 }
 
 .sticky {

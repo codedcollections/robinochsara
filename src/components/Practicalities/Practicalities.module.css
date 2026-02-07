@@ -5,3 +5,15 @@ margin-bottom:2rem;
     margin-top:4.2rem;
     margin-bottom:2rem;
 }
+.infogrid{
+    display:grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(2,1fr);
+}
+
+@media only screen and (max-width: 900px) {
+  .infogrid {
+    grid-template-columns: 1fr;
+  }
+}

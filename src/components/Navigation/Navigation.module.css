@@ -10,3 +10,11 @@ nav{
     justify-content: center;
     align-items: center;
 }
+.buttonicon{
+    max-width: 1rem;
+    filter: brightness(0) saturate(100%) invert(32%) sepia(11%) saturate(679%) hue-rotate(85deg) brightness(97%) contrast(95%);
+
+}
+.homelink{
+    margin-right:2rem;
+}

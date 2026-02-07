@@ -1,0 +1,10 @@
+.placeimagediv
+{
+    display:flex;
+}
+.placeimagediv img{
+    max-width: 50%;
+}
+.placeimagediv iframe{
+    max-width: 50%;
+}

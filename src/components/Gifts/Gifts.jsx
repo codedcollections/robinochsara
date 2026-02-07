@@ -1,0 +1,15 @@
+import s from "./Gifts.module.css"
+const Gifts = () => {
+  return (
+    <div id={s["gifts"]} className="flex flex-down">
+      <h2>Gåvor</h2>
+      <p>
+        Vi förstår att det är många som vill ge presenter vid ett firande som
+        detta. Om det skulle vara så att ni vill det, så skulle vi väldigt
+        mycket uppskatta ett bidrag till vår bröllopsresa. Än så länge är det
+        inte bestämt vart det bär av, men vi siktar mot Sydost-Asien.
+      </p>
+    </div>
+  )
+}
+export default Gifts
