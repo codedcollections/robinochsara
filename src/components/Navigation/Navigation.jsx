@@ -9,12 +9,16 @@ import practicalitiesS from "./../Practicalities/Practicalities.module.css"
 import homeButton from "./../../images/home.svg"
 
 import { useState, useEffect } from "react"
+
 const Navigation = () => {
-  const [windowDimensions, setWindowDimensions] = useState({
+  const [show, setShow] = useState(false)
+  /*   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
-  })
-  const [menuSelect, setMenuSelect] = useState("")
+  }) */
+
+  //to use dropdown menu and select where to navigate to on website
+  /*   const [menuSelect, setMenuSelect] = useState("")
 
   useEffect(() => {
     const screenSizeChange = () => {
@@ -25,75 +29,109 @@ const Navigation = () => {
     }
     window.addEventListener("resize", screenSizeChange)
     return () => window.removeEventListener("resize", screenSizeChange)
-  }, [])
+  }, []) */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     console.log(menuSelect)
     if (menuSelect === "OSA") {
       const element = document.getElementById("navigationtester")
       element.scrollIntoView({ behavior: "smooth" })
     }
-  }, [menuSelect])
+  }, [menuSelect]) */
   return (
     <div id={s["navigation"]} className={`flex flex-down sticky`}>
       <nav className={`flex`}>
-        {windowDimensions.width > 900 ? (
-          <ul className={`flex`}>
-            <li>
-              <HashLink smooth to={`/#${introS.introduction}`}>
+        <ul className={`flex ${s.bigmenu}`}>
+          <li>
+            <HashLink smooth to={`/#${introS.introduction}`}>
+              Start
+            </HashLink>
+          </li>
+          <li>
+            <HashLink smooth to={`/#${weddingS.wedding}`}>
+              Vigsel
+            </HashLink>
+          </li>
+          <li>
+            <HashLink smooth to={`/#${dinnerS.dinner}`}>
+              Middag
+            </HashLink>
+          </li>
+          <li>
+            <HashLink smooth to={`/#${practicalitiesS.practicalities}`}>
+              Information
+            </HashLink>
+          </li>
+          <li>
+            <HashLink smooth to={`/#${formS.invitation}`}>
+              OSA
+            </HashLink>
+          </li>
+        </ul>
+        <div className={s.smallmenu}>
+          <button
+            className={s.burgerbtn}
+            onClick={() => {
+              setShow(!show)
+              console.log(show)
+            }}
+          >
+            ☰
+          </button>
+          {show && (
+            <div className={s.hamburgerdiv}>
+              <HashLink
+                smooth
+                to={`/#${introS.introduction}`}
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
                 Start
               </HashLink>
-            </li>
-            <li>
-              <HashLink smooth to={`/#${weddingS.wedding}`}>
+
+              <HashLink
+                smooth
+                to={`/#${weddingS.wedding}`}
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
                 Vigsel
               </HashLink>
-            </li>
-            <li>
-              <HashLink smooth to={`/#${dinnerS.dinner}`}>
+
+              <HashLink
+                smooth
+                to={`/#${dinnerS.dinner}`}
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
                 Middag
               </HashLink>
-            </li>
-            <li>
-              <HashLink smooth to={`/#${practicalitiesS.practicalities}`}>
+
+              <HashLink
+                smooth
+                to={`/#${practicalitiesS.practicalities}`}
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
                 Information
               </HashLink>
-            </li>
-            <li>
-              <HashLink smooth to={`/#${formS.invitation}`}>
+
+              <HashLink
+                smooth
+                to={`/#${formS.invitation}`}
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
                 OSA
               </HashLink>
-            </li>
-            <li>
-              <HashLink smooth to="/#navigationtester">
-                -
-              </HashLink>
-            </li>
-          </ul>
-        ) : (
-          <>
-            <HashLink
-              className={s.homelink}
-              smooth
-              to={`/#${introS.introduction}`}
-            >
-              <img
-                src={homeButton}
-                alt="could not load home button"
-                className={s.buttonicon}
-              />
-            </HashLink>
-            <select
-              value={menuSelect || ""}
-              name="hamburger"
-              id="hamburger"
-              onChange={(e) => setMenuSelect(e.target.value)}
-            >
-              <option value="">Hitta på sidan</option>
-              <option value="OSA">-</option>
-            </select>
-          </>
-        )}
+            </div>
+          )}
+        </div>
       </nav>
     </div>
   )

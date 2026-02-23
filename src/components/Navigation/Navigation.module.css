@@ -1,6 +1,7 @@
 
 #navigation{
     background-color: #FFFBF8;
+    border-bottom: 0.1rem solid #fff3ea;
 }
 nav ul li:not(:last-child) {
     margin-right: 3rem;
@@ -9,6 +10,7 @@ nav{
     margin:1rem 0;
     justify-content: center;
     align-items: center;
+    width:100%;
 }
 .buttonicon{
     max-width: 1rem;
@@ -17,4 +19,51 @@ nav{
 }
 .homelink{
     margin-right:2rem;
+}
+
+/* after update added new hamburger menu*/
+
+.smallmenu{
+    display:none;
+}
+@media (max-width: 900px) {
+    .bigmenu{
+        display:none;
+    }
+    .smallmenu{
+        display:flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+/*         background-color: pink; */
+    }
+    .burgerbtn{
+        color:#45594B;
+        background: linear-gradient(180deg, rgb(245, 229, 217) 0%, rgb(255, 222, 189) 40% ,  rgba(255, 207, 158, 1) 100%);
+        border:none;
+        align-self:flex-start;
+        margin-left:1rem;
+    }
+    .hamburgerdiv{
+        display:flex;
+        width:100%;
+        max-height:100vh;
+        overflow-y: scroll;
+        flex-direction: column;
+        align-items: center;
+        /* background-color: red; */
+    }
+
+    .hamburgerdiv a{
+        font-size: 1rem;
+        color:#45594B;
+        text-decoration: none;
+        background: linear-gradient(180deg, rgb(245, 229, 217) 0%, rgb(255, 222, 189) 40% ,  rgba(255, 207, 158, 1) 100%);
+        min-width:18%;
+        text-align: center;
+        margin:0.5rem 0;
+        border-radius:0.2rem;
+    }
+
 }
