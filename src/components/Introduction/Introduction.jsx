@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import s from "./Introduction.module.css"
 import wedding from "./../../images/wedding.png"
+import branch from "./../../images/branch.png"
 
 const Introduction = () => {
   const calculateTimeLeft = () => {
@@ -67,6 +68,18 @@ const Introduction = () => {
           <h3>{seconds}</h3>
           <p className={s.timestamp}>sekunder</p>
         </div>
+      </div>
+      <div className={s.meetcute}>
+        <img src={branch} className={s.leftBranch} alt="green branch" />
+        <p>
+          Det var en varm dag i juli 2023 som våra vägar korsades för först
+          gången. Efter att ha pratat i telefon i flera timmar samma kväll så
+          stod det klart för oss båda att detta var starten på något väldigt
+          spännande. Ett par veckor senare bodde vi ihop och sedan dess har vi
+          redan hunnit med stand up, konserter, road trips, utlandssemester,
+          renoverat en hel lägenhet, samt en och annan dans i köket.
+        </p>
+        <img src={branch} className={s.rightBranch} alt="green branch" />
       </div>
     </div>
   )
