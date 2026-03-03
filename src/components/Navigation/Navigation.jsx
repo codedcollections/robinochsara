@@ -6,7 +6,9 @@ import formS from "./../InvitationForm/InvitationForm.module.css"
 import weddingS from "./../Wedding/Wedding.module.css"
 import dinnerS from "./../Dinner/Dinner.module.css"
 import practicalitiesS from "./../Practicalities/Practicalities.module.css"
-import homeButton from "./../../images/home.svg"
+import gifts from "./../Gifts/Gifts.module.css"
+
+/* import homeButton from "./../../images/home.svg" */
 
 import { useState, useEffect } from "react"
 
@@ -63,6 +65,11 @@ const Navigation = () => {
             </HashLink>
           </li>
           <li>
+            <HashLink smooth to={`/#${gifts.gifts}`}>
+              Gåvor
+            </HashLink>
+          </li>
+          <li>
             <HashLink smooth to={`/#${formS.invitation}`}>
               OSA
             </HashLink>
@@ -73,7 +80,7 @@ const Navigation = () => {
             className={s.burgerbtn}
             onClick={() => {
               setShow(!show)
-              console.log(show)
+              /* console.log(show) */
             }}
           >
             ☰
@@ -118,6 +125,16 @@ const Navigation = () => {
                 }}
               >
                 Information
+              </HashLink>
+
+              <HashLink
+                smooth
+                to={`/#${gifts.gifts}`}
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
+                Gåvor
               </HashLink>
 
               <HashLink
