@@ -17,8 +17,12 @@ background: linear-gradient(180deg,rgba(255, 251, 248, 1) 0%, rgba(255, 240, 240
     border-radius: 0.2rem;
     box-shadow: 0rem 0rem 1rem 0.1rem rgb(227, 219, 210);
     margin-bottom:5rem;
+    padding-bottom:6rem;
 }
-
+#invitation a{
+    color:blue;
+    margin-top:2rem;
+}
 #invitation h2{
     margin-top:4.2rem;
     margin-bottom:2rem;

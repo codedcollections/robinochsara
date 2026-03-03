@@ -4,7 +4,16 @@ const InvitationForm = () => {
     <div id={s["invitation"]} className="flex flex-down">
       <h2>OSA</h2>
 
-      <iframe
+      <p>
+        I formuläret nedan kan ni anmäla er till bröllopet. Ni hittar ert namn i
+        namnlistan och därefter kan ni klicka er vidare för att fylla i er
+        information.
+      </p>
+      <a href="https://docs.google.com/forms/d/10muhxMfkWUVQH-m_EiotIevPq2c1MHin4K6Y8SI82go/edit">
+        OSA för Robin och Saras bröllop{" "}
+      </a>
+
+      {/*       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLSdOsShYA2MpR1bCT3TSU5SBVM8rnFPEbSgF6aM6z8nM9sgO3Q/viewform?embedded=true"
         width="100%"
         height="4600"
@@ -13,7 +22,7 @@ const InvitationForm = () => {
         marginWidth="0"
       >
         Läser in …
-      </iframe>
+      </iframe> */}
     </div>
   )
 }
