@@ -1,8 +1,21 @@
 import s from "./PlaceDetails.module.css"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
+import { useMap } from "react-leaflet"
+import { useEffect } from "react"
 
 const PlaceDetails = ({ imageObj, /* iframeSRC, */ position }) => {
-  console.log(position)
+  function FixMapSize() {
+    const map = useMap()
+
+    useEffect(() => {
+      setTimeout(() => {
+        map.invalidateSize()
+      }, 0)
+    }, [map])
+
+    return null
+  }
+  /* console.log(position) */
   return (
     <div className={s.placeimagediv}>
       <div className={s.mapandimg}>
@@ -19,6 +32,7 @@ const PlaceDetails = ({ imageObj, /* iframeSRC, */ position }) => {
             touchZoom={false}
             style={{ height: "500px", width: "100%" }}
           >
+            <FixMapSize />
             <TileLayer
               attribution="&copy; OpenStreetMap contributors"
               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
