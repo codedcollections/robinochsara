@@ -7,7 +7,7 @@ const Wedding = () => {
       <h2>Vigsel i Huddinge kyrka</h2>
 
       <PlaceDetails imageObj={weddingPlace} position={[59.24, 17.9826]} />
-      <h3 className={`flex-align-self-start`}>
+      <h3 className={`flex-align-self-start ${s.church}`}>
         Kommunalvägen 21, 141 23 Huddinge
       </h3>
       <p className={`flex-align-self-start`}>
