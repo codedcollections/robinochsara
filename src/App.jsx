@@ -19,7 +19,7 @@ L.Icon.Default.mergeOptions({
 function App() {
   return (
     <>
-      <BrowserRouter basename="/robinochsara/">
+      <BrowserRouter basename="/">
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
