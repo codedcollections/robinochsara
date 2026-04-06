@@ -5,6 +5,7 @@ import introS from "./../Introduction/Introduction.module.css"
 import formS from "./../InvitationForm/InvitationForm.module.css"
 import weddingS from "./../Wedding/Wedding.module.css"
 import dinnerS from "./../Dinner/Dinner.module.css"
+import afterS from "./../After/After.module.css"
 import practicalitiesS from "./../Practicalities/Practicalities.module.css"
 import gifts from "./../Gifts/Gifts.module.css"
 
@@ -50,13 +51,18 @@ const Navigation = () => {
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${weddingS.wedding}`}>
+            <HashLink smooth to={`/#${weddingS.weddingimg}`}>
               Vigsel
             </HashLink>
           </li>
           <li>
             <HashLink smooth to={`/#${dinnerS.dinner}`}>
               Middag
+            </HashLink>
+          </li>
+          <li>
+            <HashLink smooth to={`/#${afterS.after}`}>
+              Efterfest
             </HashLink>
           </li>
           <li>
@@ -115,6 +121,16 @@ const Navigation = () => {
                 }}
               >
                 Middag
+              </HashLink>
+
+              <HashLink
+                smooth
+                to={`/#${afterS.after}`}
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
+                Efterfest
               </HashLink>
 
               <HashLink

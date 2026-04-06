@@ -1,9 +1,20 @@
 #dinner{
-margin-bottom:4rem;
+margin-bottom:2rem;
+max-width: 70%;
+justify-self: center;
 }
-#dinner h2{
-    margin-top:4.2rem;
+
+#dinner img{
+    margin-bottom:0.6rem;
 }
 #dinner h3{
     margin-top:1.6rem;
+}
+
+.dinneraddress{
+        display: block;
+    margin:1rem 0;
+} 
+#dinneraddress{
+    color:red;
 }

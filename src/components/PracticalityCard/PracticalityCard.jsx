@@ -5,7 +5,7 @@ const PracticalityCard = ({ infoTitle, imageSrc, infoText }) => {
       <img src={imageSrc} alt="image not found" />
       <div id={s["cardtextinfo"]}>
         <h3>{infoTitle}</h3>
-        <p>{infoText}</p>
+        <p className={s.multiline}>{infoText}</p>
       </div>
     </div>
   )

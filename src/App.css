@@ -109,3 +109,7 @@ a:hover{
   width: 100%;
   z-index: 1;
 }
+
+.boldspan{
+  font-weight: bold;
+}

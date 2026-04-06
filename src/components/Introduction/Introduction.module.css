@@ -34,27 +34,25 @@
     align-content: center;
     justify-content: center;
     text-align: center;
+    margin-bottom:2rem;
 }
 
 .timestamp{
     font-size: 0.8rem;
 }
 .meetcute{
-    margin-top:1.6rem;
-    max-width: 90%;
-    display:grid;
-    grid-template-columns: 6% 90% 4%;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    max-width:50%;
+    
 }
 .meetcute p{
-    padding:0 1rem;
+    font-style: italic;
+    line-height: 2rem;
 }
-.leftBranch{
-    align-self: flex-start;
-    padding-right:1rem;
+
+@media only screen and (max-width: 900px) {
+    .meetcute{
+    max-width:80%;
+    
 }
-.rightBranch{
-    transform: scaleX(-1);
-    align-self: flex-end;
 }

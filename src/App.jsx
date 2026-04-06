@@ -7,6 +7,7 @@ import L from "leaflet"
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png"
 import markerIcon from "leaflet/dist/images/marker-icon.png"
 import markerShadow from "leaflet/dist/images/marker-shadow.png"
+import HashLinkScroller from "./components/HashLinkScroller/HashLinkScroller"
 
 delete L.Icon.Default.prototype._getIconUrl
 
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
       <BrowserRouter basename="/">
+        <HashLinkScroller />
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />

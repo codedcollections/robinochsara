@@ -39,7 +39,7 @@ const Introduction = () => {
   }, [])
   const { days, hours, minutes, seconds, isDone } = timeLeft
   return (
-    <div id={s["introduction"]} className={`flex flex-down`}>
+    <div id={s["introduction"]} className={`classintro flex flex-down`}>
       <h1>
         <span className={`handwriting`}>Robin</span>{" "}
         <span className={`${s.and}`}>& </span>
@@ -70,7 +70,6 @@ const Introduction = () => {
         </div>
       </div>
       <div className={s.meetcute}>
-        <img src={branch} className={s.leftBranch} alt="green branch" />
         <p>
           Det var en varm dag i juli 2023 som våra vägar korsades för först
           gången. Efter att ha pratat i telefon i flera timmar samma kväll så
@@ -79,7 +78,6 @@ const Introduction = () => {
           redan hunnit med stand up, konserter, road trips, utlandssemester,
           renoverat en hel lägenhet, samt en och annan dans i köket.
         </p>
-        <img src={branch} className={s.rightBranch} alt="green branch" />
       </div>
     </div>
   )
