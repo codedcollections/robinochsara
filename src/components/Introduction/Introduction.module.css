@@ -14,6 +14,7 @@
     font-size: 2.4rem;
 }
 .weddingimg{
+    max-width: 60%;
     margin-bottom:0.5rem;
     filter:grayscale(25%);
 }
@@ -40,8 +41,10 @@
 .timestamp{
     font-size: 0.8rem;
 }
+.meetcute img{
+    max-width: 100%;
+}
 .meetcute{
-    display:flex;
     max-width:50%;
     
 }
@@ -55,4 +58,8 @@
     max-width:80%;
     
 }
+.weddingimg{
+    max-width: 100%;
+}
+
 }

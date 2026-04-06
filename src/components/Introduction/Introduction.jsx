@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import s from "./Introduction.module.css"
 import wedding from "./../../images/wedding.png"
-import branch from "./../../images/branch.png"
+import leaves from "./../../images/leaves.png"
 
 const Introduction = () => {
   const calculateTimeLeft = () => {
@@ -69,7 +69,8 @@ const Introduction = () => {
           <p className={s.timestamp}>sekunder</p>
         </div>
       </div>
-      <div className={s.meetcute}>
+      <div className={`flex flex-down ${s.meetcute}`}>
+        <img src={leaves} alt="" />
         <p>
           Det var en varm dag i juli 2023 som våra vägar korsades för först
           gången. Efter att ha pratat i telefon i flera timmar samma kväll så
