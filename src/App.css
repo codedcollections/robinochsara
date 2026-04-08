@@ -64,7 +64,7 @@ h3{
   font-size: 1.5rem;
 }
 
-p,a,li{
+p,a,li,label,fieldset,legend{
   font-family: "Alice", serif;
   font-weight: 400;
   font-style: normal;

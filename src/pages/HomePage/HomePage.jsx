@@ -6,6 +6,7 @@ import Dinner from "../../components/Dinner/Dinner"
 import After from "../../components/After/After"
 import Practicalities from "../../components/Practicalities/Practicalities"
 import Gifts from "../../components/Gifts/Gifts"
+import Speech from "../../components/Speech/Speech"
 import catImg from "./../../images/cat.png"
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <After />
       <Practicalities />
       <Gifts />
+      <Speech />
       <InvitationForm />
       <div id="navigationtester" className={s.added}>
         <img src={catImg} alt="cat" />
