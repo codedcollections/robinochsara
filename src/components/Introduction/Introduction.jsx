@@ -72,12 +72,12 @@ const Introduction = () => {
       <div className={`flex flex-down ${s.meetcute}`}>
         <img src={leaves} alt="" />
         <p>
-          Det var en varm dag i juli 2023 som våra vägar korsades för först
+          Det var en varm dag i juli 2023 som våra vägar korsades för första
           gången. Efter att ha pratat i telefon i flera timmar samma kväll så
-          stod det klart för oss båda att detta var starten på något väldigt
-          spännande. Ett par veckor senare bodde vi ihop och sedan dess har vi
-          redan hunnit med stand up, konserter, road trips, utlandssemester,
-          renoverat en hel lägenhet, samt en och annan dans i köket.
+          stod det klart för oss båda att detta var starten på något speciellt.
+          Ett par veckor senare bodde vi ihop och sedan dess har vi redan hunnit
+          med stand up, konserter, road trips, utlandssemester, renoverat en hel
+          lägenhet, samt en och annan dans i köket.
         </p>
       </div>
     </div>
