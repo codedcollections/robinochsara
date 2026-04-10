@@ -8,9 +8,11 @@ import Practicalities from "../../components/Practicalities/Practicalities"
 import Gifts from "../../components/Gifts/Gifts"
 import Speech from "../../components/Speech/Speech"
 import catImg from "./../../images/cat.png"
+
 const HomePage = () => {
   return (
     <div className={`${s["wrapper"]} flex`}>
+      {/* Add guestform */}
       <Introduction />
       <Wedding />
       <Dinner />

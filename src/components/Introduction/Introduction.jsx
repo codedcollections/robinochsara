@@ -5,7 +5,7 @@ import leaves from "./../../images/leaves.png"
 
 const Introduction = () => {
   const calculateTimeLeft = () => {
-    const thebigday = new Date("2026-08-22T00:00:00")
+    const thebigday = new Date("2026-08-22T14:00:00")
     const now = new Date()
     const difference = thebigday - now
 

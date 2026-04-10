@@ -1,5 +1,6 @@
 #speech h2{
     margin-bottom:0.6rem;
+    padding:0 2rem;
 }
 #speechform{
     justify-content: start;
@@ -11,6 +12,10 @@
 .aboutspeech p{
     font-weight: bold;
     line-height: 1.6rem;
+}
+.starsign{
+    align-self:start;
+    padding-left:1rem;
 }
 
 #speech input,

@@ -1,5 +1,6 @@
 import s from "./Speech.module.css"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { onSpeeches, sendSpeeches } from "../../api.js"
 
 const Speech = () => {
   const [formData, setFormData] = useState({
@@ -16,8 +17,18 @@ const Speech = () => {
     presentation: "",
     lat: "",
     ovrigtInfo: "",
+    website: "",
   })
+  const [speeches, setSpeeches] = useState([])
 
+  /*   useEffect(() => {
+    onSpeeches("1234", setSpeeches)
+  }, []) */
+
+  useEffect(() => {
+    const unsubscribe = onSpeeches("1234", setSpeeches)
+    return () => unsubscribe()
+  }, [])
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -44,10 +55,20 @@ const Speech = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    if (formData.website) {
+      return
+    }
+    e.preventDefault()
+
+    await sendSpeeches(formData)
+
+    alert("Form submitted!")
+  }
+  /*   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Form data:", JSON.stringify(formData))
-  }
+  } */
 
   return (
     <div id={s["speech"]} className="flex flex-down">
@@ -66,8 +87,8 @@ const Speech = () => {
       <div className={s.aboutspeech}>
         <p>Vi vill undvika roasts av brudparet.</p>
         <p>Senaste anmälningsdagen är 1 augusti.</p>
-        <p>* Anger obligatorisk fråga</p>
       </div>
+      <p className={s.starsign}>* Anger obligatorisk fråga</p>
 
       <form
         id={s["speechform"]}
