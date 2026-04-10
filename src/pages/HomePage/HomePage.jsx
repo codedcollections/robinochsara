@@ -7,12 +7,12 @@ import After from "../../components/After/After"
 import Practicalities from "../../components/Practicalities/Practicalities"
 import Gifts from "../../components/Gifts/Gifts"
 import Speech from "../../components/Speech/Speech"
+import GuestsForm from "../../components/GuestsForm/GuestsForm"
 import catImg from "./../../images/cat.png"
 
 const HomePage = () => {
   return (
     <div className={`${s["wrapper"]} flex`}>
-      {/* Add guestform */}
       <Introduction />
       <Wedding />
       <Dinner />
@@ -21,6 +21,7 @@ const HomePage = () => {
       <Gifts />
       <Speech />
       <InvitationForm />
+      <GuestsForm />
       <div id="navigationtester" className={s.added}>
         <img src={catImg} alt="cat" />
         <p>2026</p>
