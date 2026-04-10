@@ -9,11 +9,13 @@ import Gifts from "../../components/Gifts/Gifts"
 import Speech from "../../components/Speech/Speech"
 import GuestsForm from "../../components/GuestsForm/GuestsForm"
 import catImg from "./../../images/cat.png"
+import Timeline from "../../components/Timeline/Timeline"
 
 const HomePage = () => {
   return (
     <div className={`${s["wrapper"]} flex`}>
       <Introduction />
+      <Timeline />
       <Wedding />
       <Dinner />
       <After />
