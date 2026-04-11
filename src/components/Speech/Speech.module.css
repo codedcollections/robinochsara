@@ -2,52 +2,20 @@
     margin-bottom:0.6rem;
 
 }
-#speechform{
-    justify-content: start;
-    align-items: start;
-    gap:0.6rem;
-    width: 95%;
-    padding:1rem 0;
-}
+
 .aboutspeech p{
+    margin:0.5rem 0;
+    text-decoration: underline;
+}
+.aboutspeech p:last-of-type{
     font-weight: bold;
-    line-height: 1.6rem;
 }
-.starsign{
-    align-self:start;
-    padding-left:1rem;
+.aboutspeech{
+    margin: 1rem 0;
 }
-
-#speech input,
-#speech textarea {
-  background-color: #fff1de;  /* inside color */
-   border: 0.1rem solid #adbcb0;   /* border color */
-   padding:0.6rem; 
-   border-radius: 0.4rem;
+.showspeechbtn{
+    width:8rem;
 }
-
-#speech button{
-  border: 0.1rem solid #d3d3d3;   /* border color */
-  border-radius: 0.4rem;
-}
-.ovrigt{
- width:15rem;
- height: 7rem;
- padding:0.2rem 0 0 0.2rem;
-}
-
-.submitbtn{
-    background-color: rgb(227, 243, 212);
-    padding:0.2rem;
-}
-.submitbtn:hover{
-    background-color: rgb(175, 246, 191);
-}
-.resetbtn{
-    margin-top:2rem;
-    background-color: rgb(233, 233, 233);
-    margin-bottom:0.2rem;
-}
-.resetbtn:hover{
-    background-color:  rgb(202, 131, 151);
+.showspeechbtn:hover{
+    filter:brightness(80%);
 }

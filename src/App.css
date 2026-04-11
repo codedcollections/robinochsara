@@ -64,7 +64,7 @@ h3{
   font-size: 1.5rem;
 }
 
-p,a,li,label,fieldset,legend{
+p,a,li,label,fieldset,legend, button{
   font-family: "Alice", serif;
   font-weight: 400;
   font-style: normal;
@@ -112,4 +112,11 @@ a:hover{
 
 .boldspan{
   font-weight: bold;
+}
+
+.buttonstyle{
+  padding:0.4rem;
+  background-color: #fff1de; 
+  border: 0.01rem solid  #45594B;
+  border-radius: 0.2rem;
 }
