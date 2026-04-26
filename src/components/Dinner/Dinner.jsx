@@ -1,5 +1,6 @@
 import s from "./Dinner.module.css"
 import dinnerPlace from "./../../images/SundbyMiddag.jpg"
+import { FaMapMarkerAlt } from "react-icons/fa"
 const Dinner = () => {
   return (
     <div id={s["dinner"]} className={`flex flex-down`}>
@@ -16,7 +17,7 @@ const Dinner = () => {
           className={s.dinneraddress}
           href="https://maps.app.goo.gl/mmTV71bycjAnee8b7"
         >
-          Se karta{/* Sundby Gårdsväg 5, 141 91 Huddinge */}
+          Se karta <FaMapMarkerAlt className={`mapicon`} />
         </a>
         <p></p>
       </div>

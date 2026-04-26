@@ -7,40 +7,16 @@ import weddingS from "./../Wedding/Wedding.module.css"
 import dinnerS from "./../Dinner/Dinner.module.css"
 import afterS from "./../After/After.module.css"
 import practicalitiesS from "./../Practicalities/Practicalities.module.css"
-import gifts from "./../Gifts/Gifts.module.css"
-
-/* import homeButton from "./../../images/home.svg" */
+import giftsS from "./../Gifts/Gifts.module.css"
+import invitationS from "./../Invitation/Invitation.module.css"
+import speechS from "./../Speech/Speech.module.css"
+import { IoMenu } from "react-icons/io5"
 
 import { useState, useEffect } from "react"
 
 const Navigation = () => {
   const [show, setShow] = useState(false)
-  /*   const [windowDimensions, setWindowDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  }) */
 
-  //to use dropdown menu and select where to navigate to on website
-  /*   const [menuSelect, setMenuSelect] = useState("")
-
-  useEffect(() => {
-    const screenSizeChange = () => {
-      setWindowDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
-    }
-    window.addEventListener("resize", screenSizeChange)
-    return () => window.removeEventListener("resize", screenSizeChange)
-  }, []) */
-
-  /*   useEffect(() => {
-    console.log(menuSelect)
-    if (menuSelect === "OSA") {
-      const element = document.getElementById("navigationtester")
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }, [menuSelect]) */
   return (
     <div id={s["navigation"]} className={`flex flex-down sticky`}>
       <nav className={`flex`}>
@@ -71,12 +47,17 @@ const Navigation = () => {
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${gifts.gifts}`}>
+            <HashLink smooth to={`/#${giftsS.gifts}`}>
               Gåvor
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${formS.invitation}`}>
+            <HashLink smooth to={`/#${speechS.speech}`}>
+              Tal
+            </HashLink>
+          </li>
+          <li>
+            <HashLink smooth to={`/#${invitationS.invitation}`}>
               OSA
             </HashLink>
           </li>
@@ -86,10 +67,9 @@ const Navigation = () => {
             className={s.burgerbtn}
             onClick={() => {
               setShow(!show)
-              /* console.log(show) */
             }}
           >
-            ☰
+            <IoMenu />
           </button>
           {show && (
             <div className={s.hamburgerdiv}>
@@ -145,7 +125,7 @@ const Navigation = () => {
 
               <HashLink
                 smooth
-                to={`/#${gifts.gifts}`}
+                to={`/#${giftsS.gifts}`}
                 onClick={() => {
                   setShow(!show)
                 }}
@@ -155,7 +135,17 @@ const Navigation = () => {
 
               <HashLink
                 smooth
-                to={`/#${formS.invitation}`}
+                to={`/#${speechS.speech}`}
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
+                Tal
+              </HashLink>
+
+              <HashLink
+                smooth
+                to={`/#${invitationS.invitation}`}
                 onClick={() => {
                   setShow(!show)
                 }}

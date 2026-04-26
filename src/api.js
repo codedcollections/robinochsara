@@ -22,3 +22,26 @@ export function onSpeeches(key, setter) {
 
   return unsubscribe
 }
+
+//rsvp
+
+export async function sendRsvps(rsvpData = {}) {
+  const rsvpRef = ref(db, "rsvps")
+  const newRsvp = push(rsvpRef)
+  await set(newRsvp, {
+    ...rsvpData,
+    createdAt: serverTimestamp(),
+  })
+}
+
+export function onRsvps(key, setter) {
+  const rsvpRef = ref(db, "rsvps")
+
+  const unsubscribe = onValue(rsvpRef, (snapshot) => {
+    const rsvps = snapshot.val()
+    if (!rsvps) return setter([])
+    setter(Object.values(rsvps))
+  })
+
+  return unsubscribe
+}

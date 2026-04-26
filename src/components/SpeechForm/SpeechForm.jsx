@@ -1,304 +1,371 @@
 import { useState, useEffect } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
 import { onSpeeches, sendSpeeches } from "../../api.js"
 import s from "./SpeechForm.module.css"
+
+const speechSchema = z.object({
+  presentation: z.string().optional(),
+  lat: z.string().optional(),
+  forberedelser: z.array(z.string()).optional().default([]),
+  ovrigtForberedelser: z.string().optional(),
+  namn: z.string().min(1, "Namn krävs"),
+  kontakt: z.string().min(1, "Kontaktuppgift krävs"),
+  andraDeltagare: z.string().optional(),
+  typ: z.string().min(1, "Välj minst en"),
+  ovrigtTyp: z.string().optional(),
+  riktning: z.string().min(1, "Välj mottagare"),
+  tid: z.string().min(1, "Välj tidsåtgång"),
+  beskrivning: z.string().min(1, "Beskrivning krävs"),
+  ovrigtInfo: z.string().optional(),
+  website: z.string().optional(),
+})
 
 const SpeechForm = ({ showSpeech }) => {
   const [shouldRender, setShouldRender] = useState(showSpeech)
   const [isVisible, setIsVisible] = useState(false)
+  const [step, setStep] = useState(1)
+  const [speeches, setSpeeches] = useState([])
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    trigger,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(speechSchema),
+    defaultValues: {
+      presentation: "",
+      lat: "",
+      forberedelser: [],
+      ovrigtForberedelser: "",
+      namn: "",
+      kontakt: "",
+      andraDeltagare: "",
+      typ: "",
+      ovrigtTyp: "",
+      riktning: "",
+      tid: "",
+      beskrivning: "",
+      ovrigtInfo: "",
+      website: "",
+    },
+  })
 
   useEffect(() => {
     if (showSpeech) {
-      setShouldRender(true) // mount first
-      setTimeout(() => setIsVisible(true), 10) // trigger enter animation
+      setShouldRender(true)
+      setTimeout(() => setIsVisible(true), 10)
     }
   }, [showSpeech])
-
-  if (!shouldRender) return null
-
-  const [formData, setFormData] = useState({
-    namn: "",
-    kontakt: "",
-    andraDeltagare: "",
-    riktning: "",
-    typ: "",
-    ovrigtTyp: "",
-    beskrivning: "",
-    tid: "",
-    forberedelser: [],
-    ovrigtForberedelser: "",
-    presentation: "",
-    lat: "",
-    ovrigtInfo: "",
-    website: "",
-  })
-  const [speeches, setSpeeches] = useState([])
 
   useEffect(() => {
     const unsubscribe = onSpeeches("1234", setSpeeches)
     return () => unsubscribe()
   }, [])
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
 
-  const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target
+  useEffect(() => {
+    if (isVisible) {
+      const element = document.getElementById("speechform")
+      const navbarHeight = 80
 
-    setFormData((prev) => {
-      if (checked) {
-        return {
-          ...prev,
-          forberedelser: [...prev.forberedelser, value],
-        }
-      } else {
-        return {
-          ...prev,
-          forberedelser: prev.forberedelser.filter((v) => v !== value),
-        }
+      if (element) {
+        const y =
+          element.getBoundingClientRect().top + window.scrollY - navbarHeight
+
+        window.scrollTo({ top: y, behavior: "smooth" })
       }
-    })
+    }
+  }, [isVisible])
+
+  const formValues = watch()
+
+  const handleNext = async () => {
+    const stepFields = {
+      1: ["presentation", "lat", "forberedelser", "ovrigtForberedelser"],
+      2: ["namn", "kontakt"],
+      3: ["typ", "riktning"],
+      4: ["tid", "beskrivning"],
+    }
+
+    const isValid = await trigger(stepFields[step] ?? [])
+    if (isValid) {
+      setStep((prev) => Math.min(prev + 1, 4))
+    }
   }
 
-  const handleSubmit = async (e) => {
-    if (formData.website) {
+  const handleBack = () => {
+    setStep((prev) => Math.max(prev - 1, 1))
+  }
+
+  const onSubmit = async (data) => {
+    if (data.website) {
       return
     }
-    e.preventDefault()
 
-    await sendSpeeches(formData)
-
-    alert("Form submitted!")
+    await sendSpeeches(data)
+    reset()
+    setStep(1)
+    alert("Ditt tal eller spex har registrerats!")
   }
 
+  if (!shouldRender) return null
+
   return (
-    <div className={`${s.fadeSlideUp} ${isVisible ? s.show : ""}`}>
+    <div
+      id="speechform"
+      className={`flex flex-down ${s.fadeSlideUp} ${s.formContainer} ${isVisible ? s.show : ""}`}
+    >
       <p className={s.starsign}>* Anger obligatorisk fråga</p>
-      <form
-        id={s["speechform"]}
-        onSubmit={handleSubmit}
-        className="flex flex-down"
-      >
-        {/* Namn */}
-        <label htmlFor="namn">Namn *</label>
+      <form id={s["speechform"]} onSubmit={handleSubmit(onSubmit)}>
         <input
-          id="namn"
           type="text"
-          name="namn"
-          value={formData.namn}
-          onChange={handleChange}
-          required
-          placeholder="Ditt svar"
+          {...register("website")}
+          style={{ display: "none" }}
+          autoComplete="off"
         />
 
-        {/* Kontakt */}
-        <label htmlFor="kontakt">E-post eller telefonnummer *</label>
-        <input
-          id="kontakt"
-          type="text"
-          name="kontakt"
-          value={formData.kontakt}
-          onChange={handleChange}
-          required
-          placeholder="Ditt svar"
-        />
-
-        {/* Andra deltagare */}
-        <label htmlFor="andraDeltagare">
-          Namn på andra deltagare om ni är flera
-        </label>
-        <input
-          id="andraDeltagare"
-          type="text"
-          name="andraDeltagare"
-          value={formData.andraDeltagare}
-          onChange={handleChange}
-          placeholder="Ditt svar"
-        />
-
-        {/* Riktning */}
-        <fieldset>
-          <legend>Vem riktar du dig främst till? *</legend>
-
-          {["Brudparet", "Bruden", "Brudgummen", "Alla"].map((option) => (
-            <div key={option}>
-              <input
-                id={`riktning-${option}`}
-                type="radio"
-                name="riktning"
-                value={option}
-                checked={formData.riktning === option}
-                onChange={handleChange}
-                required
-              />
-              <label htmlFor={`riktning-${option}`}>{option}</label>
-            </div>
-          ))}
-        </fieldset>
-
-        {/* Typ */}
-        <fieldset>
-          <legend>Jag/vi vill... *</legend>
-
-          {[
-            "Hålla ett tal",
-            "Spela en låt",
-            "Göra ett spex",
-            "Hålla i en lek",
-          ].map((option) => (
-            <div key={option}>
-              <input
-                id={`typ-${option}`}
-                type="radio"
-                name="typ"
-                value={option}
-                checked={formData.typ === option}
-                onChange={handleChange}
-                required
-              />
-              <label htmlFor={`typ-${option}`}>{option}</label>
-            </div>
-          ))}
-
-          <div>
+        {step === 1 && (
+          <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
+            <label htmlFor="presentation">Hur vill du/ni presenteras?</label>
             <input
-              id="typ-ovrigt"
-              type="radio"
-              name="typ"
-              value="Övrigt"
-              checked={formData.typ === "Övrigt"}
-              onChange={handleChange}
-            />
-            <label htmlFor="typ-ovrigt">Övrigt: </label>
-            <input
+              id="presentation"
               type="text"
-              name="ovrigtTyp"
-              value={formData.ovrigtTyp}
-              onChange={handleChange}
+              {...register("presentation")}
+              placeholder="Ditt svar"
             />
+            <div>
+              <label htmlFor="lat">
+                Finns det en låt du/ni vill ska spelas?
+              </label>
+              <p>Kom ihåg att inte så mycket av låten kommer hinna spelas</p>
+              <input
+                id="lat"
+                type="text"
+                {...register("lat")}
+                placeholder="Ditt svar"
+              />
+            </div>
+
+            <fieldset>
+              <legend>Behövs några förberedelser?</legend>
+
+              {["Släckta lampor", "Musik", "Bildspel"].map((option) => (
+                <div key={option}>
+                  <input
+                    id={`forb-${option}`}
+                    type="checkbox"
+                    value={option}
+                    {...register("forberedelser")}
+                  />
+                  <label htmlFor={`forb-${option}`}>{option}</label>
+                </div>
+              ))}
+
+              <p>
+                Bildspel, det finns tillgång till projektor men kom ihåg att det
+                inte alltid syns bra i dagsljus
+              </p>
+
+              <div>
+                <input
+                  id="forb-ovrigt"
+                  type="checkbox"
+                  value="Övrigt"
+                  {...register("forberedelser")}
+                />
+                <label htmlFor="forb-ovrigt">Övrigt: </label>
+                <input
+                  type="text"
+                  {...register("ovrigtForberedelser")}
+                  placeholder="Ditt svar"
+                />
+              </div>
+            </fieldset>
+
+            <div className={`flex ${s.buttonGroup}`}>
+              <button type="button" onClick={handleNext}>
+                Nästa
+              </button>
+            </div>
           </div>
-        </fieldset>
+        )}
 
-        {/* Beskrivning */}
-        <label htmlFor="beskrivning">
-          Beskriv ditt tal eller spex lite kort *
-        </label>
-        <textarea
-          className={s.ovrigt}
-          id="beskrivning"
-          name="beskrivning"
-          value={formData.beskrivning}
-          onChange={handleChange}
-          required
-          placeholder="Ditt svar"
-        />
-
-        {/* Tid */}
-        <fieldset>
-          <legend>Uppskattad tidsåtgång? *</legend>
-
-          {["1-5 min", "5-10 min", "10-15 min"].map((option) => (
-            <div key={option}>
-              <input
-                id={`tid-${option}`}
-                type="radio"
-                name="tid"
-                value={option}
-                checked={formData.tid === option}
-                onChange={handleChange}
-                required
-              />
-              <label htmlFor={`tid-${option}`}>{option}</label>
-            </div>
-          ))}
-        </fieldset>
-
-        {/* Förberedelser */}
-        <fieldset>
-          <legend>Behövs några förberedelser?</legend>
-
-          {["Släckta lampor", "Musik", "Bildspel"].map((option) => (
-            <div key={option}>
-              <input
-                id={`forb-${option}`}
-                type="checkbox"
-                value={option}
-                checked={formData.forberedelser.includes(option)}
-                onChange={handleCheckboxChange}
-              />
-              <label htmlFor={`forb-${option}`}>{option}</label>
-            </div>
-          ))}
-
-          <p>
-            Bildspel, det finns tillgång till projektor men kom ihåg att det
-            inte alltid syns bra i dagsljus
-          </p>
-
-          <div>
+        {step === 2 && (
+          <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
+            <label htmlFor="namn">Namn *</label>
             <input
-              id="forb-ovrigt"
-              type="checkbox"
-              value="Övrigt"
-              checked={formData.forberedelser.includes("Övrigt")}
-              onChange={handleCheckboxChange}
-            />
-            <label htmlFor="forb-ovrigt">Övrigt: </label>
-            <input
+              id="namn"
               type="text"
-              name="ovrigtForberedelser"
-              value={formData.ovrigtForberedelser}
-              onChange={handleChange}
+              {...register("namn")}
+              placeholder="Ditt svar"
             />
+            {errors.namn && (
+              <span className={s.error}>{errors.namn.message}</span>
+            )}
+
+            <label htmlFor="kontakt">E-post eller telefonnummer *</label>
+            <input
+              id="kontakt"
+              type="text"
+              {...register("kontakt")}
+              placeholder="Ditt svar"
+            />
+            {errors.kontakt && (
+              <span className={s.error}>{errors.kontakt.message}</span>
+            )}
+
+            <label htmlFor="andraDeltagare">
+              Namn på andra deltagare om ni är flera
+            </label>
+            <input
+              id="andraDeltagare"
+              type="text"
+              {...register("andraDeltagare")}
+              placeholder="Ditt svar"
+            />
+
+            <div className={`flex ${s.buttonGroup}`}>
+              <button type="button" onClick={handleBack}>
+                Bakåt
+              </button>
+              <button type="button" onClick={handleNext}>
+                Nästa
+              </button>
+            </div>
           </div>
-        </fieldset>
+        )}
 
-        {/* Presentation */}
-        <label htmlFor="presentation">Hur vill du bli presenterad?</label>
-        <input
-          id="presentation"
-          type="text"
-          name="presentation"
-          value={formData.presentation}
-          onChange={handleChange}
-          placeholder="Ditt svar"
-        />
+        {step === 3 && (
+          <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
+            <fieldset>
+              <legend>Jag/vi vill... *</legend>
 
-        {/* Låt */}
-        <label htmlFor="lat">
-          Vilken låt ska spelas i samband med presentation?
-        </label>
-        <p>Kom ihåg att inte så mycket av låten kommer hinna spelas</p>
-        <input
-          id="lat"
-          type="text"
-          name="lat"
-          value={formData.lat}
-          onChange={handleChange}
-          placeholder="Ditt svar"
-        />
+              {[
+                "Hålla ett tal",
+                "Spela en låt",
+                "Göra ett spex",
+                "Hålla i en lek",
+              ].map((option) => (
+                <div key={option}>
+                  <input
+                    id={`typ-${option}`}
+                    type="radio"
+                    value={option}
+                    {...register("typ")}
+                  />
+                  <label htmlFor={`typ-${option}`}>{option}</label>
+                </div>
+              ))}
 
-        {/* Övrigt */}
-        <label htmlFor="ovrigtInfo">Är det något mer TMs behöver veta?</label>
-        <textarea
-          id="ovrigtInfo"
-          name="ovrigtInfo"
-          value={formData.ovrigtInfo}
-          onChange={handleChange}
-          placeholder="Ditt svar"
-        />
+              <div>
+                <input
+                  id="typ-ovrigt"
+                  type="radio"
+                  value="Övrigt"
+                  {...register("typ")}
+                />
+                <label htmlFor="typ-ovrigt">Övrigt: </label>
+                <input
+                  type="text"
+                  {...register("ovrigtTyp")}
+                  placeholder="Ditt svar"
+                />
+              </div>
+              {errors.typ && (
+                <span className={s.error}>{errors.typ.message}</span>
+              )}
+            </fieldset>
 
-        <button type="reset" className={s.resetbtn}>
-          Rensa formuläret
-        </button>
-        <button type="submit" className={s.submitbtn}>
-          Skicka
-        </button>
+            <fieldset>
+              <legend>Vem riktar du dig främst till? *</legend>
+
+              {["Brudparet", "Bruden", "Brudgummen", "Alla"].map((option) => (
+                <div key={option}>
+                  <input
+                    id={`riktning-${option}`}
+                    type="radio"
+                    value={option}
+                    {...register("riktning")}
+                  />
+                  <label htmlFor={`riktning-${option}`}>{option}</label>
+                </div>
+              ))}
+              {errors.riktning && (
+                <span className={s.error}>{errors.riktning.message}</span>
+              )}
+            </fieldset>
+
+            <div className={`flex ${s.buttonGroup}`}>
+              <button type="button" onClick={handleBack}>
+                Bakåt
+              </button>
+              <button type="button" onClick={handleNext}>
+                Nästa
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 4 && (
+          <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
+            <fieldset>
+              <legend>Uppskattad tidsåtgång? *</legend>
+
+              {["1-5 min", "5-10 min", "10-15 min"].map((option) => (
+                <div key={option}>
+                  <input
+                    id={`tid-${option}`}
+                    type="radio"
+                    value={option}
+                    {...register("tid")}
+                  />
+                  <label htmlFor={`tid-${option}`}>{option}</label>
+                </div>
+              ))}
+              {errors.tid && (
+                <span className={s.error}>{errors.tid.message}</span>
+              )}
+            </fieldset>
+
+            <label htmlFor="beskrivning">
+              Beskriv ditt tal eller spex lite kort *
+            </label>
+            <textarea
+              className={s.ovrigt}
+              id="beskrivning"
+              {...register("beskrivning")}
+              placeholder="Ditt svar"
+            />
+            {errors.beskrivning && (
+              <span className={s.error}>{errors.beskrivning.message}</span>
+            )}
+
+            <label htmlFor="ovrigtInfo">
+              Är det något mer TMs behöver veta?
+            </label>
+            <textarea
+              id="ovrigtInfo"
+              {...register("ovrigtInfo")}
+              placeholder="Ditt svar"
+            />
+
+            <div className={`flex ${s.buttonGroup}`}>
+              <button type="button" onClick={handleBack}>
+                Bakåt
+              </button>
+              <button type="submit" className={s.submitbtn}>
+                Skicka
+              </button>
+            </div>
+          </div>
+        )}
       </form>
     </div>
   )
 }
+
 export default SpeechForm

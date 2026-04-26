@@ -64,7 +64,7 @@ h3{
   font-size: 1.5rem;
 }
 
-p,a,li,label,fieldset,legend, button{
+p,a,li,label,fieldset,legend, button,div, select{
   font-family: "Alice", serif;
   font-weight: 400;
   font-style: normal;
@@ -85,6 +85,10 @@ p,a,li,label,fieldset,legend, button{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.flex-align-start{
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .flex-align-self-start{
   align-self:flex-start;
@@ -119,4 +123,9 @@ a:hover{
   background-color: #fff1de; 
   border: 0.01rem solid  #45594B;
   border-radius: 0.2rem;
+}
+.mapicon{
+  font-size: 1.2rem;
+  vertical-align:text-bottom;
+  margin-left:0.1rem;
 }

@@ -1,14 +1,20 @@
+#speech{
+    margin-top:1.4rem;
+}
 #speech h2{
     margin-bottom:0.6rem;
 
 }
+.speechInfo{
+
+    gap:1rem;
+}
 
 .aboutspeech p{
-    margin:0.5rem 0;
-    text-decoration: underline;
+    text-align: center;
 }
 .aboutspeech p:last-of-type{
-    font-weight: bold;
+    text-decoration: underline;
 }
 .aboutspeech{
     margin: 1rem 0;
@@ -18,4 +24,10 @@
 }
 .showspeechbtn:hover{
     filter:brightness(80%);
+}
+
+.latestReply{
+    color:#f02c59;
+    font-size:1.1rem;
+    font-weight: bold;
 }

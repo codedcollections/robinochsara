@@ -1,7 +1,10 @@
 #gifts{
     margin:2rem 0;
-    max-width: 60%;
+    gap:1rem;
 }
 #gifts h2{
     margin: 0.4rem 0;
+}
+.islandImg{
+    width:100%;
 }

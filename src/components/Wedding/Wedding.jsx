@@ -1,6 +1,8 @@
 import s from "./Wedding.module.css"
-import PlaceDetails from "../PlaceDetails/PlaceDetails"
+/* import PlaceDetails from "../PlaceDetails/PlaceDetails" */
 import weddingPlace from "./../../images/HuddingeVigsel.jpg"
+import { FaMapMarkerAlt } from "react-icons/fa"
+
 const Wedding = () => {
   return (
     <div id={s["wedding"]} className={`flex flex-down`}>
@@ -17,7 +19,7 @@ const Wedding = () => {
           className={s.church}
           href="https://maps.app.goo.gl/jJzBHQQZuTkCZqc28"
         >
-          Se karta{/* Kommunalvägen 21, 141 23 Huddinge */}
+          Se karta <FaMapMarkerAlt className={`mapicon`} />
         </a>
 
         <p className={`${s.imgsource}`}>

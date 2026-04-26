@@ -1,0 +1,34 @@
+#invitation{
+    text-align: center;
+    margin-top:2rem;
+    margin-bottom:1rem;
+}
+#invitation h2{
+    margin-bottom:1rem;
+}
+button:disabled{
+    opacity: 0.6;
+}
+#invitation form {
+    display:flex;
+    flex-direction: column;
+    gap:1.2rem;
+}
+
+#invitation select{
+    padding: 0.4rem;
+    background-color: #fff1de;
+    border: 0.01rem solid #45594B;
+    border-radius: 0.2rem;
+}
+.latestReply{
+    color:#f02c59;
+    font-size:1.1rem;
+    font-weight: bold;
+}
+.selectHint{
+    font-size:1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.06rem;
+    margin:1rem 0;
+}

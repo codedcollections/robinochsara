@@ -3,7 +3,11 @@ import s from "./Gifts.module.css"
 const Gifts = () => {
   return (
     <div id={s["gifts"]} className="flex flex-down">
-      <img src={island} alt="a small island surrounded by water" />
+      <img
+        src={island}
+        alt="a small island surrounded by water"
+        className={s.islandImg}
+      />
       <h2>Gåvor</h2>
       <p>
         Vi förstår att det är många som vill ge presenter vid ett firande som
