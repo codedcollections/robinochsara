@@ -151,7 +151,7 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
               {...register("attending")}
               value="notattending"
             />{" "}
-            Tyvärr inte
+            Jag kommer tyvärr inte kunna delta alls
           </label>
           {errors.attending && (
             <span className={s.error}>{errors.attending.message}</span>
@@ -169,18 +169,22 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
           <label className={`flex-align-start`}>
             Har du några allergier eller matpreferenser?
           </label>
-          {["gluten", "laktos", "pescetarian", "vegeterian", "vegan"].map(
-            (pref) => (
-              <label key={pref}>
-                {pref.charAt(0).toUpperCase() + pref.slice(1)}{" "}
-                <input
-                  type="checkbox"
-                  {...register("foodPreference")}
-                  value={pref}
-                />
-              </label>
-            ),
-          )}
+          {[
+            "gluten",
+            "laktos",
+            "pescetarian",
+            "lakto-ovo-vegetarian",
+            "vegan",
+          ].map((pref) => (
+            <label key={pref}>
+              {pref.charAt(0).toUpperCase() + pref.slice(1)}{" "}
+              <input
+                type="checkbox"
+                {...register("foodPreference")}
+                value={pref}
+              />
+            </label>
+          ))}
 
           <label>Övrigt</label>
           <input {...register("otherFood")} placeholder="Ditt svar..." />
@@ -207,7 +211,7 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
             <input type="checkbox" {...register("ride")} value="fromchurch" />
           </label>
           <label>
-            Från middagen till efterfesten{" "}
+            Från middagen till efterfesten alt. Huddinge Station{" "}
             <input type="checkbox" {...register("ride")} value="fromdinner" />
           </label>
 
