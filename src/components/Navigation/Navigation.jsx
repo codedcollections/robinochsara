@@ -38,7 +38,7 @@ const Navigation = () => {
             <HashLink
               smooth
               scroll={scrollWithOffset}
-              to={`/#${weddingS.weddingimg}`}
+              to={`/#${weddingS.wedding}`}
             >
               Vigsel
             </HashLink>

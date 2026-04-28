@@ -1,5 +1,4 @@
 import s from "./Wedding.module.css"
-/* import PlaceDetails from "../PlaceDetails/PlaceDetails" */
 import weddingPlace from "./../../images/HuddingeVigsel.jpg"
 import { FaMapMarkerAlt } from "react-icons/fa"
 
