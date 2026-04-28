@@ -120,7 +120,11 @@ const SpeechForm = ({ showSpeech }) => {
       className={`flex flex-down ${s.fadeSlideUp} ${s.formContainer} ${isVisible ? s.show : ""}`}
     >
       <p className={s.starsign}>* Anger obligatorisk fråga</p>
-      <form id={s["speechform"]} onSubmit={handleSubmit(onSubmit)}>
+      <form
+        id={s["speechform"]}
+        className={`flex flex-down`}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <input
           type="text"
           {...register("website")}
@@ -130,18 +134,24 @@ const SpeechForm = ({ showSpeech }) => {
 
         {step === 1 && (
           <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
-            <label htmlFor="presentation">Hur vill du/ni presenteras?</label>
-            <input
-              id="presentation"
-              type="text"
-              {...register("presentation")}
-              placeholder="Ditt svar"
-            />
             <div>
-              <label htmlFor="lat">
+              <label className={s.clearLabel} htmlFor="presentation">
+                Hur vill du/ni presenteras?
+              </label>
+              <input
+                id="presentation"
+                type="text"
+                {...register("presentation")}
+                placeholder="Ditt svar"
+              />
+            </div>
+            <div>
+              <label className={s.clearLabel} htmlFor="lat">
                 Finns det en låt du/ni vill ska spelas?
               </label>
-              <p>Kom ihåg att inte så mycket av låten kommer hinna spelas</p>
+              <p className={s.explanation}>
+                Kom ihåg att inte så mycket av låten kommer hinna spelas
+              </p>
               <input
                 id="lat"
                 type="text"
@@ -149,43 +159,45 @@ const SpeechForm = ({ showSpeech }) => {
                 placeholder="Ditt svar"
               />
             </div>
+            <div>
+              <fieldset>
+                <legend className={s.clearLabel}>
+                  Behövs några förberedelser?
+                </legend>
 
-            <fieldset>
-              <legend>Behövs några förberedelser?</legend>
+                {["Släckta lampor", "Musik", "Bildspel"].map((option) => (
+                  <div key={option}>
+                    <input
+                      id={`forb-${option}`}
+                      type="checkbox"
+                      value={option}
+                      {...register("forberedelser")}
+                    />
+                    <label htmlFor={`forb-${option}`}>{option}</label>
+                  </div>
+                ))}
 
-              {["Släckta lampor", "Musik", "Bildspel"].map((option) => (
-                <div key={option}>
+                <p>
+                  Bildspel, det finns tillgång till projektor men kom ihåg att
+                  det inte alltid syns bra i dagsljus
+                </p>
+
+                <div>
                   <input
-                    id={`forb-${option}`}
+                    id="forb-ovrigt"
                     type="checkbox"
-                    value={option}
+                    value="Övrigt"
                     {...register("forberedelser")}
                   />
-                  <label htmlFor={`forb-${option}`}>{option}</label>
+                  <label htmlFor="forb-ovrigt">Övrigt: </label>
+                  <input
+                    type="text"
+                    {...register("ovrigtForberedelser")}
+                    placeholder="Ditt svar"
+                  />
                 </div>
-              ))}
-
-              <p>
-                Bildspel, det finns tillgång till projektor men kom ihåg att det
-                inte alltid syns bra i dagsljus
-              </p>
-
-              <div>
-                <input
-                  id="forb-ovrigt"
-                  type="checkbox"
-                  value="Övrigt"
-                  {...register("forberedelser")}
-                />
-                <label htmlFor="forb-ovrigt">Övrigt: </label>
-                <input
-                  type="text"
-                  {...register("ovrigtForberedelser")}
-                  placeholder="Ditt svar"
-                />
-              </div>
-            </fieldset>
-
+              </fieldset>
+            </div>
             <div className={`flex ${s.buttonGroup}`}>
               <button type="button" onClick={handleNext}>
                 Nästa
@@ -196,38 +208,46 @@ const SpeechForm = ({ showSpeech }) => {
 
         {step === 2 && (
           <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
-            <label htmlFor="namn">Namn *</label>
-            <input
-              id="namn"
-              type="text"
-              {...register("namn")}
-              placeholder="Ditt svar"
-            />
-            {errors.namn && (
-              <span className={s.error}>{errors.namn.message}</span>
-            )}
+            <div>
+              <label className={s.clearLabel} htmlFor="namn">
+                Namn *
+              </label>
+              <input
+                id="namn"
+                type="text"
+                {...register("namn")}
+                placeholder="Ditt svar"
+              />
+              {errors.namn && (
+                <span className={s.error}>{errors.namn.message}</span>
+              )}
+            </div>
 
-            <label htmlFor="kontakt">E-post eller telefonnummer *</label>
-            <input
-              id="kontakt"
-              type="text"
-              {...register("kontakt")}
-              placeholder="Ditt svar"
-            />
-            {errors.kontakt && (
-              <span className={s.error}>{errors.kontakt.message}</span>
-            )}
-
-            <label htmlFor="andraDeltagare">
-              Namn på andra deltagare om ni är flera
-            </label>
-            <input
-              id="andraDeltagare"
-              type="text"
-              {...register("andraDeltagare")}
-              placeholder="Ditt svar"
-            />
-
+            <div>
+              <label className={s.clearLabel} htmlFor="kontakt">
+                E-post eller telefonnummer *
+              </label>
+              <input
+                id="kontakt"
+                type="text"
+                {...register("kontakt")}
+                placeholder="Ditt svar"
+              />
+              {errors.kontakt && (
+                <span className={s.error}>{errors.kontakt.message}</span>
+              )}
+            </div>
+            <div>
+              <label className={s.clearLabel} htmlFor="andraDeltagare">
+                Namn på andra deltagare om ni är flera
+              </label>
+              <input
+                id="andraDeltagare"
+                type="text"
+                {...register("andraDeltagare")}
+                placeholder="Ditt svar"
+              />
+            </div>
             <div className={`flex ${s.buttonGroup}`}>
               <button type="button" onClick={handleBack}>
                 Bakåt
@@ -242,7 +262,7 @@ const SpeechForm = ({ showSpeech }) => {
         {step === 3 && (
           <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
             <fieldset>
-              <legend>Jag/vi vill... *</legend>
+              <legend className={s.clearLabel}>Jag/vi vill... *</legend>
 
               {[
                 "Hålla ett tal",
@@ -281,7 +301,9 @@ const SpeechForm = ({ showSpeech }) => {
             </fieldset>
 
             <fieldset>
-              <legend>Vem riktar du dig främst till? *</legend>
+              <legend className={s.clearLabel}>
+                Vem riktar du dig främst till? *
+              </legend>
 
               {["Brudparet", "Bruden", "Brudgummen", "Alla"].map((option) => (
                 <div key={option}>
@@ -313,7 +335,7 @@ const SpeechForm = ({ showSpeech }) => {
         {step === 4 && (
           <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
             <fieldset>
-              <legend>Uppskattad tidsåtgång? *</legend>
+              <legend className={s.clearLabel}>Uppskattad tidsåtgång? *</legend>
 
               {["1-5 min", "5-10 min", "10-15 min"].map((option) => (
                 <div key={option}>
@@ -330,29 +352,31 @@ const SpeechForm = ({ showSpeech }) => {
                 <span className={s.error}>{errors.tid.message}</span>
               )}
             </fieldset>
+            <div>
+              <label className={s.clearLabel} htmlFor="beskrivning">
+                Beskriv ditt tal eller spex lite kort *
+              </label>
+              <textarea
+                className={s.ovrigt}
+                id="beskrivning"
+                {...register("beskrivning")}
+                placeholder="Ditt svar"
+              />
+              {errors.beskrivning && (
+                <span className={s.error}>{errors.beskrivning.message}</span>
+              )}
+            </div>
 
-            <label htmlFor="beskrivning">
-              Beskriv ditt tal eller spex lite kort *
-            </label>
-            <textarea
-              className={s.ovrigt}
-              id="beskrivning"
-              {...register("beskrivning")}
-              placeholder="Ditt svar"
-            />
-            {errors.beskrivning && (
-              <span className={s.error}>{errors.beskrivning.message}</span>
-            )}
-
-            <label htmlFor="ovrigtInfo">
-              Är det något mer TMs behöver veta?
-            </label>
-            <textarea
-              id="ovrigtInfo"
-              {...register("ovrigtInfo")}
-              placeholder="Ditt svar"
-            />
-
+            <div>
+              <label className={s.clearLabel} htmlFor="ovrigtInfo">
+                Är det något mer TMs behöver veta?
+              </label>
+              <textarea
+                id="ovrigtInfo"
+                {...register("ovrigtInfo")}
+                placeholder="Ditt svar"
+              />
+            </div>
             <div className={`flex ${s.buttonGroup}`}>
               <button type="button" onClick={handleBack}>
                 Bakåt
