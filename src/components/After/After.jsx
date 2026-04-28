@@ -5,6 +5,7 @@ const After = () => {
     <div id={s["after"]} className={`flex flex-down`}>
       <h2></h2>
       <img src={after} alt="Ett hus" />
+      <h2>Efterfest</h2>
       <div>
         <p>
           När Sundby Gård stänger för kvällen kan man kliva på bussen som kör

@@ -1,5 +1,4 @@
 #wedding{
-    padding-top:0.4rem;
     margin-bottom: 2rem;
     max-width: 70%;
 }
@@ -9,13 +8,12 @@
 #wedding h2{
     margin-bottom:0.6rem;
 }
-#weddingimg{
-    margin-top:2rem;
-}
+
 .imgsource, .imgsource a{
     color:rgb(193, 193, 193);
+    margin-top:0.6rem;
 } 
 .church{
     display: block;
-    margin:1rem 0;
+    margin-top:0.6rem;
 }

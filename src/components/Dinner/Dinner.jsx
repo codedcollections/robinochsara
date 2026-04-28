@@ -6,8 +6,6 @@ const Dinner = () => {
     <div id={s["dinner"]} className={`flex flex-down`}>
       <img src={dinnerPlace} alt="" />
       <h2>Middag vid Sundby Gård</h2>
-
-      {/* <PlaceDetails imageObj={dinnerPlace} position={[59.2016, 18.0215]} /> */}
       <div>
         <p>
           Festligheterna hålls på Sundby Gård. Det börjar med tipspromenad och

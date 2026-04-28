@@ -1,14 +1,13 @@
 #speech{
-    margin-top:1.4rem;
     background-color: white;
     padding:1rem;
     max-width:70%;
+    margin-bottom:2rem;
 }
 #speech h2{
     margin-bottom:0.6rem;
 }
 .speechInfo{
-
     gap:1rem;
 }
 

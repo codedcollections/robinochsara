@@ -11,8 +11,9 @@ max-width: 70%;
 }
 
 .dinneraddress{
-        display: block;
-    margin:1rem 0;
+    display: block;
+    margin-top:0.6rem;
+
 } 
 #dinneraddress{
     color:red;
