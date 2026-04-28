@@ -31,7 +31,7 @@ const Speech = () => {
         </p>
       </div>
       <button
-        className={`${s.showspeechbtn}`}
+        className={`buttonstyle ${s.showspeechbtn}`}
         onClick={() => {
           setShowSpeech(!showSpeech)
         }}

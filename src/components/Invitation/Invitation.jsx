@@ -48,10 +48,11 @@ const Invitiation = () => {
       <p>men gör det gärna tidigare.</p>
       <p className={s.selectHint}>välj ett sällskap</p>
       <select
+        className={`buttonstyle`}
         value={chosenRsvp}
         onChange={(e) => setChosenRsvp(e.target.value)}
       >
-        <option key="firstchoice" value="0">
+        <option className={`buttonstyle`} key="firstchoice" value="0">
           OSA för...
         </option>
         {list.map((people) => (

@@ -6,7 +6,6 @@
 }
 #speech h2{
     margin-bottom:0.6rem;
-
 }
 .speechInfo{
 
@@ -21,9 +20,9 @@
 .aboutspeech{
     margin: 1rem 0;
 }
-.showspeechbtn{
+/* .showspeechbtn{
     width:8rem;
-}
+} */
 .showspeechbtn:hover{
     filter:brightness(80%);
 }

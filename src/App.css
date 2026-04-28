@@ -119,10 +119,11 @@ a:hover{
 }
 
 .buttonstyle{
-  padding:0.4rem;
-  background-color: #fff1de; 
-  border: 0.01rem solid  #45594B;
+  padding: 0.4rem;
   border-radius: 0.2rem;
+  border:none;
+  background-color: #45594B;
+  color:#FFFBF8;
 }
 .mapicon{
   font-size: 1.2rem;

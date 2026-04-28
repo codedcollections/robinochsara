@@ -1,6 +1,6 @@
 import PracticalityCard from "../PracticalityCard/PracticalityCard"
 import s from "./Practicalities.module.css"
-import dressCode from "./../../images/dress2.jpg"
+import dressCode from "./../../images/dresscode.jpg"
 import dinner from "./../../images/dinner1.jpg"
 import children from "./../../images/children3.jpg"
 import transport from "./../../images/transport1.jpg"
@@ -29,7 +29,7 @@ const Practicalities = () => {
         <PracticalityCard
           infoTitle={"Klädsel"}
           imageSrc={dressCode}
-          imageAlt={`Personer i kostymer i och klänningar i olika färger och mönster`}
+          imageAlt={`En grupp av personer med skjortor, kostymbyxor och klänningar i olika färger och mönster på sig`}
           infoText={`Den generella klädkoden är kostym, vilket innebär:\nKostym - i valfri färg och mönster på skjorta och kostym. Slips eller fluga kan vara i valfri färg och mönster.\nKlänning - i valfri färg och mönster som är till knäna eller längre. Alternativt byxdress eller kjol.\nMen det viktigaste är inte att följa klädkoden utan att du känner dig fin och bekväm i vad du har på dig.`}
         />
         <PracticalityCard
