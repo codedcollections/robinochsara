@@ -176,14 +176,27 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
             "lakto-ovo-vegetarian",
             "vegan",
           ].map((pref) => (
-            <label key={pref}>
-              {pref.charAt(0).toUpperCase() + pref.slice(1)}{" "}
+            <div key={pref}>
               <input
+                id={`food-${pref}`}
                 type="checkbox"
-                {...register("foodPreference")}
                 value={pref}
+                {...register("foodPreference")}
               />
-            </label>
+              <label htmlFor={`food-${pref}`}>{pref}</label>
+            </div>
+          ))}
+
+          {["Släckta lampor", "Musik", "Bildspel"].map((option) => (
+            <div key={option}>
+              <input
+                id={`forb-${option}`}
+                type="checkbox"
+                value={option}
+                {...register("forberedelser")}
+              />
+              <label htmlFor={`forb-${option}`}>{option}</label>
+            </div>
           ))}
 
           <label>Övrigt</label>
@@ -206,13 +219,14 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
           className={`flex flex-down flex-align-start ${s.formDivider} ${s.lastOptions}`}
         >
           <label>Önskar du åka med på bussen?</label>
+
           <label>
-            Från kyrkan till middagen{" "}
             <input type="checkbox" {...register("ride")} value="fromchurch" />
+            Från kyrkan till middagen
           </label>
           <label>
-            Från middagen till efterfesten alt. Huddinge Station{" "}
             <input type="checkbox" {...register("ride")} value="fromdinner" />
+            Från middagen till efterfesten alt. Huddinge Station
           </label>
 
           <div className={`flex ${s.buttonGroup}`}>
