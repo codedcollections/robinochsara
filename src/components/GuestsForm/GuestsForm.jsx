@@ -124,42 +124,51 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
       {/* STEP 1: Basic Info */}
       {step === 1 && (
         <div className={`flex flex-down flex-align-start ${s.formDivider} `}>
-          <label htmlFor="name">För- och efternamn *</label>
-          <input {...register("name")} placeholder="Ditt svar..." />
-          {errors.name && (
-            <span className={s.error}>{errors.name.message}</span>
-          )}
+          <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
+            <label className={s.clearLabel} htmlFor="name">
+              För- och efternamn *
+            </label>
+            <input {...register("name")} placeholder="Ditt svar..." />
+            {errors.name && (
+              <span className={s.error}>{errors.name.message}</span>
+            )}
+          </div>
 
-          <label htmlFor="email">Mejladress *</label>
-          <input {...register("email")} placeholder="Ditt svar..." />
-          {errors.email && (
-            <span className={s.error}>{errors.email.message}</span>
-          )}
-
-          <label>Vad kommer du delta på? *</label>
-          <label>
-            <input type="radio" {...register("attending")} value="allday" />{" "}
-            Hela dagen!
-          </label>
-          <label>
-            <input
-              type="radio"
-              {...register("attending")}
-              value="weddingonly"
-            />{" "}
-            Endast vigseln
-          </label>
-          <label>
-            <input
-              type="radio"
-              {...register("attending")}
-              value="notattending"
-            />{" "}
-            Jag kommer tyvärr inte kunna delta alls
-          </label>
-          {errors.attending && (
-            <span className={s.error}>{errors.attending.message}</span>
-          )}
+          <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
+            <label className={s.clearLabel} htmlFor="email">
+              Mejladress *
+            </label>
+            <input {...register("email")} placeholder="Ditt svar..." />
+            {errors.email && (
+              <span className={s.error}>{errors.email.message}</span>
+            )}
+          </div>
+          <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
+            <label className={s.clearLabel}>Vad kommer du delta på? *</label>
+            <label>
+              <input type="radio" {...register("attending")} value="allday" />{" "}
+              Hela dagen!
+            </label>
+            <label>
+              <input
+                type="radio"
+                {...register("attending")}
+                value="weddingonly"
+              />{" "}
+              Endast vigseln
+            </label>
+            <label>
+              <input
+                type="radio"
+                {...register("attending")}
+                value="notattending"
+              />{" "}
+              Jag kommer tyvärr inte kunna delta alls
+            </label>
+            {errors.attending && (
+              <span className={s.error}>{errors.attending.message}</span>
+            )}
+          </div>
 
           <button type="button" onClick={handleNext}>
             {attendingValue === "notattending" ? "Skicka" : "Nästa"}
@@ -170,41 +179,30 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
       {/* STEP 2: Food Preferences */}
       {step === 2 && (
         <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
-          <label className={`flex-align-start`}>
-            Har du några allergier eller matpreferenser?
-          </label>
-          {[
-            "gluten",
-            "laktos",
-            "pescetarian",
-            "lakto-ovo-vegetarian",
-            "vegan",
-          ].map((pref) => (
-            <div key={pref}>
-              <input
-                id={`food-${pref}`}
-                type="checkbox"
-                value={pref}
-                {...register("foodPreference")}
-              />
-              <label htmlFor={`food-${pref}`}>{pref}</label>
-            </div>
-          ))}
-
-          {["Släckta lampor", "Musik", "Bildspel"].map((option) => (
-            <div key={option}>
-              <input
-                id={`forb-${option}`}
-                type="checkbox"
-                value={option}
-                {...register("forberedelser")}
-              />
-              <label htmlFor={`forb-${option}`}>{option}</label>
-            </div>
-          ))}
-
-          <label>Övrigt</label>
-          <input {...register("otherFood")} placeholder="Ditt svar..." />
+          <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
+            <label className={`flex-align-start ${s.clearLabel}`}>
+              Har du några allergier eller matpreferenser?
+            </label>
+            {[
+              "gluten",
+              "laktos",
+              "pescetarian",
+              "lakto-ovo-vegetarian",
+              "vegan",
+            ].map((pref) => (
+              <div key={pref}>
+                <input
+                  id={`food-${pref}`}
+                  type="checkbox"
+                  value={pref}
+                  {...register("foodPreference")}
+                />
+                <label htmlFor={`food-${pref}`}>{pref}</label>
+              </div>
+            ))}
+            <label>Övrigt</label>
+            <input {...register("otherFood")} placeholder="Ditt svar..." />
+          </div>
 
           <div className={`flex ${s.buttonGroup}`}>
             <button type="button" onClick={() => setStep(1)}>
@@ -222,22 +220,25 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
         <div
           className={`flex flex-down flex-align-start ${s.formDivider} ${s.lastOptions}`}
         >
-          <label>Önskar du åka med på bussen?</label>
+          <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
+            <label className={s.clearLabel}>Önskar du åka med på bussen?</label>
 
-          <label>
-            <input type="checkbox" {...register("ride")} value="fromchurch" />
-            Från kyrkan till middagen
-          </label>
-          <label>
-            <input type="checkbox" {...register("ride")} value="fromdinner" />
-            Från middagen till efterfesten alt. Huddinge Station
-          </label>
-
+            <label>
+              <input type="checkbox" {...register("ride")} value="fromchurch" />
+              Från kyrkan till middagen
+            </label>
+            <label>
+              <input type="checkbox" {...register("ride")} value="fromdinner" />
+              Från middagen till efterfesten alt. Huddinge Station
+            </label>
+          </div>
           <div className={`flex ${s.buttonGroup}`}>
             <button type="button" onClick={() => setStep(2)}>
               Bakåt
             </button>
-            <button type="submit">Skicka svar</button>
+            <button type="submit" className={`buttonstyle`}>
+              Skicka svar
+            </button>
           </div>
         </div>
       )}

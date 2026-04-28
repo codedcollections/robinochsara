@@ -261,7 +261,7 @@ const SpeechForm = ({ showSpeech }) => {
 
         {step === 3 && (
           <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
-            <fieldset>
+            <fieldset className={`${s.questionDiv}`}>
               <legend className={s.clearLabel}>Jag/vi vill... *</legend>
 
               {[
@@ -381,7 +381,7 @@ const SpeechForm = ({ showSpeech }) => {
               <button type="button" onClick={handleBack}>
                 Bakåt
               </button>
-              <button type="submit" className={s.submitbtn}>
+              <button type="submit" className={`buttonstyle`}>
                 Skicka
               </button>
             </div>
