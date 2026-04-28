@@ -1,5 +1,7 @@
 import s from "./After.module.css"
 import after from "./../../images/Efterfest.jpg"
+import { FaMapMarkerAlt } from "react-icons/fa"
+
 const After = () => {
   return (
     <div id={s["after"]} className={`flex flex-down`}>
@@ -13,6 +15,13 @@ const After = () => {
           vickning och spelas karaoke. För er som gått barfota i skorna under
           dagen kan det vara skönt att ha med sig ett par strumpor.
         </p>
+        <a
+          className={s.afterMap}
+          href="https://maps.app.goo.gl/dXCZxjJzKbomHHXw5"
+          target="_blank"
+        >
+          Se karta <FaMapMarkerAlt className={`mapicon`} />
+        </a>
       </div>
     </div>
   )

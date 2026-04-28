@@ -8,3 +8,7 @@ max-width: 70%;
 #after h2{
     margin-bottom:0.6rem;
 }
+.afterMap{
+    display: block;
+    margin-top:0.6rem;
+}
