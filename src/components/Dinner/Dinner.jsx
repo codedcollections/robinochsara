@@ -10,8 +10,13 @@ const Dinner = () => {
       {/* <PlaceDetails imageObj={dinnerPlace} position={[59.2016, 18.0215]} /> */}
       <div>
         <p>
-          Middagen äger rum på Sundby Gård. Firandet på Sundby Gård börjar med
-          brudskål och avslutas med dans efter en tre-rätters middag.
+          Festligheterna hålls på Sundby Gård. Det börjar med tipspromenad och
+          brudskål. Därefter serveras tre-rätters middag och avslutas med dans.
+          För er som tar bilen finns gott om plats för parkering bredvid. Det
+          går att lämna bilen där under natten och den blir då inlåst till kl 8
+          dagen efter. Vill man kunna hämta bilen innan kl 8 går det att parkera
+          utanför grindarna på easyparks parkering, det kostar att stå där och
+          man behöver promenera en liten bit.
         </p>
         <a
           className={s.dinneraddress}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import s from "./Introduction.module.css"
 import wedding from "./../../images/wedding.png"
-import leaves from "./../../images/leaf_divider_2.png"
+import divider from "./../../images/rings.png"
 
 const Introduction = () => {
   const calculateTimeLeft = () => {
