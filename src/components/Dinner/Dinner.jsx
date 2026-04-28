@@ -16,6 +16,7 @@ const Dinner = () => {
         <a
           className={s.dinneraddress}
           href="https://maps.app.goo.gl/mmTV71bycjAnee8b7"
+          target="_blank"
         >
           Se karta <FaMapMarkerAlt className={`mapicon`} />
         </a>

@@ -18,6 +18,7 @@ const Wedding = () => {
         <a
           className={s.church}
           href="https://maps.app.goo.gl/jJzBHQQZuTkCZqc28"
+          target="_blank"
         >
           Se karta <FaMapMarkerAlt className={`mapicon`} />
         </a>

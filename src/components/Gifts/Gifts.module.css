@@ -1,6 +1,6 @@
 #gifts{
-    margin:2rem 0;
     gap:1rem;
+    max-width: 70%;
 }
 #gifts h2{
     margin: 0.4rem 0;
