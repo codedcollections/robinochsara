@@ -38,7 +38,7 @@
     align-content: center;
     justify-content: center;
     text-align: center;
-    margin-bottom:2rem;
+    /* margin-bottom:2rem; */
 }
 
 .timestamp{
@@ -55,6 +55,20 @@
     margin-top:0.6rem;
     font-style: italic;
     line-height: 1.5rem;
+    text-align: center;
+}
+.leafDivider{
+    display:grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap:0.6rem;
+    justify-content: center;
+    align-items: baseline;
+    font-size:1rem;
+    width:50%;
+/*     background-color: purple; */
+}
+.divDivider{
+    border-bottom:0.1rem solid #45594B;
 }
 
 

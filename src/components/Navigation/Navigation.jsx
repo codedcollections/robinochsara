@@ -1,8 +1,6 @@
 import { HashLink } from "react-router-hash-link"
-import { useNavigate } from "react-router-dom"
 import s from "./Navigation.module.css"
 import introS from "./../Introduction/Introduction.module.css"
-import formS from "./../InvitationForm/InvitationForm.module.css"
 import weddingS from "./../Wedding/Wedding.module.css"
 import dinnerS from "./../Dinner/Dinner.module.css"
 import afterS from "./../After/After.module.css"
@@ -12,52 +10,82 @@ import invitationS from "./../Invitation/Invitation.module.css"
 import speechS from "./../Speech/Speech.module.css"
 import { IoMenu } from "react-icons/io5"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const Navigation = () => {
   const [show, setShow] = useState(false)
+
+  const scrollWithOffset = (el) => {
+    const offset = 90
+    const top = el.getBoundingClientRect().top + window.pageYOffset - offset
+    window.scrollTo({ top, behavior: "smooth" })
+  }
 
   return (
     <div id={s["navigation"]} className={`flex flex-down sticky`}>
       <nav className={`flex`}>
         <ul className={`flex ${s.bigmenu}`}>
           <li>
-            <HashLink smooth to={`/#${introS.introduction}`}>
+            <HashLink
+              smooth
+              scroll={scrollWithOffset}
+              to={`/#${introS.introduction}`}
+            >
               Start
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${weddingS.weddingimg}`}>
+            <HashLink
+              smooth
+              scroll={scrollWithOffset}
+              to={`/#${weddingS.weddingimg}`}
+            >
               Vigsel
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${dinnerS.dinner}`}>
+            <HashLink
+              smooth
+              scroll={scrollWithOffset}
+              to={`/#${dinnerS.dinner}`}
+            >
               Middag
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${afterS.after}`}>
+            <HashLink smooth scroll={scrollWithOffset} to={`/#${afterS.after}`}>
               Efterfest
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${practicalitiesS.practicalities}`}>
+            <HashLink
+              smooth
+              scroll={scrollWithOffset}
+              to={`/#${practicalitiesS.practicalities}`}
+            >
               Information
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${giftsS.gifts}`}>
+            <HashLink smooth scroll={scrollWithOffset} to={`/#${giftsS.gifts}`}>
               Gåvor
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${speechS.speech}`}>
+            <HashLink
+              smooth
+              scroll={scrollWithOffset}
+              to={`/#${speechS.speech}`}
+            >
               Tal
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to={`/#${invitationS.invitation}`}>
+            <HashLink
+              smooth
+              scroll={scrollWithOffset}
+              to={`/#${invitationS.invitation}`}
+            >
               OSA
             </HashLink>
           </li>
@@ -75,6 +103,7 @@ const Navigation = () => {
             <div className={s.hamburgerdiv}>
               <HashLink
                 smooth
+                scroll={scrollWithOffset}
                 to={`/#${introS.introduction}`}
                 onClick={() => {
                   setShow(!show)
@@ -85,6 +114,7 @@ const Navigation = () => {
 
               <HashLink
                 smooth
+                scroll={scrollWithOffset}
                 to={`/#${weddingS.wedding}`}
                 onClick={() => {
                   setShow(!show)
@@ -95,6 +125,7 @@ const Navigation = () => {
 
               <HashLink
                 smooth
+                scroll={scrollWithOffset}
                 to={`/#${dinnerS.dinner}`}
                 onClick={() => {
                   setShow(!show)
@@ -105,6 +136,7 @@ const Navigation = () => {
 
               <HashLink
                 smooth
+                scroll={scrollWithOffset}
                 to={`/#${afterS.after}`}
                 onClick={() => {
                   setShow(!show)
@@ -115,6 +147,7 @@ const Navigation = () => {
 
               <HashLink
                 smooth
+                scroll={scrollWithOffset}
                 to={`/#${practicalitiesS.practicalities}`}
                 onClick={() => {
                   setShow(!show)
@@ -125,6 +158,7 @@ const Navigation = () => {
 
               <HashLink
                 smooth
+                scroll={scrollWithOffset}
                 to={`/#${giftsS.gifts}`}
                 onClick={() => {
                   setShow(!show)
@@ -135,6 +169,7 @@ const Navigation = () => {
 
               <HashLink
                 smooth
+                scroll={scrollWithOffset}
                 to={`/#${speechS.speech}`}
                 onClick={() => {
                   setShow(!show)
@@ -145,6 +180,7 @@ const Navigation = () => {
 
               <HashLink
                 smooth
+                scroll={scrollWithOffset}
                 to={`/#${invitationS.invitation}`}
                 onClick={() => {
                   setShow(!show)
