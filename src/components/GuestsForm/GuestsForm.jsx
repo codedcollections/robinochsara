@@ -116,7 +116,11 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
       onSubmit={handleSubmit(onSubmit)}
       className={`flex flex-down ${s.formContainer}`}
     >
-      <p>{name}</p>
+      <div className={`flex ${s.rsvpPerson}`}>
+        <p>Svarar nu för</p>
+        <p> {name}</p>
+      </div>
+
       {/* STEP 1: Basic Info */}
       {step === 1 && (
         <div className={`flex flex-down flex-align-start ${s.formDivider} `}>

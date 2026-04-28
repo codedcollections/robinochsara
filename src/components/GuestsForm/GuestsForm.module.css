@@ -1,23 +1,24 @@
 
 .formContainer{
-    margin: 1.4rem 0;
     background-color:white;
     min-height: 500px;
     height:100%;
-    min-width:700px;
+    min-width:400px;
     width:100%;
-    max-width:960px;
+    max-width:100%;
     padding:1rem;
-    box-shadow: 0.1rem 0.1rem 1rem 0.01rem rgb(227, 219, 210);
     box-sizing: border-box;
     justify-content: start;
 }
-.formContainer div{
+.rsvpPerson{
+    gap:0.2rem;
+}
+/* .formContainer div{
     justify-content: space-between;
-}
-.formContainer div label{
+} */
+/* .formContainer div label{
     margin-top:0.6rem;
-}
+} */
 .formContainer div button{
     margin-top:0.6rem;
 }
@@ -25,10 +26,10 @@
     /* color:#c23a5a; */
     color:#f02c59;
 }
-.formContainer p{
+/* .formContainer p{
     text-align: center;
     display: block;
-}
+} */
 
 .formDivider{
     width:100%;

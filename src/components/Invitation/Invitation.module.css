@@ -18,9 +18,6 @@ button:disabled{
     gap:1.2rem;
 }
 
-#invitation select{
-
-}
 .rsvpDeadline{
     font-weight: bold;
 }
@@ -32,6 +29,5 @@ button:disabled{
 .selectHint{
     font-size:1.4rem;
     font-weight: bold;
-    letter-spacing: 0.06rem;
-    margin:1rem 0;
+    margin:0.6rem 0;
 }
