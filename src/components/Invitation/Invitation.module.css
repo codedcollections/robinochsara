@@ -2,6 +2,9 @@
     text-align: center;
     margin-top:2rem;
     margin-bottom:1rem;
+    background-color: white;
+    padding:1rem;
+    min-width:70%;
 }
 #invitation h2{
     margin-bottom:1rem;
@@ -17,7 +20,7 @@ button:disabled{
 
 #invitation select{
     padding: 0.4rem;
-    background-color: #fff1de;
+    background-color: rgb(235, 235, 235);
     border: 0.01rem solid #45594B;
     border-radius: 0.2rem;
 }

@@ -1,5 +1,8 @@
 #speech{
     margin-top:1.4rem;
+    background-color: white;
+    padding:1rem;
+    max-width:70%;
 }
 #speech h2{
     margin-bottom:0.6rem;

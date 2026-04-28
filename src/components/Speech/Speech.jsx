@@ -1,8 +1,6 @@
 import s from "./Speech.module.css"
 import SpeechForm from "../SpeechForm/SpeechForm"
 import { useState } from "react"
-import { ImEye } from "react-icons/im"
-import { ImEyeBlocked } from "react-icons/im"
 
 const Speech = () => {
   const [showSpeech, setShowSpeech] = useState(false)
@@ -34,20 +32,12 @@ const Speech = () => {
         </p>
       </div>
       <button
-        className={`buttonstyle ${s.showspeechbtn}`}
+        className={`${s.showspeechbtn}`}
         onClick={() => {
           setShowSpeech(!showSpeech)
         }}
       >
-        {!showSpeech ? (
-          <>
-            Visa formulär <ImEye />
-          </>
-        ) : (
-          <>
-            Göm formulär <ImEyeBlocked />
-          </>
-        )}
+        {!showSpeech ? <>Visa formulär</> : <>Göm formulär</>}
       </button>
       {showSpeech && <SpeechForm showSpeech={showSpeech} />}
     </div>
