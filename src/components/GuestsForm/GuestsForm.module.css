@@ -1,7 +1,7 @@
 
 .formContainer{
     margin: 1.4rem 0;
-    background: linear-gradient(0deg, #fff1de 0%, #fffcf5 100%);
+    background-color:white;
     min-height: 500px;
     height:100%;
     min-width:700px;
@@ -39,7 +39,6 @@
 }
 .formContainer input:not([type="radio"]):not([type="checkbox"]),
 .formContainer textarea {
-    background-color: #fff1de;
     border: 0.15rem solid #adbcb0;
     padding: 0.75rem;
     border-radius: 0.5rem;
@@ -55,7 +54,6 @@
 .formContainer textarea:focus {
     outline: none;
     border-color: #96885f;
-    background-color: #fffcf5;
     box-shadow: 0 0 5px rgba(150, 136, 95, 0.2);
 }
 
