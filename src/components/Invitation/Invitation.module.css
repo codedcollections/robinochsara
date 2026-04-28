@@ -4,7 +4,7 @@
     margin-bottom:1rem;
     background-color: white;
     padding:1rem;
-    min-width:70%;
+    max-width:70%;
 }
 #invitation h2{
     margin-bottom:1rem;
@@ -23,6 +23,9 @@ button:disabled{
     background-color: rgb(235, 235, 235);
     border: 0.01rem solid #45594B;
     border-radius: 0.2rem;
+}
+.rsvpDeadline{
+    font-weight: bold;
 }
 .latestReply{
     color:#f02c59;

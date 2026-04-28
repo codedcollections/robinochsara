@@ -14,11 +14,10 @@
 }
 
 .aboutspeech p{
+    font-weight: bold;
     text-align: center;
 }
-.aboutspeech p:last-of-type{
-    text-decoration: underline;
-}
+
 .aboutspeech{
     margin: 1rem 0;
 }

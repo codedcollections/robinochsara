@@ -37,6 +37,11 @@ const Invitiation = () => {
     <div id={s["invitation"]}>
       <h2>OSA</h2>
       <p>
+        I formuläret nedan kan ni anmäla er till bröllopet. Välj ert sällskap
+        och därefter fyller ni i informationen per person. Vid ändringar av er
+        anmälan, kontakta någon av brudparet.
+      </p>
+      <p className={s.rsvpDeadline}>
         Sista dagen att svara på inbjudan är{" "}
         <span className={s.latestReply}>30 juni</span>,
       </p>
