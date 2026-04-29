@@ -69,12 +69,12 @@ const Introduction = () => {
           <p className={s.timestamp}>sekunder</p>
         </div>
       </div>
-      <div className={`${s.leafDivider}`}>
-        <div className={`flex ${s.divDivider}`}></div>
-        <div>.</div>
-        <div className={`flex ${s.divDivider}`}></div>
-      </div>
+
       <div className={`flex flex-down ${s.meetcute}`}>
+        <img
+          src={divider}
+          alt="ringar i guld som korsar varandra mellan blad och blommor"
+        />
         <p>
           Det var en varm dag i juli 2023 som våra vägar korsades för första
           gången. Efter att ha pratat i telefon i flera timmar samma kväll så
