@@ -14,7 +14,6 @@ import Invitiation from "../../components/Invitation/Invitation"
 import Navigation from "../../components/Navigation/Navigation"
 import { FaHeart } from "react-icons/fa6"
 import Invitation from "../../components/Invitation/Invitation"
-import Firebase from "../../components/Firebase/Firebase"
 
 const HomePage = () => {
   return (
