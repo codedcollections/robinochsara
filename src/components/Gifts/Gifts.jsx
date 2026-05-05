@@ -13,8 +13,8 @@ const Gifts = () => {
         Vi förstår att det är många som vill ge presenter vid ett firande som
         detta. Om det skulle vara så att ni vill det, skulle vi uppskatta ett
         bidrag till vår bröllopsresa. Än så länge är det inte bestämt vart det
-        bär av, men vi siktar mot en sol-och-bad-semster någonstans i
-        Sydost-Asien.
+        bär av, men vi siktar mot en sol- och badsemster någonstans i
+        Sydostasien.
       </p>
     </div>
   )

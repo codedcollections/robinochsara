@@ -8,13 +8,13 @@ const Dinner = () => {
       <h2>Middag vid Sundby Gård</h2>
       <div>
         <p>
-          Festligheterna hålls på Sundby Gård. Det börjar med tipspromenad och
-          brudskål. Därefter serveras tre-rätters middag och avslutas med dans.
-          För er som tar bilen finns gott om plats för parkering bredvid. Det
-          går att lämna bilen där under natten och den blir då inlåst till kl 8
-          dagen efter. Vill man kunna hämta bilen innan kl 8 går det att parkera
-          utanför grindarna på easyparks parkering, det kostar att stå där och
-          man behöver promenera en liten bit.
+          Festligheterna hålls på Sundby Gård och inleds med tipspromenad och
+          brudskål. Därefter serveras trerättersmiddag och kvällen avslutas med
+          dans. Det finns gott om parkeringar i direkt anslutning till
+          restaurangen, där det går att lämna bilen över natten. Parkeringen är
+          låst med grindar fram till kl 8.00. För att kunna hämta bilen före kl
+          8, finns möjlighet att parkera utanför grindarna på Easyparks
+          betalparkering, som ligger en promenad bort.
         </p>
         <a
           className={s.dinneraddress}

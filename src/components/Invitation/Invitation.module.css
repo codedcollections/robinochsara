@@ -1,9 +1,12 @@
 #invitation{
-    text-align: center;
+    
     margin-bottom:2rem;
     background-color: white;
     padding:1rem;
     max-width:70%;
+}
+#invitation p{
+    text-align: left;
 }
 #invitation h2{
     margin-bottom:0.6rem;
@@ -19,6 +22,7 @@ button:disabled{
 
 .rsvpDeadline{
     font-weight: bold;
+    margin:0.6rem 0;
 }
 .latestReply{
     color:#f02c59;
@@ -32,9 +36,8 @@ button:disabled{
 }
 
 #invitation select{
+    padding:0.4rem;
     min-width:10rem;
-    width:100%;
-    max-width:10rem;
 }
 .selectGuestBtn{
     gap:1rem;

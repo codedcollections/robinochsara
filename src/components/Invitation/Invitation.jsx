@@ -77,15 +77,15 @@ const Invitation = () => {
     <div id={s["invitation"]} className="flex flex-down">
       <h2>OSA</h2>
       <p>
-        I formuläret nedan kan ni anmäla er till bröllopet. Välj ert sällskap
-        och därefter fyller ni i informationen per person. Vid ändringar av er
-        anmälan, kontakta någon av brudparet.
+        Anmälan görs i formuläret nedan. Välj ert sällskap och person, därefter
+        fyller ni i informationen. Vänligen anmäl även om ni inte kan komma. Vid
+        ändringar av er anmälan, kontakta någon av brudparet.
       </p>
       <p className={s.rsvpDeadline}>
         Sista dagen att svara på inbjudan är{" "}
-        <span className={s.latestReply}>30 juni</span>,
+        <span className={s.latestReply}>30 juni</span>, men gör det gärna
+        tidigare.
       </p>
-      <p>men gör det gärna tidigare.</p>
       <p className={s.selectHint}>välj ett sällskap</p>
       <div className={`flex flex-down ${s.selectGuestBtn}`}>
         <select

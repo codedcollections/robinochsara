@@ -15,7 +15,7 @@ const Practicalities = () => {
           imageSrc={dinner}
           imageAlt={`Ett elegant uppdukat bord`}
           infoText={
-            "Det kommer serveras trerättersmiddag med dryck och traditionsenlig bröllopstårta.\nHar du allergier eller matpreferenser ska de meddelas i samband med din OSA.\nEfter middagen kommer det finns en bar för inköp av dryck.\nPå efterfesten serveras vickning och det kommer finns tillgång till en swishbar med öl, vin och cider."
+            "På Sundby Gård serveras trerättersmiddag med dryck och traditionsenlig bröllopstårta. \nHar du allergier eller matpreferenser ska de meddelas i samband med din OSA. \nEfter middagen öppnar baren för inköp av dryck. \nPå efterfesten serveras vickning och det kommer finns tillgång till en swishbar med öl, vin och cider."
           }
         />
         <PracticalityCard
@@ -23,14 +23,29 @@ const Practicalities = () => {
           imageSrc={transport}
           imageAlt={`En gul leksaksbuss med bagage på taket placerad bland markkrypande växter på en strand`}
           infoText={
-            "Det kommer gå en buss till och från middagen. För att garantera plats på bussen krävs anmälan i samband med OSA.\nBussen kommer åka mellan Huddinge Kyrka och Sundby Gård.\nBussen kommer åka mellan Sundby Gård och Efterfesten med ett snabbt stopp vid Huddinge station. Det går att ta tåg från Huddinge station för de som har festat klart."
+            "Under dagen kommer det finnas möjlighet att åka med en abonerad buss. Det är helt kostnadsfritt och för att garantera en plats krävs anmälan i samband med OSA. \nBussen åker mellan Huddinge Kyrka och Sundby Gård.\nBussen åker mellan Sundby Gård och efterfesten med ett snabbt stopp vid Huddinge station för de som vill avsluta festen och fortsätta vidare med tåg."
           }
         />
         <PracticalityCard
           infoTitle={"Klädsel"}
           imageSrc={dressCode}
           imageAlt={`En grupp av personer med skjortor, kostymbyxor och klänningar i olika färger och mönster på sig`}
-          infoText={`Den generella klädkoden är kostym, vilket innebär:\nKostym - i valfri färg och mönster på skjorta och kostym. Slips eller fluga kan vara i valfri färg och mönster.\nKlänning - i valfri färg och mönster som är till knäna eller längre. Alternativt byxdress eller kjol.\nMen det viktigaste är inte att följa klädkoden utan att du känner dig fin och bekväm i vad du har på dig.`}
+          infoText={
+            <>
+              Den generella klädkoden är{" "}
+              <span style={{ fontWeight: "bold" }}>kostym</span>, vilket
+              innebär:
+              <br />
+              Kostym - i valfri färg och mönster på skjorta och kostym. Slips
+              eller fluga kan vara i valfri färg och mönster.
+              <br />
+              Klänning - i valfri färg och mönster som är till knäna eller
+              längre. Alternativt byxdress eller kjol.
+              <br />
+              Men det viktigaste är inte att följa klädkoden utan att du känner
+              dig fin och bekväm i vad du har på dig.
+            </>
+          }
         />
         <PracticalityCard
           infoTitle={"Barn"}

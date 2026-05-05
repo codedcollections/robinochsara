@@ -10,11 +10,11 @@ const Wedding = () => {
       <h2>Vigsel i Huddinge kyrka</h2>
       <div className={`flex-align-self-start`}>
         <p>
-          Vigseln äger rum kl 14:00 i Huddinge Kyrka. Se till att vara i god tid
+          Vigseln äger rum kl 14:00 i Huddinge kyrka. Se till att vara i god tid
           innan och sitta ner när vigseln börjar. Vi önskar att ni inte väljer
-          sida utav traditionella skäl utan sitter där det finns plats. Det är
+          sida av traditionella skäl utan sitter där det finns plats. Det är
           enkelt att ta sig till kyrkan med kollektivtrafik, men det finns även
-          parkeringar precis vid kyrkan.
+          parkeringar vid kyrkan.
         </p>
         <a
           className={s.church}

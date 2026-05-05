@@ -11,9 +11,9 @@ const After = () => {
       <div>
         <p>
           När Sundby Gård stänger för kvällen kan man kliva på bussen som kör
-          till efterfesten som hålls i den nyförvärvda villan! Där serveras
-          vickning och spelas karaoke. För er som gått barfota i skorna under
-          dagen kan det vara skönt att ha med sig ett par strumpor.
+          till efterfesten i den nyförvärvda villan! Där serveras vickning och
+          spelas kareoke. För er som gått barfota i skorna under dagen kan det
+          vara skönt att ha med sig ett par strumpor.
         </p>
         <a
           className={s.afterMap}

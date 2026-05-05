@@ -5,8 +5,8 @@
 #introduction::before {
   content: "";
   display: block;
-  height: 1rem; /* Matches nav height */
-  margin-top: 4rem; /* Negative value to counteract height */
+  height: 1rem;
+  margin-top: 4rem;
 }
 
 #countdown{
@@ -37,7 +37,6 @@
     align-content: center;
     justify-content: center;
     text-align: center;
-    /* margin-bottom:2rem; */
 }
 
 .timestamp{
@@ -66,6 +65,9 @@
 }
 .weddingimg{
     max-width: 100%;
+}
+#introduction{
+    margin-top:1rem;
 }
 
 }
