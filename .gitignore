@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 *.env
+listcopy.js
+list.js
+*Firebase

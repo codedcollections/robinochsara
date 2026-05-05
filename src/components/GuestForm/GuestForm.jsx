@@ -1,41 +1,15 @@
 import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import s from "./GuestsForm.module.css"
+import {
+  guestSchema,
+  attendingLabels,
+  rideLabels,
+} from "../../models/guestSchema"
+import s from "./GuestForm.module.css"
 import { sendRsvps } from "../../api.js"
-
-const requiredText = "Du måste fylla i alla fält"
-// 1. Define the Schema
-const schema = z.object({
-  name: z
-    .string()
-    .min(1, "För- och efternamn krävs")
-    .regex(/^[a-zA-Zà-ÿÀ-ß ]+$/, "Ange för- och efternamn"),
-  email: z.string().min(1, requiredText).email("Ogiltig mejladress"),
-  attending: z
-    .string()
-    .min(1, requiredText)
-    .nullable()
-    .refine((val) => ["allday", "weddingonly", "notattending"].includes(val), {
-      message: requiredText,
-    }),
-  // These are optional because they might be skipped or not filled
-  foodPreference: z.array(z.string()).optional().default([]),
-  otherFood: z.string().optional(),
-  ride: z.array(z.string()).optional().default([]),
-})
-
-const attendingLabels = {
-  allday: "hela dagen",
-  weddingonly: "endast vigsel",
-  notattending: "kan tyvärr inte komma",
-}
-
-const rideLabels = {
-  fromchurch: "från kyrkan till middagen",
-  fromdinner: "från middagen till efterfesten",
-}
+import { addGuestToDb } from "../../utils/addToGuestDb"
+import { toast } from "react-toastify"
 
 const translateRsvpData = (data) => ({
   ...data,
@@ -45,7 +19,15 @@ const translateRsvpData = (data) => ({
     : data.ride,
 })
 
-const GuestsForm = ({ isVisible, name, onNext }) => {
+const GuestForm = ({
+  person,
+  onNext,
+  setChosenPerson,
+  setShowPersonSelect,
+}) => {
+  console.log("person is seen as ", person)
+  const readPerson = person ? JSON.parse(person) : { name: "" }
+  console.log("read person is seen as", readPerson)
   const [step, setStep] = useState(1)
 
   const {
@@ -56,10 +38,11 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(guestSchema),
     defaultValues: {
       foodPreference: [],
       ride: [],
+      name: readPerson.name, // Register the full name
     },
   })
 
@@ -67,7 +50,6 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
 
   // Logic to handle "Next" button
   const handleNext = async () => {
-    // Only validate fields for the current step
     const fieldsToValidate = step === 1 ? ["name", "email", "attending"] : []
     const isValid = await trigger(fieldsToValidate)
 
@@ -82,7 +64,7 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
   }
 
   useEffect(() => {
-    if (isVisible) {
+    if (person) {
       const element = document.getElementById("guestform")
       const navbarHeight = 80
 
@@ -93,20 +75,45 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
         window.scrollTo({ top: y, behavior: "smooth" })
       }
     }
-  }, [isVisible, name])
+  }, [person])
 
   const onSubmit = async (data) => {
     const translatedData = translateRsvpData(data)
     console.log("Tack för ditt svar!")
     try {
       await sendRsvps(translatedData)
-      alert("Tack för ditt svar!")
+      await addGuestToDb(readPerson)
+      setChosenPerson("")
+      setShowPersonSelect(false)
+      toast.success("Tack för ditt svar!", {
+        autoClose: 3500,
+        style: {
+          fontFamily: "Alice",
+          background: "#45594B",
+          color: "#FFFBF8",
+        },
+        progressStyle: {
+          background: "#809c89",
+        },
+      })
+      setTimeout(() => {
+        toast("Välj en annan gäst för att skicka in ett nytt svar", {
+          autoClose: 5000,
+          style: {
+            fontFamily: "Alice",
+            background: "#FFFBF8",
+            color: "#45594B",
+          },
+          icon: false,
+        })
+      }, 4000)
+
       reset()
       setStep(1)
       onNext()
     } catch (error) {
       console.error("Error sending RSVP:", error)
-      alert("Det uppstod ett fel vid skickandet. Försök igen senare.")
+      toast.error("Fel vid skickandet. Försök igen senare.")
     }
   }
 
@@ -117,32 +124,26 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
       className={`flex flex-down ${s.formContainer}`}
     >
       <div className={`flex ${s.rsvpPerson}`}>
-        <p>Svarar nu för</p>
-        <p> {name}</p>
+        <h3>Svarar nu för {readPerson.name.split(" ")[0]} </h3>
       </div>
 
       {/* STEP 1: Basic Info */}
       {step === 1 && (
-        <div className={`flex flex-down flex-align-start ${s.formDivider} `}>
+        <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
           <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
             <label className={s.clearLabel} htmlFor="name">
-              För- och efternamn *
+              Namn
             </label>
-            <input {...register("name")} placeholder="Ditt svar..." />
-            {errors.name && (
-              <span className={s.error}>{errors.name.message}</span>
-            )}
+            <p>{readPerson.name.split(" ")[0]}</p>{" "}
+            {/* Only display the first name */}
+            <input
+              type="hidden"
+              {...register("name")}
+              value={readPerson.name}
+            />{" "}
+            {/* Hidden input for full name */}
           </div>
 
-          <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
-            <label className={s.clearLabel} htmlFor="email">
-              Mejladress *
-            </label>
-            <input {...register("email")} placeholder="Ditt svar..." />
-            {errors.email && (
-              <span className={s.error}>{errors.email.message}</span>
-            )}
-          </div>
           <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
             <label className={s.clearLabel}>Vad kommer du delta på? *</label>
             <label>
@@ -169,6 +170,18 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
               <span className={s.error}>{errors.attending.message}</span>
             )}
           </div>
+
+          {attendingValue === "allday" || attendingValue === "weddingonly" ? (
+            <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
+              <label className={s.clearLabel} htmlFor="email">
+                Mejladress *
+              </label>
+              <input {...register("email")} placeholder="Ditt svar..." />
+              {errors.email && (
+                <span className={s.error}>{errors.email.message}</span>
+              )}
+            </div>
+          ) : null}
 
           <button type="button" onClick={handleNext}>
             {attendingValue === "notattending" ? "Skicka" : "Nästa"}
@@ -246,4 +259,4 @@ const GuestsForm = ({ isVisible, name, onNext }) => {
   )
 }
 
-export default GuestsForm
+export default GuestForm

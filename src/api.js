@@ -45,3 +45,26 @@ export function onRsvps(key, setter) {
 
   return unsubscribe
 }
+
+//guestlist
+
+export async function sendGuestlist(guestlistData = {}) {
+  const guestlistRef = ref(db, "guestlist")
+  const newGuestlist = push(guestlistRef)
+  await set(newGuestlist, {
+    ...guestlistData,
+    createdAt: serverTimestamp(),
+  })
+}
+
+export function onGuestlist(key, setter) {
+  const guestlistRef = ref(db, "guestlist")
+
+  const unsubscribe = onValue(guestlistRef, (snapshot) => {
+    const guestlist = snapshot.val()
+    if (!guestlist) return setter([])
+    setter(Object.values(guestlist))
+  })
+
+  return unsubscribe
+}

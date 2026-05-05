@@ -30,3 +30,12 @@ button:disabled{
     font-weight: bold;
     margin:0.6rem 0;
 }
+
+#invitation select{
+    min-width:10rem;
+    width:100%;
+    max-width:10rem;
+}
+.selectGuestBtn{
+    gap:1rem;
+}

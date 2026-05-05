@@ -1,40 +1,80 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
+import { db } from "../../firebase"
+import { ref, onValue } from "firebase/database"
+import GuestForm from "../GuestForm/GuestForm"
 import s from "./Invitation.module.css"
-import GuestsForm from "../GuestsForm/GuestsForm"
-import list from "../../data/list.js"
 
-const Invitiation = () => {
-  const [chosenRsvp, setChosenRsvp] = useState("")
-  const [renderAmount, setRenderAmount] = useState("")
-  const [namesList, setnamesList] = useState([])
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [showGuests, setShowGuests] = useState(false)
+const Invitation = () => {
+  const [guestList, setGuestList] = useState([]) // All guests from Firebase
+  const [filteredLabels, setFilteredLabels] = useState([])
+  const [chosenLabel, setChosenLabel] = useState("")
+  const [chosenPerson, setChosenPerson] = useState(null)
+  const [showPersonSelect, setShowPersonSelect] = useState(false)
+  const [peopleInGroup, setPeopleInGroup] = useState([])
+  const [showForm, setShowForm] = useState(false)
+
+  // Subscribe to guest list in real-time
   useEffect(() => {
-    if (Number(chosenRsvp) > 0) {
-      const people = list.find((people) => people.id === Number(chosenRsvp))
-      const nameArray = people.names
-      if (nameArray.length === 0) {
-        setnamesList([people.label])
-      } else {
-        setnamesList(people.names)
-      }
-    }
-  }, [chosenRsvp])
+    const guestListRef = ref(db, "guestlist")
+    const unsubscribe = onValue(guestListRef, (snapshot) => {
+      const data = snapshot.val() || {}
+      const guestsArray = Object.values(data) // Convert object to array
+      setGuestList(guestsArray)
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => {
-      const newIndex = prev + 1
-      // If we've gone past the last person, reset the dropdown and index
-      if (newIndex > namesList.length - 1) {
-        setChosenRsvp("")
-        return 0
-      }
-      return newIndex
+      // Update labels whenever the guest list changes
+      const labels = [...new Set(guestsArray.map((g) => g.label))].sort()
+      setFilteredLabels(labels)
     })
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe()
+  }, [])
+
+  const handleLabelChange = (event) => {
+    const selectedLabel = event.target.value
+    setChosenLabel(selectedLabel)
+    setChosenPerson(null) // Reset the chosen person whenever label changes
+    setShowForm(false)
+
+    // Get all guests with this label
+    const guestsWithLabel = guestList.filter(
+      (guest) => guest.label === selectedLabel,
+    )
+
+    // Check if any of them are a group
+    const isGroup = guestsWithLabel.some((guest) => guest.group === true)
+
+    if (isGroup) {
+      setShowPersonSelect(true)
+      setPeopleInGroup(guestsWithLabel)
+    } else {
+      setShowPersonSelect(false)
+      setChosenPerson(guestsWithLabel[0]) // Only one person, automatically select
+      setShowForm(true)
+    }
+  }
+
+  const handlePersonChange = (event) => {
+    const selectedName = event.target.value
+    const person = peopleInGroup.find((guest) => guest.name === selectedName)
+    setChosenPerson(person)
+    setShowForm(true)
+  }
+
+  const handleFormNext = () => {
+    // Reset the form and go back to person selection
+    setShowForm(false)
+    setChosenPerson(null)
+    setChosenLabel("")
+  }
+
+  const isLabelDisabled = (label) => {
+    const guestsWithLabel = guestList.filter((guest) => guest.label === label)
+    return guestsWithLabel.every((guest) => guest.submitted === true)
   }
 
   return (
-    <div id={s["invitation"]}>
+    <div id={s["invitation"]} className="flex flex-down">
       <h2>OSA</h2>
       <p>
         I formuläret nedan kan ni anmäla er till bröllopet. Välj ert sällskap
@@ -47,28 +87,50 @@ const Invitiation = () => {
       </p>
       <p>men gör det gärna tidigare.</p>
       <p className={s.selectHint}>välj ett sällskap</p>
-      <select
-        className={`buttonstyle`}
-        value={chosenRsvp}
-        onChange={(e) => setChosenRsvp(e.target.value)}
-      >
-        <option className={`buttonstyle`} key="firstchoice" value="0">
-          OSA för...
-        </option>
-        {list.map((people) => (
-          <option key={people.id} value={people.id}>
-            {people.label}
-          </option>
-        ))}
-      </select>
-      {Number(chosenRsvp) !== 0 && (
-        <GuestsForm
-          isVisible={!showGuests}
-          name={namesList[currentIndex]}
-          onNext={handleNext}
+      <div className={`flex flex-down ${s.selectGuestBtn}`}>
+        <select
+          value={chosenLabel}
+          onChange={handleLabelChange}
+          className={`buttonstyle`}
+        >
+          <option value="">Svara för...</option>
+          {filteredLabels.map((label) => (
+            <option key={label} value={label} disabled={isLabelDisabled(label)}>
+              {label} {isLabelDisabled(label) ? "(har svarat)" : ""}
+            </option>
+          ))}
+        </select>
+
+        {showPersonSelect && (
+          <select
+            value={chosenPerson?.name || ""}
+            onChange={handlePersonChange}
+            className={`buttonstyle`}
+          >
+            <option value="">Välj gäst...</option>
+            {peopleInGroup.map((guest) => (
+              <option
+                key={guest.id}
+                value={guest.name}
+                disabled={guest.submitted} // Disable if submitted
+              >
+                {guest.name} {guest.submitted ? "(har svarat)" : ""}
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
+
+      {showForm && chosenPerson && (
+        <GuestForm
+          person={JSON.stringify(chosenPerson)}
+          onNext={handleFormNext}
+          setChosenPerson={setChosenPerson}
+          setShowPersonSelect={setShowPersonSelect}
         />
       )}
     </div>
   )
 }
-export default Invitiation
+
+export default Invitation

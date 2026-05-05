@@ -7,12 +7,14 @@ import After from "../../components/After/After"
 import Practicalities from "../../components/Practicalities/Practicalities"
 import Gifts from "../../components/Gifts/Gifts"
 import Speech from "../../components/Speech/Speech"
-import GuestsForm from "../../components/GuestsForm/GuestsForm"
+import GuestForm from "../../components/GuestForm/GuestForm"
 import catImg from "./../../images/cat.png"
 import Timeline from "../../components/Timeline/Timeline"
 import Invitiation from "../../components/Invitation/Invitation"
 import Navigation from "../../components/Navigation/Navigation"
 import { FaHeart } from "react-icons/fa6"
+import Invitation from "../../components/Invitation/Invitation"
+import Firebase from "../../components/Firebase/Firebase"
 
 const HomePage = () => {
   return (
@@ -26,7 +28,7 @@ const HomePage = () => {
       <Practicalities />
       <Gifts />
       <Speech />
-      <Invitiation />
+      <Invitation />
       <div id="navigationtester" className={`flex flex-down ${s.added}`}>
         <p>
           2<span className={s.theEnd}>{<FaHeart />}</span>26

@@ -130,3 +130,7 @@ a:hover{
   vertical-align:text-bottom;
   margin-left:0.1rem;
 }
+
+.multiline {
+  white-space: pre-line;
+}
