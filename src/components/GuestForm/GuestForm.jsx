@@ -25,9 +25,7 @@ const GuestForm = ({
   setChosenPerson,
   setShowPersonSelect,
 }) => {
-  console.log("person is seen as ", person)
   const readPerson = person ? JSON.parse(person) : { name: "" }
-  console.log("read person is seen as", readPerson)
   const [step, setStep] = useState(1)
 
   const {
@@ -79,7 +77,6 @@ const GuestForm = ({
 
   const onSubmit = async (data) => {
     const translatedData = translateRsvpData(data)
-    console.log("Tack för ditt svar!")
     try {
       //send answer to db
       await sendRsvps(translatedData)
