@@ -37,8 +37,34 @@ button:disabled{
 
 #invitation select{
     padding:0.4rem;
-    min-width:10rem;
+    width: 100%;
+    font-size: 1rem;
 }
 .selectGuestBtn{
     gap:1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (max-width: 768px) {
+    .selectGuestBtn {
+        flex-direction: column;
+    }
+    
+    .selectGuestBtn select {
+        min-height: 2.5rem;
+    }
+}
+
+
+@media (min-width: 769px) {
+    .selectGuestBtn {
+        flex-direction: row;
+    }
+    
+    .selectGuestBtn select {
+        flex: 1;
+        min-height: 2.5rem;
+    }
 }
