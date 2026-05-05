@@ -19,9 +19,7 @@
 .aboutspeech{
     margin: 0.6rem 0;
 }
-/* .showspeechbtn{
-    width:8rem;
-} */
+
 .showspeechbtn:hover{
     filter:brightness(80%);
 }

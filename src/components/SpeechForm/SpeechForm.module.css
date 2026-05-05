@@ -27,17 +27,14 @@
     justify-self:start;
 }
 .formContainer div{
-    color:red;
+/*     color:red; */
     width:100%;
 }
-/* .formContainer div label{
-    margin-top:0.6rem;
-} */
+
 .formContainer div button{
     margin-top:0.6rem;
 }
 .formContainer span{
-    /* color:#c23a5a; */
     color:#f02c59;
 }
 .formContainer p{

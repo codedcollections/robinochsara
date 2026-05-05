@@ -22,23 +22,13 @@
 .questionDiv{
     width:100%;
 }
-/* .formContainer div{
-    justify-content: space-between;
-} */
-/* .formContainer div label{
-    margin-top:0.6rem;
-} */
+
 .formContainer div button{
     margin-top:0.6rem;
 }
 .formContainer span{
-    /* color:#c23a5a; */
     color:#f02c59;
 }
-/* .formContainer p{
-    text-align: center;
-    display: block;
-} */
 
 .formDivider{
     width:100%;
@@ -82,17 +72,6 @@
     gap:0.8rem;
 }
 
-/* .formContainer p{
-    text-align: center;
-} */
-/* .formContainer span{
-    color:rgb(185, 29, 91);
-    font-weight: bold;
-    margin-top:0.2rem;
-}
-.formDivider{
-    min-width:100%;
-} */
  @media only screen and (max-width: 700px) {
     .formContainer{
         min-width:350px;

@@ -5,7 +5,7 @@ import GuestForm from "../GuestForm/GuestForm"
 import s from "./Invitation.module.css"
 
 const Invitation = () => {
-  const [guestList, setGuestList] = useState([]) // All guests from Firebase
+  const [guestList, setGuestList] = useState([])
   const [filteredLabels, setFilteredLabels] = useState([])
   const [chosenLabel, setChosenLabel] = useState("")
   const [chosenPerson, setChosenPerson] = useState(null)
@@ -36,7 +36,7 @@ const Invitation = () => {
     setChosenPerson(null) // Reset the chosen person whenever label changes
     setShowForm(false)
 
-    // Get all guests with this label
+    // Get all guests with specific label
     const guestsWithLabel = guestList.filter(
       (guest) => guest.label === selectedLabel,
     )
@@ -67,7 +67,7 @@ const Invitation = () => {
     setChosenPerson(null)
     setChosenLabel("")
   }
-
+  //if all guests for a certain label has submitted answer return true
   const isLabelDisabled = (label) => {
     const guestsWithLabel = guestList.filter((guest) => guest.label === label)
     return guestsWithLabel.every((guest) => guest.submitted === true)
@@ -100,7 +100,7 @@ const Invitation = () => {
             </option>
           ))}
         </select>
-
+        {/* only shows if a group is chosen */}
         {showPersonSelect && (
           <select
             value={chosenPerson?.name || ""}
@@ -120,7 +120,7 @@ const Invitation = () => {
           </select>
         )}
       </div>
-
+      {/* when a specific person has been chosen show form  */}
       {showForm && chosenPerson && (
         <GuestForm
           person={JSON.stringify(chosenPerson)}

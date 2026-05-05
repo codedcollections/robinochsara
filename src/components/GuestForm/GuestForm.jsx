@@ -81,7 +81,9 @@ const GuestForm = ({
     const translatedData = translateRsvpData(data)
     console.log("Tack för ditt svar!")
     try {
+      //send answer to db
       await sendRsvps(translatedData)
+      //update guestlist to register answer as submitted
       await addGuestToDb(readPerson)
       setChosenPerson("")
       setShowPersonSelect(false)
@@ -107,13 +109,12 @@ const GuestForm = ({
           icon: false,
         })
       }, 4000)
-
       reset()
       setStep(1)
       onNext()
     } catch (error) {
       console.error("Error sending RSVP:", error)
-      toast.error("Fel vid skickandet. Försök igen senare.")
+      toast.error("Något gick fel. Försök igen senare.")
     }
   }
 
@@ -141,7 +142,6 @@ const GuestForm = ({
               {...register("name")}
               value={readPerson.name}
             />{" "}
-            {/* Hidden input for full name */}
           </div>
 
           <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>

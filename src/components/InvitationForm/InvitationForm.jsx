@@ -12,17 +12,6 @@ const InvitationForm = () => {
       <a href="https://docs.google.com/forms/d/10muhxMfkWUVQH-m_EiotIevPq2c1MHin4K6Y8SI82go/edit">
         OSA för Robin och Saras bröllop{" "}
       </a>
-
-      {/*       <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdOsShYA2MpR1bCT3TSU5SBVM8rnFPEbSgF6aM6z8nM9sgO3Q/viewform?embedded=true"
-        width="100%"
-        height="4600"
-        frameBorder="0"
-        marginHeight="0"
-        marginWidth="0"
-      >
-        Läser in …
-      </iframe> */}
     </div>
   )
 }

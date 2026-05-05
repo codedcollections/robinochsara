@@ -5,7 +5,6 @@ import { FaMapMarkerAlt } from "react-icons/fa"
 const Wedding = () => {
   return (
     <div id={s["wedding"]} className={`flex flex-down`}>
-      {/* <PlaceDetails imageObj={weddingPlace} position={[59.24, 17.9826]} /> */}
       <img id={s["weddingimg"]} src={weddingPlace} alt="Huddinge Kyrka" />
       <h2>Vigsel i Huddinge kyrka</h2>
       <div className={`flex-align-self-start`}>
