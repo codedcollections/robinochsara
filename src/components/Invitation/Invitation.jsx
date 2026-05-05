@@ -114,7 +114,8 @@ const Invitation = () => {
                 value={guest.name}
                 disabled={guest.submitted} // Disable if submitted
               >
-                {guest.name} {guest.submitted ? "(har svarat)" : ""}
+                {guest.name.split(" ")[0]}{" "}
+                {guest.submitted ? "(har svarat)" : ""}
               </option>
             ))}
           </select>
