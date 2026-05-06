@@ -1,11 +1,8 @@
 
 .formContainer{
     background-color:white;
-    min-height: 500px;
-    height:100%;
-    min-width:400px;
     width:100%;
-    max-width:100%;
+/*     max-width:640px; */
     padding:1rem;
     box-sizing: border-box;
     justify-content: start;
@@ -20,7 +17,7 @@
     margin-bottom:0.6rem;
 }
 .questionDiv{
-    width:100%;
+    min-width:100%;
 }
 
 .formContainer div button{
@@ -31,7 +28,7 @@
 }
 
 .formDivider{
-    width:100%;
+    min-width:100%;
     gap:1.5rem;
 }
 .lastOptions{
@@ -47,7 +44,7 @@
     font-size: 1rem;
     color: #45594B;
     transition: all 0.3s ease;
-    width: 100%;
+    min-width: 100%;
     box-sizing: border-box;
 }
 
@@ -76,8 +73,9 @@
     vertical-align: text-bottom;
 }
 
- @media only screen and (max-width: 700px) {
+/*  @media only screen and (max-width: 700px) {
     .formContainer{
         min-width:350px;
     }
  }
+ */

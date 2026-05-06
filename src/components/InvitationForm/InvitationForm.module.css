@@ -8,8 +8,9 @@
     margin-bottom: 15rem;
 } */
 
-#invitation{
+#invitationform{
     min-width: 80%;
+    max-width: 640px;
     background: #FFFBF8;
 background: linear-gradient(180deg,rgba(255, 251, 248, 1) 0%, rgba(255, 240, 240, 1) 100%);
 /*     border-top: 0.6rem solid #ffffff;
@@ -21,17 +22,17 @@ background: linear-gradient(180deg,rgba(255, 251, 248, 1) 0%, rgba(255, 240, 240
     padding-bottom:6rem;
     
 }
-#invitation a{
+#invitationform a{
     color:blue;
     margin-top:2rem;
 }
-#invitation h2{
+#invitationform h2{
      margin-bottom:0.6rem;
 
 }
 
-@media only screen and (max-width: 998px) {
-    #invitation{
+/* @media only screen and (max-width: 998px) {
+    #invitationform{
         max-width: 60%;
     }
-}
+} */

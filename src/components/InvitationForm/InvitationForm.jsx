@@ -1,7 +1,7 @@
 import s from "./InvitationForm.module.css"
 const InvitationForm = () => {
   return (
-    <div id={s["invitation"]} className="flex flex-down">
+    <div id={s["invitationform"]} className="flex flex-down">
       <h2>OSA</h2>
 
       <p>

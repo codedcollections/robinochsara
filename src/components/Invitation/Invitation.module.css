@@ -1,9 +1,9 @@
 #invitation{
-    
+    max-width:640px;
     margin-bottom:2rem;
     background-color: white;
     padding:1rem;
-    max-width:70%;
+
 }
 #invitation p{
     text-align: left;
@@ -21,6 +21,7 @@ button:disabled{
 }
 
 .rsvpDeadline{
+    font-size: 1rem;
     font-weight: bold;
     margin:0.6rem 0;
 }
@@ -37,7 +38,6 @@ button:disabled{
 
 #invitation select{
     padding:0.4rem;
-    width: 100%;
     font-size: 1rem;
 }
 .selectGuestBtn{
@@ -47,24 +47,9 @@ button:disabled{
 }
 
 
-@media (max-width: 768px) {
-    .selectGuestBtn {
-        flex-direction: column;
-    }
-    
-    .selectGuestBtn select {
-        min-height: 2.5rem;
-    }
-}
 
-
-@media (min-width: 769px) {
-    .selectGuestBtn {
-        flex-direction: row;
+/* @media (min-width: 460px) {
+    #invitation{
+        width:100%;
     }
-    
-    .selectGuestBtn select {
-        flex: 1;
-        min-height: 2.5rem;
-    }
-}
+} */

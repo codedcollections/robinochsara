@@ -1,7 +1,7 @@
 #speech{
+    max-width:640px;
     background-color: white;
     padding:1rem;
-    max-width:70%;
     margin-bottom:2rem;
 }
 #speech h2{
@@ -28,4 +28,10 @@
     color:#f02c59;
     font-size:1.1rem;
     font-weight: bold;
+}
+
+@media (min-width: 460px) {
+    #invitation{
+        min-width:100%;
+    }
 }

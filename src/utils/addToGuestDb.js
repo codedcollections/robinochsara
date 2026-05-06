@@ -1,5 +1,5 @@
 import { db } from "../firebase"
-import { ref, set } from "firebase/database"
+import { ref, set, update } from "firebase/database"
 
 export const addGuestToDb = async (guest) => {
   try {
@@ -12,5 +12,15 @@ export const addGuestToDb = async (guest) => {
     })
   } catch (e) {
     console.error("Error adding guest: ", e)
+  }
+}
+
+export const AllowSecondAnswer = async (id) => {
+  try {
+    await update(ref(db, `guestlist/${id}`), {
+      submitted: false,
+    })
+  } catch (e) {
+    console.error("Error updating guest: ", e)
   }
 }
