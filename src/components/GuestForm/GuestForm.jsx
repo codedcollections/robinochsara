@@ -180,7 +180,11 @@ const GuestForm = ({
             </div>
           ) : null}
 
-          <button type="button" onClick={handleNext}>
+          <button
+            type="button"
+            className={attendingValue === "notattending" ? "buttonstyle" : ""}
+            onClick={handleNext}
+          >
             {attendingValue === "notattending" ? "Skicka" : "Nästa"}
           </button>
         </div>
