@@ -10,6 +10,8 @@ import s from "./GuestForm.module.css"
 import { sendRsvps } from "../../api.js"
 import { addGuestToDb } from "../../utils/addToGuestDb"
 import { toast } from "react-toastify"
+import { IoMdCloseCircle } from "react-icons/io"
+import { FaCheckCircle } from "react-icons/fa"
 
 const translateRsvpData = (data) => ({
   ...data,
@@ -84,28 +86,26 @@ const GuestForm = ({
       await addGuestToDb(readPerson)
       setChosenPerson("")
       setShowPersonSelect(false)
-      toast.success("Tack för ditt svar!", {
-        autoClose: 3500,
-        style: {
-          fontFamily: "Alice",
-          background: "#45594B",
-          color: "#FFFBF8",
-        },
-        progressStyle: {
-          background: "#809c89",
-        },
-      })
-      setTimeout(() => {
-        toast("Välj en annan gäst för att skicka in ett nytt svar", {
-          autoClose: 5000,
+      toast.success(
+        "Tack för ditt svar! Välj en annan gäst för att skicka in ett nytt svar",
+        {
+          autoClose: false,
+          closeOnClick: true,
+          closeButton: ({ closeToast }) => (
+            <IoMdCloseCircle onClick={closeToast} color="#FFFBF8" size={50} />
+          ),
+          icon: <FaCheckCircle color="#FFFBF8" size={50} />,
+
           style: {
             fontFamily: "Alice",
-            background: "#FFFBF8",
-            color: "#45594B",
+            background: "#45594B",
+            color: "#FFFBF8",
           },
-          icon: false,
-        })
-      }, 4000)
+          progressStyle: {
+            background: "#809c89",
+          },
+        },
+      )
       reset()
       setStep(1)
       onNext()
