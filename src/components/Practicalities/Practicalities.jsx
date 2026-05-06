@@ -1,9 +1,9 @@
 import PracticalityCard from "../PracticalityCard/PracticalityCard"
 import s from "./Practicalities.module.css"
-import dressCode from "./../../images/dresscode.jpg"
-import dinner from "./../../images/dinner1.jpg"
-import children from "./../../images/children3.jpg"
-import transport from "./../../images/transport1.jpg"
+import dressCode from "./../../images/dresscode.webp"
+import dinner from "./../../images/dinner.webp"
+import children from "./../../images/children.webp"
+import transport from "./../../images/transport.webp"
 
 const Practicalities = () => {
   return (

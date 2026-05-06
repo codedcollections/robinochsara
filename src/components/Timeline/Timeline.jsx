@@ -1,5 +1,5 @@
 import s from "./Timeline.module.css"
-import timeline from "./../../images/timeline.png"
+import timeline from "./../../images/timeline.webp"
 const Timeline = () => {
   return (
     <div id={s["timeline"]}>

@@ -1,5 +1,5 @@
 import s from "./Dinner.module.css"
-import dinnerPlace from "./../../images/SundbyMiddag.jpg"
+import dinnerPlace from "./../../images/SundbyMiddag.webp"
 import { FaMapMarkerAlt } from "react-icons/fa"
 const Dinner = () => {
   return (

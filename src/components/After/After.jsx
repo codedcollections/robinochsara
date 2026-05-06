@@ -1,5 +1,5 @@
 import s from "./After.module.css"
-import after from "./../../images/Efterfest.jpg"
+import after from "./../../images/Efterfest.webp"
 import { FaMapMarkerAlt } from "react-icons/fa"
 
 const After = () => {
