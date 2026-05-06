@@ -1,5 +1,5 @@
 import s from "./Wedding.module.css"
-import weddingPlace from "./../../images/HuddingeVigsel.jpg"
+import weddingPlace from "./../../images/HuddingeVigsel.webp"
 import { FaMapMarkerAlt } from "react-icons/fa"
 
 const Wedding = () => {

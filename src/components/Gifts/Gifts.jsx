@@ -1,4 +1,4 @@
-import island from "./../../images/island.jpg"
+import island from "./../../images/island.webp"
 import s from "./Gifts.module.css"
 const Gifts = () => {
   return (
