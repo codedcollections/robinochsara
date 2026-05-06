@@ -7,16 +7,14 @@ import s from "./SpeechForm.module.css"
 
 const speechSchema = z.object({
   presentation: z.string().optional(),
-  lat: z.string().optional(),
   forberedelser: z.array(z.string()).optional().default([]),
   ovrigtForberedelser: z.string().optional(),
   namn: z.string().min(1, "Namn krävs"),
   kontakt: z.string().min(1, "Kontaktuppgift krävs"),
-  andraDeltagare: z.string().optional(),
-  typ: z.string().min(1, "Välj minst en"),
+  typ: z.string().min(1, "Välj ett alternativ"),
   ovrigtTyp: z.string().optional(),
-  riktning: z.string().min(1, "Välj mottagare"),
-  tid: z.string().min(1, "Välj tidsåtgång"),
+  riktning: z.string().min(1, "Välj ett alternativ"),
+  tid: z.string().min(1, "Uppskattad tidsåtgång krävs"),
   beskrivning: z.string().min(1, "Beskrivning krävs"),
   ovrigtInfo: z.string().optional(),
   website: z.string().optional(),
@@ -39,12 +37,10 @@ const SpeechForm = ({ showSpeech }) => {
     resolver: zodResolver(speechSchema),
     defaultValues: {
       presentation: "",
-      lat: "",
       forberedelser: [],
       ovrigtForberedelser: "",
       namn: "",
       kontakt: "",
-      andraDeltagare: "",
       typ: "",
       ovrigtTyp: "",
       riktning: "",
@@ -85,10 +81,9 @@ const SpeechForm = ({ showSpeech }) => {
 
   const handleNext = async () => {
     const stepFields = {
-      1: ["presentation", "lat", "forberedelser", "ovrigtForberedelser"],
+      1: ["typ", "riktning", "beskrivning", "tid"],
       2: ["namn", "kontakt"],
-      3: ["typ", "riktning"],
-      4: ["tid", "beskrivning"],
+      3: ["forberedelser"],
     }
 
     const isValid = await trigger(stepFields[step] ?? [])
@@ -135,17 +130,113 @@ const SpeechForm = ({ showSpeech }) => {
         {step === 1 && (
           <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
             <div>
-              <label className={s.clearLabel} htmlFor="presentation">
-                Hur vill du/ni presenteras?
+              {" "}
+              <fieldset className={`${s.questionDiv}`}>
+                <legend className={s.clearLabel}>Jag/vi vill... *</legend>
+
+                {[
+                  "Hålla ett tal",
+                  "Spela en låt",
+                  "Göra ett spex",
+                  "Hålla i en lek",
+                ].map((option) => (
+                  <div key={option}>
+                    <input
+                      id={`typ-${option}`}
+                      type="radio"
+                      value={option}
+                      {...register("typ")}
+                    />
+                    <label htmlFor={`typ-${option}`}>{option}</label>
+                  </div>
+                ))}
+
+                <div>
+                  <input
+                    id="typ-ovrigt"
+                    type="radio"
+                    value="Övrigt"
+                    {...register("typ")}
+                  />
+                  <label htmlFor="typ-ovrigt">Övrigt: </label>
+                  <input
+                    type="text"
+                    {...register("ovrigtTyp")}
+                    placeholder="Ditt svar"
+                  />
+                </div>
+                {errors.typ && (
+                  <span className={s.error}>{errors.typ.message}</span>
+                )}
+              </fieldset>
+            </div>
+
+            <div>
+              <fieldset>
+                <legend className={s.clearLabel}>
+                  Vem riktar du dig främst till? *
+                </legend>
+
+                {["Brudparet", "Bruden", "Brudgummen", "Alla"].map((option) => (
+                  <div key={option}>
+                    <input
+                      id={`riktning-${option}`}
+                      type="radio"
+                      value={option}
+                      {...register("riktning")}
+                    />
+                    <label htmlFor={`riktning-${option}`}>{option}</label>
+                  </div>
+                ))}
+                {errors.riktning && (
+                  <span className={s.error}>{errors.riktning.message}</span>
+                )}
+              </fieldset>
+            </div>
+
+            <div>
+              <label className={s.clearLabel} htmlFor="beskrivning">
+                Beskriv ditt tal eller spex lite kort *
               </label>
-              <input
-                id="presentation"
-                type="text"
-                {...register("presentation")}
+              <textarea
+                className={s.ovrigt}
+                id="beskrivning"
+                {...register("beskrivning")}
                 placeholder="Ditt svar"
               />
+              {errors.beskrivning && (
+                <span className={s.error}>{errors.beskrivning.message}</span>
+              )}
             </div>
+
             <div>
+              <fieldset>
+                <legend className={s.clearLabel}>
+                  Uppskattad tidsåtgång? *
+                </legend>
+
+                <p className={s.textInForm}>
+                  (Öva gärna talet hemma och fyll i ungefärlig tid därefter)
+                </p>
+
+                {["1-5 min", "5-10 min", "10-15 min"].map((option) => (
+                  <div key={option}>
+                    <input
+                      id={`tid-${option}`}
+                      type="radio"
+                      value={option}
+                      {...register("tid")}
+                    />
+                    <label htmlFor={`tid-${option}`}>{option}</label>
+                  </div>
+                ))}
+                {errors.tid && (
+                  <span className={s.error}>{errors.tid.message}</span>
+                )}
+              </fieldset>
+            </div>
+
+            {/*             <div>
               <label className={s.clearLabel} htmlFor="lat">
                 Finns det en låt du/ni vill ska spelas?
               </label>
@@ -158,46 +249,8 @@ const SpeechForm = ({ showSpeech }) => {
                 {...register("lat")}
                 placeholder="Ditt svar"
               />
-            </div>
-            <div>
-              <fieldset>
-                <legend className={s.clearLabel}>
-                  Behövs några förberedelser?
-                </legend>
+            </div> */}
 
-                {["Släckta lampor", "Musik", "Bildspel"].map((option) => (
-                  <div key={option}>
-                    <input
-                      id={`forb-${option}`}
-                      type="checkbox"
-                      value={option}
-                      {...register("forberedelser")}
-                    />
-                    <label htmlFor={`forb-${option}`}>{option}</label>
-                  </div>
-                ))}
-
-                <p>
-                  Bildspel, det finns tillgång till projektor men kom ihåg att
-                  det inte alltid syns bra i dagsljus
-                </p>
-
-                <div>
-                  <input
-                    id="forb-ovrigt"
-                    type="checkbox"
-                    value="Övrigt"
-                    {...register("forberedelser")}
-                  />
-                  <label htmlFor="forb-ovrigt">Övrigt: </label>
-                  <input
-                    type="text"
-                    {...register("ovrigtForberedelser")}
-                    placeholder="Ditt svar"
-                  />
-                </div>
-              </fieldset>
-            </div>
             <div className={`flex ${s.buttonGroup}`}>
               <button type="button" onClick={handleNext}>
                 Nästa
@@ -224,6 +277,18 @@ const SpeechForm = ({ showSpeech }) => {
             </div>
 
             <div>
+              <label className={s.clearLabel} htmlFor="presentation">
+                Hur vill du/ni presenteras?
+              </label>
+              <input
+                id="presentation"
+                type="text"
+                {...register("presentation")}
+                placeholder="Ditt svar"
+              />
+            </div>
+
+            <div>
               <label className={s.clearLabel} htmlFor="kontakt">
                 E-post eller telefonnummer *
               </label>
@@ -237,7 +302,7 @@ const SpeechForm = ({ showSpeech }) => {
                 <span className={s.error}>{errors.kontakt.message}</span>
               )}
             </div>
-            <div>
+            {/*             <div>
               <label className={s.clearLabel} htmlFor="andraDeltagare">
                 Namn på andra deltagare om ni är flera
               </label>
@@ -247,7 +312,7 @@ const SpeechForm = ({ showSpeech }) => {
                 {...register("andraDeltagare")}
                 placeholder="Ditt svar"
               />
-            </div>
+            </div> */}
             <div className={`flex ${s.buttonGroup}`}>
               <button type="button" onClick={handleBack}>
                 Bakåt
@@ -261,110 +326,44 @@ const SpeechForm = ({ showSpeech }) => {
 
         {step === 3 && (
           <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
-            <fieldset className={`${s.questionDiv}`}>
-              <legend className={s.clearLabel}>Jag/vi vill... *</legend>
-
-              {[
-                "Hålla ett tal",
-                "Spela en låt",
-                "Göra ett spex",
-                "Hålla i en lek",
-              ].map((option) => (
-                <div key={option}>
-                  <input
-                    id={`typ-${option}`}
-                    type="radio"
-                    value={option}
-                    {...register("typ")}
-                  />
-                  <label htmlFor={`typ-${option}`}>{option}</label>
-                </div>
-              ))}
-
-              <div>
-                <input
-                  id="typ-ovrigt"
-                  type="radio"
-                  value="Övrigt"
-                  {...register("typ")}
-                />
-                <label htmlFor="typ-ovrigt">Övrigt: </label>
-                <input
-                  type="text"
-                  {...register("ovrigtTyp")}
-                  placeholder="Ditt svar"
-                />
-              </div>
-              {errors.typ && (
-                <span className={s.error}>{errors.typ.message}</span>
-              )}
-            </fieldset>
-
-            <fieldset>
-              <legend className={s.clearLabel}>
-                Vem riktar du dig främst till? *
-              </legend>
-
-              {["Brudparet", "Bruden", "Brudgummen", "Alla"].map((option) => (
-                <div key={option}>
-                  <input
-                    id={`riktning-${option}`}
-                    type="radio"
-                    value={option}
-                    {...register("riktning")}
-                  />
-                  <label htmlFor={`riktning-${option}`}>{option}</label>
-                </div>
-              ))}
-              {errors.riktning && (
-                <span className={s.error}>{errors.riktning.message}</span>
-              )}
-            </fieldset>
-
-            <div className={`flex ${s.buttonGroup}`}>
-              <button type="button" onClick={handleBack}>
-                Bakåt
-              </button>
-              <button type="button" onClick={handleNext}>
-                Nästa
-              </button>
-            </div>
-          </div>
-        )}
-
-        {step === 4 && (
-          <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
-            <fieldset>
-              <legend className={s.clearLabel}>Uppskattad tidsåtgång? *</legend>
-
-              {["1-5 min", "5-10 min", "10-15 min"].map((option) => (
-                <div key={option}>
-                  <input
-                    id={`tid-${option}`}
-                    type="radio"
-                    value={option}
-                    {...register("tid")}
-                  />
-                  <label htmlFor={`tid-${option}`}>{option}</label>
-                </div>
-              ))}
-              {errors.tid && (
-                <span className={s.error}>{errors.tid.message}</span>
-              )}
-            </fieldset>
             <div>
-              <label className={s.clearLabel} htmlFor="beskrivning">
-                Beskriv ditt tal eller spex lite kort *
-              </label>
-              <textarea
-                className={s.ovrigt}
-                id="beskrivning"
-                {...register("beskrivning")}
-                placeholder="Ditt svar"
-              />
-              {errors.beskrivning && (
-                <span className={s.error}>{errors.beskrivning.message}</span>
-              )}
+              <fieldset>
+                <legend className={s.clearLabel}>
+                  Behövs några förberedelser?
+                </legend>
+
+                {["Släckta lampor", "Musik", "Bildspel"].map((option) => (
+                  <div key={option}>
+                    <input
+                      id={`forb-${option}`}
+                      type="checkbox"
+                      value={option}
+                      {...register("forberedelser")}
+                    />
+                    <label htmlFor={`forb-${option}`}>{option}</label>
+                  </div>
+                ))}
+
+                <p className={s.textInForm}>
+                  (Bildspel, det finns tillgång till projektor men kom ihåg att
+                  det inte alltid syns bra i dagsljus)
+                </p>
+
+                <div>
+                  <input
+                    id="forb-ovrigt"
+                    type="checkbox"
+                    value="Övrigt"
+                    {...register("forberedelser")}
+                  />
+                  <label htmlFor="forb-ovrigt">Övrigt: </label>
+                  <input
+                    type="text"
+                    {...register("ovrigtForberedelser")}
+                    placeholder="Ditt svar"
+                  />
+                </div>
+              </fieldset>
             </div>
 
             <div>
@@ -387,6 +386,17 @@ const SpeechForm = ({ showSpeech }) => {
             </div>
           </div>
         )}
+
+        {/*         {step === 4 && (
+          <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
+            <div className={`flex ${s.buttonGroup}`}>
+              <button type="button" onClick={handleBack}>
+                Bakåt
+              </button>
+
+            </div>
+          </div>
+        )} */}
       </form>
     </div>
   )
