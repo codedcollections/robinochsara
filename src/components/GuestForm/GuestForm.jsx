@@ -57,6 +57,8 @@ const GuestForm = ({
       // If user is not attending, skip the rest and submit
       if (step === 1 && attendingValue === "notattending") {
         handleSubmit(onSubmit)()
+      } else if (step === 1 && attendingValue === "weddingonly") {
+        handleSubmit(onSubmit)()
       } else {
         setStep((prev) => prev + 1)
       }
@@ -182,10 +184,18 @@ const GuestForm = ({
 
           <button
             type="button"
-            className={attendingValue === "notattending" ? "buttonstyle" : ""}
+            className={
+              attendingValue === "notattending" ||
+              attendingValue === "weddingonly"
+                ? "buttonstyle"
+                : ""
+            }
             onClick={handleNext}
           >
-            {attendingValue === "notattending" ? "Skicka" : "Nästa"}
+            {attendingValue === "notattending" ||
+            attendingValue === "weddingonly"
+              ? "Skicka"
+              : "Nästa"}
           </button>
         </div>
       )}
