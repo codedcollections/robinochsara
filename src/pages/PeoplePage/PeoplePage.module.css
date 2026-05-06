@@ -1,0 +1,21 @@
+#peoplepage{
+    margin:1rem 0 0 1rem;
+}
+#peoplepage h2{
+    margin:1rem 0;
+}
+.peopletablediv table {
+  border-collapse: collapse;
+  max-width: 100%;
+
+}
+
+.peopletablediv th, .peopletablediv td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.peopletablediv th {
+  background-color: #f5f5f5;
+}

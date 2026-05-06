@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation/Navigation"
 import HashLinkScroller from "./components/HashLinkScroller/HashLinkScroller"
 import RequestPage from "./pages/RequestPage/RequestPage"
 import AnswerPage from "./pages/AnswerPage/AnswerPage"
+import PeoplePage from "./pages/PeoplePage/PeoplePage"
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           <Route
             path={`/${import.meta.env.VITE_ANSWER}`}
             element={<AnswerPage />}
+          />
+          <Route
+            path={`/${import.meta.env.VITE_PEOPLE}`}
+            element={<PeoplePage />}
           />
         </Routes>
       </BrowserRouter>

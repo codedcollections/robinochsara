@@ -3,11 +3,14 @@ import { onRsvps } from "../../api"
 import { useState, useRef, useEffect } from "react"
 import { FaCopy } from "react-icons/fa"
 import { FaCheck } from "react-icons/fa6"
+import { BsFillPeopleFill } from "react-icons/bs"
+import { useNavigate } from "react-router-dom"
 
 const AnswerPage = () => {
   const [rsvps, setRsvps] = useState([])
-  const [copied, setCopied] = useState(false) // ✅ moved here
-  const timerRef = useRef(null) // ✅ moved here
+  const [copied, setCopied] = useState(false)
+  const timerRef = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const unsubscribe = onRsvps("1234", setRsvps)
@@ -56,13 +59,14 @@ const AnswerPage = () => {
   }
   const reorderedData = rsvps.map((item) => {
     return {
-      name: item.name,
-      attending: item.attending,
+      namn: item.name,
+      "angivet efternamn": item.lastname,
+      deltagande: item.attending,
       email: item.email,
-      createdAt: item.createdAt,
-      foodPreference: item.foodPreference || [],
-      otherFood: item.otherFood || "",
-      ride: item.ride || [],
+      inskickat: item.createdAt,
+      matpreferenser: item.foodPreference || [],
+      "övrigt mat": item.otherFood || "",
+      "vill åka": item.ride || [],
     }
   })
 
@@ -79,6 +83,9 @@ const AnswerPage = () => {
         className={copied ? s.copiedBtn : s.copyBtn}
       >
         {copied ? <FaCheck className={s.check} /> : <FaCopy />}
+      </button>
+      <button onClick={() => navigate(`/${import.meta.env.VITE_PEOPLE}`)}>
+        <BsFillPeopleFill />
       </button>
       <div id={s["answers"]} className={`flex flex-down`}>
         {reorderedData.length > 0 ? (

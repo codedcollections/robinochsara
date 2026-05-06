@@ -19,6 +19,7 @@ export const guestSchema = z
       .string()
       .min(1, "För- och efternamn krävs")
       .regex(/^[a-zA-Zà-ÿÀ-ß ]+$/, "Ange för- och efternamn"),
+    lastname: z.string().min(1, "Efternamn krävs"),
     email: z
       .string()
       .optional()

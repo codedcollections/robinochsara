@@ -43,6 +43,7 @@ const GuestForm = ({
       foodPreference: [],
       ride: [],
       name: readPerson.name, // Register the full name
+      lastname: "",
     },
   })
 
@@ -50,7 +51,8 @@ const GuestForm = ({
 
   // Logic to handle "Next" button
   const handleNext = async () => {
-    const fieldsToValidate = step === 1 ? ["name", "email", "attending"] : []
+    const fieldsToValidate =
+      step === 1 ? ["name", "lastname", "email", "attending"] : []
     const isValid = await trigger(fieldsToValidate)
 
     if (isValid) {
@@ -83,6 +85,7 @@ const GuestForm = ({
     const translatedData = translateRsvpData(data)
     try {
       //send answer to db
+      console.log(JSON.stringify(translatedData))
       await sendRsvps(translatedData)
       //update guestlist to register answer as submitted
       await addGuestToDb(readPerson)
@@ -141,6 +144,22 @@ const GuestForm = ({
               {...register("name")}
               value={readPerson.name}
             />{" "}
+          </div>
+
+          <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
+            <label className={s.clearLabel} htmlFor="lastname">
+              Efternamn *
+            </label>
+
+            <input
+              id="lastname"
+              {...register("lastname")}
+              placeholder="Ditt efternamn..."
+            />
+
+            {errors.lastname && (
+              <span className={s.error}>{errors.lastname.message}</span>
+            )}
           </div>
 
           <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
