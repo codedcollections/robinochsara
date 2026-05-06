@@ -10,6 +10,7 @@ import s from "./GuestForm.module.css"
 import { sendRsvps } from "../../api.js"
 import { addGuestToDb } from "../../utils/addToGuestDb"
 import { toast } from "react-toastify"
+import { FaHeart } from "react-icons/fa6"
 
 const translateRsvpData = (data) => ({
   ...data,
@@ -82,9 +83,9 @@ const GuestForm = ({
       await sendRsvps(translatedData)
       //update guestlist to register answer as submitted
       await addGuestToDb(readPerson)
-      setChosenPerson("")
-      setShowPersonSelect(false)
-      toast.success("Tack för ditt svar!", {
+      /* setChosenPerson("")
+      setShowPersonSelect(false) */
+      /*       toast.success("Tack för ditt svar!", {
         autoClose: 3500,
         style: {
           fontFamily: "Alice",
@@ -105,10 +106,10 @@ const GuestForm = ({
           },
           icon: false,
         })
-      }, 4000)
+      }, 4000) */
       reset()
-      setStep(1)
-      onNext()
+      setStep(4)
+      /*       onNext() */
     } catch (error) {
       console.error("Error sending RSVP:", error)
       toast.error("Något gick fel. Försök igen senare.")
@@ -180,7 +181,11 @@ const GuestForm = ({
             </div>
           ) : null}
 
-          <button type="button" onClick={handleNext}>
+          <button
+            type="button"
+            className={attendingValue === "notattending" ? "buttonstyle" : ""}
+            onClick={handleNext}
+          >
             {attendingValue === "notattending" ? "Skicka" : "Nästa"}
           </button>
         </div>
@@ -248,6 +253,32 @@ const GuestForm = ({
             </button>
             <button type="submit" className={`buttonstyle`}>
               Skicka svar
+            </button>
+          </div>
+        </div>
+      )}
+      {/* STEP 4: Thank You */}
+      {step === 4 && (
+        <div
+          className={`flex flex-down flex-align-start ${s.formDivider} ${s.lastOptions}`}
+        >
+          <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
+            <label className={s.clearLabel}>
+              Tack för ditt svar <FaHeart className={s.thankyou} />
+            </label>
+            <p>Välj en ny person ovan för att OSA för fler!</p>
+          </div>
+          <div className={`flex ${s.buttonGroup}`}>
+            <button
+              type="button"
+              className={`buttonstyle`}
+              onClick={() => {
+                setChosenPerson("")
+                setShowPersonSelect(false)
+                onNext()
+              }}
+            >
+              Jag förstår!
             </button>
           </div>
         </div>
