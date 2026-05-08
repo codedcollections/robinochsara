@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { IoCaretBackOutline } from "react-icons/io5"
 import { GrEdit } from "react-icons/gr"
 import { MdDelete } from "react-icons/md"
+import { IoReload } from "react-icons/io5"
 import AddGuestForm from "../../components/AddGuestForm/AddGuestForm"
 import UpdateGuestForm from "../../components/UpdateGuestForm/UpdateGuestForm.jsx"
 
@@ -48,49 +49,56 @@ const PeoplePage = () => {
           onClose={() => setGuestToUpdate(null)}
         />
       )}
+      <div className={"s.introToBtns"}>
+        <p>
+          <GrEdit size={10} className={`${s.explainBtns} ${s.updateBtn}`} />{" "}
+          uppdatera information
+        </p>
+        <p>
+          <MdDelete
+            size={10}
+            className={`${s.explainBtns} ${s.deleteGuestBtn}`}
+          />{" "}
+          radera gäst
+        </p>
+        <p>
+          {" "}
+          <IoReload
+            size={10}
+            className={`${s.explainBtns} ${s.allowBtn}`}
+          />{" "}
+          får skicka OSA igen
+        </p>
+      </div>
 
       <form action=""></form>
       <div className={s.peopletablediv}>
         {sortedGuests.length > 0 ? (
-          <div className={s.guestList}>
+          <div className={`flex flex-down`}>
             {sortedGuests.map((guest) => (
-              <div key={guest.id} className={s.guestCard}>
-                <p>
-                  <strong>Label:</strong> {guest.label}
-                </p>
-                <p>
-                  <strong>Namn:</strong> {guest.name}
-                </p>
-
-                <p>
-                  <strong>Grupp:</strong> {guest.group ? "Ja" : "Nej"}
-                </p>
-                <p>
-                  <strong>Skickat svar:</strong>{" "}
-                  {guest.submitted ? "Ja" : "Nej"}
-                </p>
-                <p>
-                  <strong>ID:</strong> {guest.id}
-                </p>
+              <div key={guest.id} className={s.guestlistGrid}>
+                <div className={`flex ${s.guestCard}`}>
+                  <p>{guest.name}</p>
+                </div>
                 <div className={`flex ${s.cardButtons}`}>
                   <button
                     onClick={() => setGuestToUpdate(JSON.stringify(guest))}
                     className={`${s.updateBtn}`}
                   >
-                    <GrEdit size={30} />
+                    <GrEdit size={10} />
                   </button>
                   <button
                     onClick={() => handleDelete(guest)}
                     className={`${s.deleteGuestBtn}`}
                   >
-                    <MdDelete size={30} />
+                    <MdDelete size={10} />
                   </button>
                   {guest.submitted && (
                     <button
                       onClick={() => AllowSecondAnswer(guest.id)}
                       className={`${s.allowBtn}`}
                     >
-                      Tillåt nytt svar
+                      <IoReload size={10} />
                     </button>
                   )}
                 </div>
