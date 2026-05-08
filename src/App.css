@@ -125,6 +125,13 @@ a:hover{
   background-color: #45594B;
   color:#FFFBF8;
 }
+.deletebuttonstyle{
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+  border:none;
+  background-color: #763831;
+  color:#FFFBF8;
+}
 .mapicon{
   font-size: 1.2rem;
   vertical-align:text-bottom;
@@ -133,4 +140,12 @@ a:hover{
 
 .multiline {
   white-space: pre-line;
+}
+.wrapper{
+    max-width: 960px;
+    padding:0 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }

@@ -1,0 +1,31 @@
+
+#updateGuestForm{
+    margin:1rem 0;
+    padding:1rem;
+    background-color: white;
+}
+/* .updateGuestForm{
+  background-color: white;
+      padding:1rem;
+} */
+
+.updateGuestForm table {
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.updateGuestForm th,
+.updateGuestForm td {
+  padding: 0.15rem 0.4rem; 
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+    .updateGuestForm th,
+    .updateGuestForm td {
+  text-align: center;
+
+}
+}

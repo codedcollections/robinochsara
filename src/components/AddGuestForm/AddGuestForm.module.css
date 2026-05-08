@@ -1,0 +1,44 @@
+#addGuestForm{
+  align-items: end;
+  padding:1rem;
+  background-color: rgb(255, 255, 255);
+  margin:2rem 0;
+}
+
+.addGuestForm {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+
+.addGuestForm input[type="text"] {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.addGuestForm input[type="checkbox"] {
+  transform: scale(1.1);
+  margin-top: 0.3rem;
+}
+
+.addGuestForm button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .addGuestForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addGuestForm div {
+    width: 100%;
+  }
+
+  .addGuestForm button {
+    width: 100%;
+  }
+}

@@ -8,7 +8,7 @@ import {
 } from "../../models/guestSchema"
 import s from "./GuestForm.module.css"
 import { sendRsvps } from "../../api.js"
-import { addGuestToDb } from "../../utils/addToGuestDb"
+import { updateGuestDb } from "../../utils/firebaseFunctions.js"
 import { toast } from "react-toastify"
 import { IoMdCloseCircle } from "react-icons/io"
 import { FaCheckCircle } from "react-icons/fa"
@@ -82,13 +82,13 @@ const GuestForm = ({
   }, [person])
 
   const onSubmit = async (data) => {
-    const translatedData = translateRsvpData(data)
+    const translatedData = {
+      ...translateRsvpData(data),
+      id: data.id,
+    }
     try {
-      //send answer to db
-      console.log(JSON.stringify(translatedData))
       await sendRsvps(translatedData)
-      //update guestlist to register answer as submitted
-      await addGuestToDb(readPerson)
+      await updateGuestDb(data.id, { submitted: true })
       setChosenPerson("")
       setShowPersonSelect(false)
       toast.success(
@@ -133,6 +133,7 @@ const GuestForm = ({
       {/* STEP 1: Basic Info */}
       {step === 1 && (
         <div className={`flex flex-down flex-align-start ${s.formDivider}`}>
+          <input type="hidden" {...register("id")} value={readPerson.id} />
           <div className={`flex flex-down flex-align-start ${s.questionDiv}`}>
             <label className={s.clearLabel} htmlFor="name">
               Namn

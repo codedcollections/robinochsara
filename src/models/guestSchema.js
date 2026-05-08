@@ -15,6 +15,7 @@ export const rideLabels = {
 
 export const guestSchema = z
   .object({
+    id: z.string().min(1, "Guest ID saknas"),
     name: z
       .string()
       .min(1, "För- och efternamn krävs")

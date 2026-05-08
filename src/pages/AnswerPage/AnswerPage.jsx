@@ -1,20 +1,27 @@
 import s from "./AnswerPage.module.css"
-import { onRsvps } from "../../api"
+import { onRsvps, onGuestlist } from "../../api"
 import { useState, useRef, useEffect } from "react"
 import { FaCopy } from "react-icons/fa"
 import { FaCheck } from "react-icons/fa6"
 import { BsFillPeopleFill } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
+import { getGuestById } from "../../utils/firebaseFunctions"
 
 const AnswerPage = () => {
   const [rsvps, setRsvps] = useState([])
+  const [guestlist, setGuestlist] = useState([])
   const [copied, setCopied] = useState(false)
   const timerRef = useRef(null)
   const navigate = useNavigate()
 
   useEffect(() => {
-    const unsubscribe = onRsvps("1234", setRsvps)
-    return () => unsubscribe()
+    const unsubscribeRsvps = onRsvps("1234", setRsvps)
+    const unsubscribeGuests = onGuestlist("1234", setGuestlist)
+
+    return () => {
+      unsubscribeRsvps()
+      unsubscribeGuests()
+    }
   }, [])
 
   const formatValue = (value) => {
@@ -57,16 +64,19 @@ const AnswerPage = () => {
       console.error("Failed to copy:", err)
     }
   }
-  const reorderedData = rsvps.map((item) => {
+  const reorderedData = rsvps.map((rsvp) => {
+    const guest = guestlist.find(
+      (g) => String(g.id).trim() === String(rsvp.id).trim(),
+    )
     return {
-      namn: item.name,
-      "angivet efternamn": item.lastname,
-      deltagande: item.attending,
-      email: item.email,
-      inskickat: item.createdAt,
-      matpreferenser: item.foodPreference || [],
-      "övrigt mat": item.otherFood || "",
-      "vill åka": item.ride || [],
+      namn: guest?.name || rsvp.name || "Okänt namn",
+      "angivet efternamn": guest?.lastname || rsvp.lastname || "-",
+      deltagande: rsvp.attending,
+      email: rsvp.email,
+      inskickat: rsvp.createdAt,
+      matpreferenser: rsvp.foodPreference || [],
+      "övrigt mat": rsvp.otherFood || "",
+      "vill åka": rsvp.ride || [],
     }
   })
 
