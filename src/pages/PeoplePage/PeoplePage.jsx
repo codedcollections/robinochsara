@@ -78,6 +78,9 @@ const PeoplePage = () => {
             {sortedGuests.map((guest) => (
               <div key={guest.id} className={s.guestlistGrid}>
                 <div className={`flex ${s.guestCard}`}>
+                  <p>{guest.label}</p>
+                </div>
+                <div className={`flex ${s.guestCard}`}>
                   <p>{guest.name}</p>
                 </div>
                 <div className={`flex ${s.cardButtons}`}>
