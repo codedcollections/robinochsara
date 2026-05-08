@@ -219,7 +219,7 @@ const SpeechForm = ({ showSpeech }) => {
                   (Öva gärna talet hemma och fyll i ungefärlig tid därefter)
                 </p>
 
-                {["1-5 min", "5-10 min", "10-15 min"].map((option) => (
+                {["1-5 min", "5-10 min", "10+ min"].map((option) => (
                   <div key={option}>
                     <input
                       id={`tid-${option}`}
@@ -302,17 +302,7 @@ const SpeechForm = ({ showSpeech }) => {
                 <span className={s.error}>{errors.kontakt.message}</span>
               )}
             </div>
-            {/*             <div>
-              <label className={s.clearLabel} htmlFor="andraDeltagare">
-                Namn på andra deltagare om ni är flera
-              </label>
-              <input
-                id="andraDeltagare"
-                type="text"
-                {...register("andraDeltagare")}
-                placeholder="Ditt svar"
-              />
-            </div> */}
+
             <div className={`flex ${s.buttonGroup}`}>
               <button type="button" onClick={handleBack}>
                 Bakåt

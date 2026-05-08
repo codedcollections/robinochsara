@@ -1,21 +1,122 @@
-#peoplepage{
-    margin:2rem 0 2rem  1rem;
+
+#peoplepage {
+  margin: 2rem 2rem 2rem 2rem;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
-#peoplepage h2{
-    margin:2rem 0;
+
+
+#peoplepage h2 {
+  margin: 2rem 0 1rem 0;
+  font-size: 2rem;
+  color: #222;
 }
+
+.peopletablediv {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+
 .peopletablediv table {
+  width: 100%;
   border-collapse: collapse;
-  max-width: 100%;
-
+  min-width: 700px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.peopletablediv th, .peopletablediv td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
 
 .peopletablediv th {
-  background-color: #f5f5f5;
+  background-color: #f0f0f0;
+  font-weight: 600;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+
+.peopletablediv td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+
+.peopletablediv tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+
+.peopletablediv button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+.updateBtn,.allowBtn{
+background-color: #1976d2;
+}
+
+.peopletablediv button:hover {
+  background-color: #125ea0;
+}
+
+
+.deleteGuestBtn {
+  background-color: #d32f2f;
+}
+
+.deleteGuestBtn:hover {
+  background-color: #a82323;
+}
+
+.guestCard{
+  background-color: white;
+  margin:0.6rem;
+  padding:0.6rem;
+}
+.cardButtons{
+  gap:0.2rem;
+}
+
+
+@media (max-width: 768px) {
+  .peopletablediv {
+    overflow: visible;
+  }
+
+  .guestList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .guestCard {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .cardButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .guestCard p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+  }
+
+  .guestCard p strong {
+    display: inline-block;
+    width: 100px;
+  }
 }

@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom"
 import { IoCaretBackOutline } from "react-icons/io5"
 import { GrEdit } from "react-icons/gr"
+import { MdDelete } from "react-icons/md"
 import AddGuestForm from "../../components/AddGuestForm/AddGuestForm"
 import UpdateGuestForm from "../../components/UpdateGuestForm/UpdateGuestForm.jsx"
 
@@ -51,63 +52,51 @@ const PeoplePage = () => {
       <form action=""></form>
       <div className={s.peopletablediv}>
         {sortedGuests.length > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th></th>
-                <th>Namn</th>
-                <th>Label</th>
-                <th>Grupp</th>
-                <th>Skickat svar</th>
-                <th>Tillåt nytt svar</th>
-                <th>Radera</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedGuests.map((guest) => (
-                <tr key={guest.id}>
-                  <td>{guest.id}</td>
-                  <td>
+          <div className={s.guestList}>
+            {sortedGuests.map((guest) => (
+              <div key={guest.id} className={s.guestCard}>
+                <p>
+                  <strong>Label:</strong> {guest.label}
+                </p>
+                <p>
+                  <strong>Namn:</strong> {guest.name}
+                </p>
+
+                <p>
+                  <strong>Grupp:</strong> {guest.group ? "Ja" : "Nej"}
+                </p>
+                <p>
+                  <strong>Skickat svar:</strong>{" "}
+                  {guest.submitted ? "Ja" : "Nej"}
+                </p>
+                <p>
+                  <strong>ID:</strong> {guest.id}
+                </p>
+                <div className={`flex ${s.cardButtons}`}>
+                  <button
+                    onClick={() => setGuestToUpdate(JSON.stringify(guest))}
+                    className={`${s.updateBtn}`}
+                  >
+                    <GrEdit size={30} />
+                  </button>
+                  <button
+                    onClick={() => handleDelete(guest)}
+                    className={`${s.deleteGuestBtn}`}
+                  >
+                    <MdDelete size={30} />
+                  </button>
+                  {guest.submitted && (
                     <button
-                      onClick={() => setGuestToUpdate(JSON.stringify(guest))}
+                      onClick={() => AllowSecondAnswer(guest.id)}
+                      className={`${s.allowBtn}`}
                     >
-                      <GrEdit />
+                      Tillåt nytt svar
                     </button>
-                  </td>
-                  <td>{guest.name}</td>
-                  <td>{guest.label}</td>
-                  <td>{guest.group ? "Ja" : "Nej"}</td>
-                  <td>{guest.submitted ? "Ja" : "Nej"}</td>
-                  <td>
-                    {guest.submitted && (
-                      <button
-                        onClick={() => {
-                          if (
-                            window.confirm(
-                              `Bekräfta nytt svar för ${guest.name}?`,
-                            )
-                          ) {
-                            AllowSecondAnswer(guest.id)
-                          }
-                        }}
-                      >
-                        Tillåt nytt svar
-                      </button>
-                    )}
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => handleDelete(guest)}
-                      className="deletebuttonstyle"
-                    >
-                      {guest.name}
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         ) : (
           <p>Inga gäster på listan än.</p>
         )}
