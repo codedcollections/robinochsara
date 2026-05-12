@@ -20,7 +20,7 @@
     cursor: pointer;
 }
 .copiedBtn{
-
+margin-left:0.6rem;
     filter:brightness(0.6)
 }
 .check{
