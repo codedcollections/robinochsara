@@ -17,7 +17,13 @@ export function onSpeeches(key, setter) {
   const unsubscribe = onValue(speechRef, (snapshot) => {
     const speeches = snapshot.val()
     if (!speeches) return setter([])
-    setter(Object.values(speeches))
+
+    const speechesWithIds = Object.entries(speeches).map(([id, data]) => ({
+      ...data,
+      id,
+    }))
+
+    setter(speechesWithIds)
   })
 
   return unsubscribe

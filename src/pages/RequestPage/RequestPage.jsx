@@ -28,14 +28,10 @@ const RequestPage = () => {
             </tr>
           </thead>
           <tbody>
-            {speeches.map((item, index) => (
-              <tr key={item.id || index}>
-                {/* Namn + Andra deltagare */}
+            {speeches.map((item) => (
+              <tr key={item.id}>
                 <td>
                   <strong>{item.namn}</strong>
-                  {item.andraDeltagare && (
-                    <div className={s.subText}>Med: {item.andraDeltagare}</div>
-                  )}
                 </td>
 
                 {/* Typ + Specifik beskrivning */}
