@@ -2,9 +2,9 @@
     display:flex;
 }
 .added{
-    display:flex;
+    gap:0.2rem;
     margin-top:1rem;
-    padding-bottom:0.2rem;
+    padding-bottom:2rem;
 }
 
 .wrapper{

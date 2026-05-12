@@ -28,10 +28,13 @@ const HomePage = () => {
       <Gifts />
       <Speech />
       <Invitation />
-      <div id="navigationtester" className={`flex flex-down ${s.added}`}>
+      <div id="navigationtester" className={`flex ${s.added}`}>
         <p>
           2<span className={s.theEnd}>{<FaHeart />}</span>26
         </p>
+        <a href="https://www.linkedin.com/in/marcus-unander" target="_blank">
+          skapad av Marcus
+        </a>
       </div>
     </div>
   )
