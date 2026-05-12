@@ -61,3 +61,11 @@ export const getGuestById = async (id) => {
     return null
   }
 }
+
+export async function deleteFromRsvpDb(id) {
+  try {
+    await remove(ref(db, `rsvps/${String(id)}`))
+  } catch (error) {
+    console.error("Error deleting RSVP:", error)
+  }
+}

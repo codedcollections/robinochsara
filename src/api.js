@@ -45,8 +45,18 @@ export function onRsvps(key, setter) {
 
   const unsubscribe = onValue(rsvpRef, (snapshot) => {
     const rsvps = snapshot.val()
-    if (!rsvps) return setter([])
-    setter(Object.values(rsvps))
+
+    if (!rsvps) {
+      setter([])
+      return
+    }
+
+    const rsvpsWithIds = Object.entries(rsvps).map(([id, data]) => ({
+      ...data,
+      id,
+    }))
+
+    setter(rsvpsWithIds)
   })
 
   return unsubscribe

@@ -35,6 +35,14 @@ const PeoplePage = () => {
     }
   }
 
+  const handleAllowSecondAnswer = (guest) => {
+    if (
+      window.confirm(`Vill du låta ${guest.name} skicka in ett nytt OSA-svar?`)
+    ) {
+      AllowSecondAnswer(guest.id)
+    }
+  }
+
   return (
     <div id={s["peoplepage"]} className={`wrapper`}>
       <button onClick={() => navigate(`/${import.meta.env.VITE_ANSWER}`)}>
@@ -98,7 +106,7 @@ const PeoplePage = () => {
                   </button>
                   {guest.submitted && (
                     <button
-                      onClick={() => AllowSecondAnswer(guest.id)}
+                      onClick={() => handleAllowSecondAnswer(guest)}
                       className={`${s.allowBtn}`}
                     >
                       <IoReload size={10} />

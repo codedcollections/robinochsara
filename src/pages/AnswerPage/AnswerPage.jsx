@@ -4,8 +4,9 @@ import { useState, useRef, useEffect } from "react"
 import { FaCopy } from "react-icons/fa"
 import { FaCheck } from "react-icons/fa6"
 import { BsFillPeopleFill } from "react-icons/bs"
+import { MdDelete } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
-import { getGuestById } from "../../utils/firebaseFunctions"
+import { getGuestById, deleteFromRsvpDb } from "../../utils/firebaseFunctions"
 
 const AnswerPage = () => {
   const [rsvps, setRsvps] = useState([])
@@ -47,6 +48,7 @@ const AnswerPage = () => {
       setCopied(false)
     }, 600)
   }
+
   const copyToClipboard = async () => {
     if (reorderedData.length === 0 || columns.length === 0) return
 
@@ -69,8 +71,9 @@ const AnswerPage = () => {
       (g) => String(g.id).trim() === String(rsvp.id).trim(),
     )
     return {
+      id: rsvp.id,
       namn: guest?.name || rsvp.name || "Okänt namn",
-      "angivet efternamn": guest?.lastname || rsvp.lastname || "-",
+      efternamn: guest?.lastname || rsvp.lastname || "-",
       deltagande: rsvp.attending,
       email: rsvp.email,
       inskickat: rsvp.createdAt,
@@ -83,8 +86,20 @@ const AnswerPage = () => {
   // Get all unique keys from all RSVP objects
   const columns =
     reorderedData.length > 0
-      ? Array.from(new Set(reorderedData.flatMap((rsvp) => Object.keys(rsvp))))
+      ? Array.from(
+          new Set(
+            reorderedData.flatMap((rsvp) =>
+              Object.keys(rsvp).filter((key) => key !== "id"),
+            ),
+          ),
+        )
       : []
+
+  const handleDeleteClick = (rsvp) => {
+    if (window.confirm(`Radera svar från ${rsvp.namn}?`)) {
+      deleteFromRsvpDb(rsvp.id)
+    }
+  }
 
   return (
     <div id={s["answerpage"]} className={`wrapper`}>
@@ -116,15 +131,16 @@ const AnswerPage = () => {
                     {column}
                   </th>
                 ))}
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              {reorderedData.map((rsvp, index) => (
-                <tr key={index}>
+              {reorderedData.map((rsvp) => (
+                <tr key={rsvp.id}>
                   {columns.map((column) => (
                     <td
                       data-label={column}
-                      key={`${index}-${column}`}
+                      key={`${rsvp.id}-${column}`}
                       style={{
                         border: "1px solid #ddd",
                         padding: "8px",
@@ -133,6 +149,20 @@ const AnswerPage = () => {
                       {formatValue(rsvp[column])}
                     </td>
                   ))}
+
+                  <td
+                    style={{
+                      border: "1px solid #ddd",
+                      padding: "8px",
+                    }}
+                  >
+                    <button
+                      className={`flex ${s.deleteRsvp}`}
+                      onClick={() => handleDeleteClick(rsvp)}
+                    >
+                      <MdDelete className={`${s.deleteRsvpBtn}`} size={20} />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
