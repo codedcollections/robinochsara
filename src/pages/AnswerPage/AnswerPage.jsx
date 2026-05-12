@@ -48,7 +48,7 @@ const AnswerPage = () => {
     }, 600)
   }
   const copyToClipboard = async () => {
-    if (reorderedData.length === 0) return
+    if (reorderedData.length === 0 || columns.length === 0) return
 
     const header = columns.join("\t")
     const rows = reorderedData.map((rsvp) =>
@@ -87,16 +87,17 @@ const AnswerPage = () => {
       : []
 
   return (
-    <>
+    <div id={s["answerpage"]} className={`wrapper`}>
+      <button onClick={() => navigate(`/${import.meta.env.VITE_PEOPLE}`)}>
+        <BsFillPeopleFill />
+      </button>
       <button
         onClick={copyToClipboard}
         className={copied ? s.copiedBtn : s.copyBtn}
       >
         {copied ? <FaCheck className={s.check} /> : <FaCopy />}
       </button>
-      <button onClick={() => navigate(`/${import.meta.env.VITE_PEOPLE}`)}>
-        <BsFillPeopleFill />
-      </button>
+
       <div id={s["answers"]} className={`flex flex-down`}>
         {reorderedData.length > 0 ? (
           <table style={{ borderCollapse: "collapse", width: "100%" }}>
@@ -140,7 +141,7 @@ const AnswerPage = () => {
           <p>Inga svar ännu</p>
         )}
       </div>
-    </>
+    </div>
   )
 }
 export default AnswerPage

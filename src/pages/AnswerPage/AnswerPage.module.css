@@ -1,6 +1,9 @@
-#answers{
-    margin: 2rem 0;
+#answerpage{
+    margin:2rem 2rem;
 }   
+  /* #answers{
+      margin: 2rem 0;
+  }    */
 #answers table{
     max-width:90%;
     border-collapse: collapse;
@@ -10,11 +13,11 @@
 
 }
 .copyBtn{
-    margin:2rem;
+  margin-left:0.6rem;
     cursor: pointer;
 }
 .copiedBtn{
-    margin:2rem;
+
     filter:brightness(0.6)
 }
 .check{
