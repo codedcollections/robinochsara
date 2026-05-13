@@ -23,7 +23,7 @@ const Practicalities = () => {
           imageSrc={transport}
           imageAlt={`En gul leksaksbuss med bagage på taket placerad bland markkrypande växter på en strand`}
           infoText={
-            "Under dagen kommer det finnas möjlighet att åka med en abonerad buss. Det är helt kostnadsfritt och för att garantera en plats krävs anmälan i samband med OSA. \nBussen åker mellan Huddinge Kyrka och Sundby Gård.\nBussen åker mellan Sundby Gård och efterfesten med ett snabbt stopp vid Huddinge station för de som vill avsluta festen och fortsätta vidare med tåg."
+            "Under dagen kommer det finnas möjlighet att åka med en abonnerad buss. Det är helt kostnadsfritt och för att garantera en plats krävs anmälan i samband med OSA. \nBussen åker mellan Huddinge Kyrka och Sundby Gård.\nBussen åker mellan Sundby Gård och efterfesten med ett snabbt stopp vid Huddinge station för de som vill avsluta festen och fortsätta vidare med tåg."
           }
         />
         <PracticalityCard
