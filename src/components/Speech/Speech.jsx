@@ -27,7 +27,7 @@ const Speech = () => {
       <div className={s.aboutspeech}>
         <p>
           Senaste anmälningsdagen är{" "}
-          <span className={s.latestReply}>1 augusti</span>.
+          <span className={s.latestReply}>9 augusti</span>.
         </p>
       </div>
       <button
