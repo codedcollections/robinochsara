@@ -81,11 +81,11 @@ const Invitation = () => {
         fyller ni i informationen. Vänligen anmäl även om ni inte kan komma. Vid
         ändringar av er anmälan, kontakta någon av brudparet.
       </p>
-      <p className={s.rsvpDeadline}>
+      {/* <p className={s.rsvpDeadline}>
         Sista dagen att svara på inbjudan är{" "}
         <span className={s.latestReply}>30 juni</span>, men gör det gärna
         tidigare.
-      </p>
+      </p> */}
       <p className={s.selectHint}>välj ett sällskap</p>
       <div className={`flex flex-down ${s.selectGuestBtn}`}>
         <select
