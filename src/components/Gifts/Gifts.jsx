@@ -1,5 +1,6 @@
 import island from "./../../images/island.webp"
 import s from "./Gifts.module.css"
+import QrCode from "../../images/QRSwish.png"
 const Gifts = () => {
   return (
     <div id={s["gifts"]} className="flex flex-down">
@@ -16,6 +17,11 @@ const Gifts = () => {
         bär av, men vi siktar mot en sol- och badsemster någonstans i
         Sydostasien.
       </p>
+      <p>
+        För att bidra till resan swishar ni enklast till Robin via QR-koden.
+        Skriv gärna vilka det är ifrån om ni är flera som skickar tillsammans.
+      </p>
+      <img className={s.qrImage} src={QrCode} alt="A QR code" />
     </div>
   )
 }
