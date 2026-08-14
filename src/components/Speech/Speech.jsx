@@ -25,9 +25,13 @@ const Speech = () => {
       </div>
 
       <div className={s.aboutspeech}>
-        <p>
+        {/*         <p>
           Senaste anmälningsdagen är{" "}
           <span className={s.latestReply}>9 augusti</span>.
+        </p> */}
+        <p>
+          Tal eller spex som anmäls efter{" "}
+          <span className={s.latestReply}>9 augusti</span> tas med i mån av tid.
         </p>
       </div>
       <button
