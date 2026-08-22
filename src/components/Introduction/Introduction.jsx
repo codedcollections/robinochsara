@@ -48,27 +48,29 @@ const Introduction = () => {
       <h2>22.08.2026</h2>
       <img className={`flex ${s.weddingimg}`} src={wedding} alt="" />
       {/* <p id={s["countdown"]}>{timeLeft}</p> */}
-      <div className={s.timegrid}>
-        <div className={s.daydiv}>
-          <h3>{days}</h3>
-          <p className={s.timestamp}>dagar</p>
+      {!isDone && (
+        <div className={s.timegrid}>
+          <div className={s.daydiv}>
+            <h3>{days}</h3>
+            <p className={s.timestamp}>dagar</p>
+          </div>
+          <p>:</p>
+          <div className={s.hourdiv}>
+            <h3>{hours}</h3>
+            <p className={s.timestamp}>timmar</p>
+          </div>
+          <p>:</p>
+          <div className={s.minutediv}>
+            <h3>{minutes}</h3>
+            <p className={s.timestamp}>minuter</p>
+          </div>
+          <p>:</p>
+          <div className={s.seconddiv}>
+            <h3>{seconds}</h3>
+            <p className={s.timestamp}>sekunder</p>
+          </div>
         </div>
-        <p>:</p>
-        <div className={s.hourdiv}>
-          <h3>{hours}</h3>
-          <p className={s.timestamp}>timmar</p>
-        </div>
-        <p>:</p>
-        <div className={s.minutediv}>
-          <h3>{minutes}</h3>
-          <p className={s.timestamp}>minuter</p>
-        </div>
-        <p>:</p>
-        <div className={s.seconddiv}>
-          <h3>{seconds}</h3>
-          <p className={s.timestamp}>sekunder</p>
-        </div>
-      </div>
+      )}
 
       <div className={`flex flex-down ${s.meetcute}`}>
         <img
